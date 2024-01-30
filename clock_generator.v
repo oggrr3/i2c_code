@@ -1,21 +1,19 @@
 module clock_generator (
     input           i2c_core_clk_i      ,   // i2c core clock
-    input           scl_en_i            ,   // enbale clock to scl
-    input           scl_low_i           ,   // signal from FSM cause scl to low, when 1, scl = 0
+    input           clk_en_i            ,   // enbale clock to scl
     output          i2c_scl_o               // scl output
 );
 
-    localparam      DIVIDE_BY    =   4    ;
+    localparam      DIVIDE_BY    =   8    ;
     reg             i2c_clk      =   1    ;
     reg     [7:0]   counter      =   0    ;
+
+	assign	i2c_scl_o	=	i2c_clk		  ;	
 
     // divide i2c core clock to i2c scl output
     always @(posedge    i2c_core_clk_i) begin
 
-        if (scl_low_i) begin
-            i2c_clk         <=      0       ;
-        end
-        else if (scl_en_i) begin
+        if (clk_en_i) begin
             if ( counter == (DIVIDE_BY / 2) - 1 ) begin
                 i2c_clk     <=   ~i2c_clk    ;
                 counter     <=      0        ;
