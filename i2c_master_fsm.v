@@ -9,227 +9,190 @@ module i2c_master_fsm (
     input           i2c_sda_i           ,   // i2c sda feedback to FSM
     input           i2c_scl_i           ,   // i2c scl feedback to FSM
 
-    output          sda_low_en_o        ,   // when = 1 enable sda down 0
-    output          clk_en_o            ,   // enbale to generator clk
-    output          write_data_en_o     ,   // enable write data on sda
-    output          write_addr_en_o     ,   // enable write address of slave on sda
-    output          receive_data_en_o   ,   // enable receive data from sda
-    output          count_bit_o         ,   // count bit data from 7 down to 0
-    output          i2c_sda_en_o        ,   // allow impact to sda
-    output          i2c_scl_en_o            // allow impact to scl 
+    output	    reg             sda_low_en_o        ,   // when = 1 enable sda down 0
+    output	    reg             clk_en_o            ,   // enbale to generator clk
+    output	    reg             write_data_en_o     ,   // enable write data on sda
+    output	    reg             write_addr_en_o     ,   // enable write address of slave on sda
+    output	    reg             receive_data_en_o   ,   // enable receive data from sda
+    output      reg     [2:0]   count_bit_o         ,   // count bit data from 7 down to 0
+    output	    reg             i2c_sda_en_o        ,   // allow impact to sda
+    output	    reg             i2c_scl_en_o            // allow impact to scl 
 );
 
     // State
-    parameter   idle            =   4'b0000   ;
-    parameter   start           =   4'b0001   ;
-    parameter   address         =   4'b0010   ;
-    parameter   read_ack        =   4'b0011   ;
-    parameter   write_data      =   4'b0100   ;
-    parameter   read_later_ack  =   4'b0101   ;
+    parameter   IDLE            =   4'b0000   ;
+    parameter   START           =   4'b0001   ;
+    parameter   ADDRESS         =   4'b0010   ;
+    parameter   READ_ACK        =   4'b0011   ;
+    parameter   WRITE_DATA      =   4'b0100   ;
+    parameter   READ_LATER_ACK  =   4'b0101   ;
 
-    parameter   read_data       =   4'b0110   ;
-    parameter   write_ack       =   4'b0111   ;
+    parameter   READ_DATA       =   4'b0110   ;
+    parameter   WRITE_ACK       =   4'b0111   ;
 
-    parameter   repeat_start    =   4'b1000   ;
-    parameter   stop            =   4'b1001   ;
+    parameter   REPEAT_START    =   4'b1000   ;
+    parameter   STOP            =   4'b1001   ;
 
     // Declare current state, next state
     reg     [3:0]       currrent_state              ;
     reg     [3:0]       next_sate                   ;
 
     // Declare count value
-    reg     [2:0]       count_bit                   ;
     reg     [2:0]       count_clk_core     =    0   ;
     reg                 confirm            =    0   ;   // when i2c_scl_i from 1 down to 0, confirm = 1 
+    reg                 pre_scl_clk                 ;
 
 
-    assign  count_bit_o     =   count_bit           ;   // Push count bit to output
 
-
-    // State register logic
+    // Current State register logic
     always @ (posedge i2c_core_clk_i,   negedge reset_ni) begin
         if (~reset_ni) begin
-            currrent_state       <=     idle    ;
-            
+            currrent_state       <=     IDLE        ;            
         end
 
         else begin
-            case (next_sate)
-                // State-Start wait for 4 cycle-core before change to Address-State
-                // start   :   begin
-                //     if (count_clk_core == 3) begin
-                //         currrent_state   <=   start                 ;
-                //         count_bit        <=   7                     ;
-                //         count_clk_core   <=   0                     ;
-                //     end
-                //     else begin
-                //         count_clk_core   <=   count_clk_core + 1    ;
-                //     end
-                // end
 
-                start       :   begin
-                    if (confirm) begin
-                        currrent_state  <=  next_sate               ;
-                    end
-                    else begin
-                        currrent_state  <=  currrent_state          ;
-                    end
-                end
+            currrent_state  	<=  next_sate       ;
 
-                //-------------------------------------------------------
-                address     :   begin
-                    if (count_bit == 0) begin
-                        currrent_state  <=  next_sate               ;
-                    end
-                    else begin
-                        currrent_state  <=  currrent_state          ;
-                    end                    
-                end
-
-                //------------------------------------------------------
-                read_ack    :   begin
-                    if (confirm) begin
-                        currrent_state  <=  next_sate               ;
-                    end
-                    else begin
-                        currrent_state  <= currrent_state           ;
-                    end
-                end
-
-                default :   begin
-                    currrent_state       <=  next_sate              ;
-                end
-            endcase
         end
-        
+
     end
 
     // Next state comnibational logic
-    always @ (currrent_state, full_i, empty_i)    begin
+    always @ (*)    begin
 
         case (currrent_state)
 
-            idle    :   begin
+            IDLE    :   begin
 
                 if (enable_i) begin
-                    next_sate   =   start      ;
+                    next_sate   =   START      ;
                 end
                 else begin
-                    next_sate   =   idle       ;
+                    next_sate   =   IDLE       ;
                 end
 
             end
 
 
-            start   :   begin
-
-                next_sate   =   address         ;
+            START   :   begin
+				if (confirm)
+                	next_sate   =   ADDRESS         ;
+                else begin
+                    next_sate   =   START           ;
+                end
 
             end
 
 
-            address :   begin
+            ADDRESS :   begin
 
-                if (count_bit == 0) begin
-                    next_sate   =   read_ack    ;
+                if (count_bit_o == 0) begin
+                    next_sate   =   READ_ACK    ;
                 end
                 else begin
-                    next_sate   =   address     ;
+                    next_sate   =   ADDRESS     ;
                 end 
 
             end
 
-            read_ack    :   begin
+            READ_ACK    :   begin
 
                 if (i2c_sda_i == 0) begin
 
                     case (rw_i)
-                        1       :   if (full_i)     next_sate   =   stop        ;
-                                    else            next_sate   =   read_data   ;  
+                        1       :   if (full_i)     next_sate   =   STOP        ;
+                                    else            next_sate   =   READ_DATA   ;  
 
-                        0       :   if (empty_i)    next_sate   =   stop        ;
-                                    else            next_sate   =   write_data  ;
+                        0       :   if (empty_i)    next_sate   =   STOP        ;
+                                    else            next_sate   =   WRITE_DATA  ;
 
-                        default :                   next_sate   =   read_data   ;
+                        default :                   next_sate   =   READ_DATA   ;
                     endcase
                 end 
 
                 else begin
-                                                    next_sate   =   stop        ;
+                                                    next_sate   =   STOP        ;
                 end
 
             end
 
-            write_data  :   begin
+            WRITE_DATA  :   begin
 
-                if (count_bit == 0) begin
-                    next_sate   =   read_later_ack      ;
+                if (count_bit_o == 0) begin
+                    next_sate   =   READ_LATER_ACK      ;
                 end 
                 else begin
-                    next_sate   =   write_data          ;
+                    next_sate   =   WRITE_DATA          ;
                 end
 
             end
 
-            read_later_ack  :   begin
+            READ_LATER_ACK  :   begin
 
                 if (repeat_start_i) begin
-                    next_sate       =      repeat_start   ; 
+                    next_sate       =      REPEAT_START   ; 
                 end 
                 else if (i2c_sda_i == 0 && empty_i == 0) begin
-                    next_sate       =       write_data    ;
+                    next_sate       =       WRITE_DATA    ;
                 end
                 else begin
-                    next_sate       =       stop          ;
+                    next_sate       =       STOP          ;
                 end
 
             end
 
-            read_data   :   begin
+            READ_DATA   :   begin
 
-                if (count_bit == 0) begin
-                    next_sate       =       write_ack       ;
+                if (count_bit_o == 0) begin
+                    next_sate       =       WRITE_ACK       ;
                     
                 end 
                 else begin
-                    next_sate       =       read_data       ;
+                    next_sate       =       READ_DATA       ;
                 end
 
             end
 
-            write_ack   :   begin
+            WRITE_ACK   :   begin
 
                 if (repeat_start_i) begin
-                    next_sate       =      repeat_start     ; 
+                    next_sate       =      REPEAT_START     ; 
                 end 
                 else if (i2c_sda_i == 0 && full_i == 0) begin
-                    next_sate       =       read_data       ;
+                    next_sate       =       READ_DATA       ;
                 end
                 else begin
-                    next_sate       =       stop            ;
+                    next_sate       =       STOP            ;
                 end
 
             end
 
-            repeat_start    :    begin
-                next_sate           =       address         ;
+            REPEAT_START    :    begin
+                if (confirm) begin
+                    next_sate           =       ADDRESS         ;
+                end
+                else begin
+                    next_sate           =       REPEAT_START    ;
+                end
+
             end
 
-            stop    :   begin
-                next_sate           =       idle            ;
+            STOP    :   begin
+                next_sate           =       IDLE            ;
             end
 
-            default: next_sate      =       idle            ;
+            default: next_sate      =       IDLE            ;
         endcase
 
     end
 
     // Output combinational logic
-    always @(currrent_state) begin
+    always @(*) begin
         
         case (currrent_state)
             
-            idle            :   begin
+            IDLE            :   begin
                 clk_en_o            =       0           ;
                 sda_low_en_o        =       0           ;
                 write_data_en_o     =       0           ;
@@ -240,7 +203,7 @@ module i2c_master_fsm (
             end
 
             //-------------------------------------------------------
-            start           :   begin
+            START           :   begin
                 clk_en_o            =       1           ;
                 sda_low_en_o        =       1           ;
                 write_data_en_o     =       0           ;
@@ -251,7 +214,7 @@ module i2c_master_fsm (
             end
 
             //-------------------------------------------------------
-            address         :   begin
+            ADDRESS         :   begin
                 clk_en_o            =       1           ;
                 sda_low_en_o        =       0           ;
                 write_data_en_o     =       0           ;
@@ -268,7 +231,7 @@ module i2c_master_fsm (
             end
 
             //-------------------------------------------------------
-            read_ack        :   begin
+            READ_ACK        :   begin
                 clk_en_o            =       1           ;
                 sda_low_en_o        =       0           ;
                 write_data_en_o     =       0           ;
@@ -279,7 +242,7 @@ module i2c_master_fsm (
             end
 
             //-------------------------------------------------------
-            write_data      :   begin
+            WRITE_DATA      :   begin
                 clk_en_o            =       1           ;
                 sda_low_en_o        =       0           ;
                 write_data_en_o     =       1           ;
@@ -296,7 +259,7 @@ module i2c_master_fsm (
             end
 
             //-------------------------------------------------------
-            read_later_ack  :   begin
+            READ_LATER_ACK  :   begin
                 clk_en_o            =       1           ;
                 sda_low_en_o        =       0           ;
                 write_data_en_o     =       0           ;
@@ -307,7 +270,7 @@ module i2c_master_fsm (
             end
 
             //-------------------------------------------------------
-            read_data       :   begin
+            READ_DATA       :   begin
                 clk_en_o            =       1           ;
                 sda_low_en_o        =       0           ;
                 write_data_en_o     =       0           ;
@@ -324,7 +287,7 @@ module i2c_master_fsm (
             end
 
             //-------------------------------------------------------
-            write_ack       :   begin
+            WRITE_ACK       :   begin
                 clk_en_o            =       1           ;
                 sda_low_en_o        =       1           ;
                 write_data_en_o     =       0           ;
@@ -335,13 +298,15 @@ module i2c_master_fsm (
             end
 
             //-------------------------------------------------------
-            repeat_start    :   begin
+            REPEAT_START    :   begin
                 clk_en_o            =       1           ;
 
                 // Frist, when scl is low, we have to set sda up to 1
                 if (i2c_scl_i == 0) begin
+                    sda_low_en_o    =       1           ;
+                end
+                else begin
                     sda_low_en_o    =       0           ;
-
                 end
 
                 write_data_en_o     =       0           ;
@@ -354,7 +319,7 @@ module i2c_master_fsm (
             end
 
             //-------------------------------------------------------
-            stop            :   begin
+            STOP            :   begin
                 clk_en_o            =       0           ;
                 sda_low_en_o        =       1           ;
                 write_data_en_o     =       0           ;
@@ -367,33 +332,42 @@ module i2c_master_fsm (
             //-------------------------------------------------------
             default         :   begin
                 clk_en_o            =       0           ;
-                sda_low_en_o           =       0           ;
+                sda_low_en_o        =       0           ;
                 write_data_en_o     =       0           ;
                 write_addr_en_o     =       0           ;
                 receive_data_en_o   =       0           ;
+                i2c_sda_en_o        =       0           ;
+                i2c_scl_en_o        =       0           ;
             end
         endcase
 
     end
 
-    // when negetive i2c_scl_i, count_bit --
-    always @(negedge i2c_scl_i) begin
+    // Detect negative scl 
+    always @(posedge    i2c_core_clk_i) begin
 
-        confirm     =       1       ;
-        if (currrent_state  ==  address || currrent_state == read_data
-            currrent_state  ==  write_data) begin
-            
-                count_bit   =   count_bit - 1   ;
+        pre_scl_clk         <=      i2c_scl_i          ;
+        if (pre_scl_clk == 1 && i2c_scl_i == 0) begin
+            confirm         <=       1               ;
+        end
+
+        else begin	 
+            confirm         <=       0               ;
+        end
+
+    end
+    // when negetive i2c_scl_i, count_bit_o --
+    always @(*) begin
+
+        //confirm     =       1       ;
+        if (currrent_state  ==  ADDRESS || currrent_state == READ_DATA	|| currrent_state  ==  WRITE_DATA) begin
+            if (confirm)
+                count_bit_o   =   count_bit_o - 1   ;
         end
         else begin
-            count_bit       =   7               ;
+            count_bit_o       =   7               ;
         end
 
     end
 
-    /// 
-    // when nagative
-    always @(posedge i2c_scl_i) begin
-        confirm     =       0       ;
-    end
 endmodule
