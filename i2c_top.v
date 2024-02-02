@@ -1,4 +1,4 @@
-module i2c_core     #(parameter     DATA_SIZE   =   8   ,
+module i2c_top      #(parameter     DATA_SIZE   =   8   ,
                       parameter     ADDR_SIZE   =   8   )
 (
     input   [DATA_SIZE - 1]     data_transmit_i                 ,   // data transmit from MCU to FIFO
@@ -17,12 +17,12 @@ module i2c_core     #(parameter     DATA_SIZE   =   8   ,
     output   [7 : 0]            status_o                            // status of FIFO: full, empty
 );
 
+    // Decalar netlist
     wire                        i2c_sda_en                      ;
     wire                        i2c_scl_en                      ;
     wire                        i2c_sda                         ;
     wire                        i2c_scl                         ;
 
-    // Decalar netlist
     wire                        clk_en                          ;
     wire                        reset_n                         ;
     wire                        enable                          ;
@@ -36,8 +36,19 @@ module i2c_core     #(parameter     DATA_SIZE   =   8   ,
     wire                        receive_data_en                 ;
     wire                        count_bit                       ;
 
+    wire  [DATA_SIZE - 1 : 0]   data                            ;
+    wire  [DATA_SIZE - 1 : 0]   data_from_sda                   ;
+    wire                        data_done                       ;
 
 
+
+    // get command bit
+    assign      enable          =       command_i[6]            ;
+    assign      reset_n         =       command_i[7]            ;
+    assign      repeat_start    =       command_i[5]            ;
+    assign      rw              =       command_i[4]            ;
+
+    // push data to i2c line
     assign      i2c_sda_o       =       i2c_sda_en ? i2c_sda : 1'bz     ;
     assign      i2c_scl_o       =       i2c_scl_en ? i2c_scl : 1'bz     ;
     assign      i2c_scl_i       =       i2c_scl_o                       ;
@@ -46,10 +57,10 @@ module i2c_core     #(parameter     DATA_SIZE   =   8   ,
     // dut
     clock_generator #(parameter DIVIDE_BY = 8)     clock_generator 
     (
-		.i2c_core_clk_i	(i2c_core_clk_i )     ,   // i2c core clock
-    	.clk_en_i		(clk_en		    )     ,   // enbale clock to scl
-		.reset_ni		(reset_n		)	  ,     
-    	.i2c_scl_o 		(i2c_scl		)         // scl output
+		.i2c_core_clk_i	    (i2c_core_clk_i     )     ,   // i2c core clock
+    	.clk_en_i		    (clk_en		        )     ,   // enbale clock to scl
+		.reset_ni		    (reset_n		    )	  ,     
+    	.i2c_scl_o 		    (i2c_scl		    )         // scl output
     );
 
     i2c_master_fsm                                  i2c_master_fsm
@@ -74,9 +85,24 @@ module i2c_core     #(parameter     DATA_SIZE   =   8   ,
     	.i2c_scl_en_o       (i2c_scl_en         )          // allow impact to scl
     );
 
+    data_path_i2c_to_core   # ( parameter     DATA_SIZE   =   8 , 
+                                parameter     ADDR_SIZE   =   8 )                           
+    data_path_i2c_to_core (
+        .data_i               (data             )         ,   // data from fifo buffer
+        .addr_i               (slave_addr_rw_i  )         ,   // address of slave
+        .count_bit_i          (count_bit        )         ,   // sda input
+        .i2c_core_clk_i       (i2c_core_clk_i   )         ,   // i2c core clock
+        .reset_ni             (reset_n          )         ,   // reset negetive signal from MCU
+        .i2c_sda_i            (i2c_sda_i        )         ,   // sda line
 
+        .sda_low_en_i         (sda_low_en       )         ,   // control sda signal from FSM, when 1 sda = 0
+        .write_data_en_i      (write_data_en    )         ,   // enable write data signal from FSM
+        .write_addr_en_i      (write_addr_en    )         ,   // enable write slave's signal to sda 
+        .receive_data_en_i    (receive_data_en  )         ,   // enable receive data from sda
 
+        .data_from_sda_o      (data_from_sda    )         ,   // data from sda to write to FIFO buffer
+        .i2c_sda_o            (i2c_sda          )         ,   // i2c sda output   
+        .data_done_o          (data_done        )            // finish processed data input and output  
+    );
 
-
-    
 endmodule
