@@ -1,8 +1,9 @@
-module clock_generator  #(parameter DIVIDE_BY = 8)
+module clock_generator  
 (
     input           i2c_core_clk_i          ,   // i2c core clock
     input           clk_en_i                ,   // enbale clock to scl
-    input           reset_ni                ,   // negetive reset signal f
+    input           reset_ni                ,   // negetive reset signal from MCU
+    input	[7:0]   prescale_i              ,   // the value used to divide i2c_clock_core to scl line
     output          i2c_scl_o                   // scl output
 );
 
@@ -21,7 +22,7 @@ module clock_generator  #(parameter DIVIDE_BY = 8)
 
         else    begin
             if (clk_en_i) begin
-                if ( counter == (DIVIDE_BY / 2) - 1 ) begin
+                if ( counter == (prescale_i / 2) - 1 ) begin
                     i2c_clk     <=   ~i2c_clk    ;
                     counter     <=      0        ;
                 end 

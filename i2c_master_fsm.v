@@ -9,6 +9,9 @@ module i2c_master_fsm (
     input           i2c_sda_i           ,   // i2c sda feedback to FSM
     input           i2c_scl_i           ,   // i2c scl feedback to FSM
 
+    output          w_fifo_en_o         ,   //  enable write data into fifo memory
+    output          r_fifo_en_o         ,   //  enable read data from fifo memory
+
     output	    reg             sda_low_en_o        ,   // when = 1 enable sda down 0
     output	    reg             clk_en_o            ,   // enbale to generator clk
     output	    reg             write_data_en_o     ,   // enable write data on sda
@@ -42,7 +45,12 @@ module i2c_master_fsm (
     reg                 confirm            =    0   ;   // when i2c_scl_i from 1 down to 0, confirm = 1 
     reg                 pre_scl_clk                 ;
 
+    // Declare register of ouput
+    reg                 w_fifo_en                       ;
+    reg                 r_fifo_en                       ;
 
+    assign              w_fifo_en_o     =   w_fifo_en   ;
+    assign              r_fifo_en_o     =   r_fifo_en   ;
 
     // Current State register logic
     always @ (posedge i2c_core_clk_i,   negedge reset_ni) begin
@@ -348,11 +356,11 @@ module i2c_master_fsm (
 
         pre_scl_clk         <=      i2c_scl_i          ;
         if (pre_scl_clk == 1 && i2c_scl_i == 0) begin
-            confirm         <=       1               ;
+            confirm         <=       1                 ;    // scl line from 1 to 0 => confirm = 1
         end
 
         else begin	 
-            confirm         <=       0               ;
+            confirm         <=       0                  ;
         end
 
     end
@@ -365,7 +373,23 @@ module i2c_master_fsm (
                 count_bit_o   =   count_bit_o - 1   ;
         end
         else begin
-            count_bit_o       =   7               ;
+            count_bit_o       =   7                 ;
+        end
+
+    end
+
+    // Handle read/write-enbale signal to FIFO
+    always @ (*) begin
+
+        //when handle  1 byte data and scl is hight => enable read, write to FIFO memory
+        if (count_bit_o == 0 && i2c_scl_i == 1) begin
+            w_fifo_en     =   1           ;
+            r_fifo_en     =   1           ;
+        end 
+
+        else begin
+            w_fifo_en     =   0           ;
+            r_fifo_en     =   0           ;
         end
 
     end

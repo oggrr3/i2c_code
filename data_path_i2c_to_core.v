@@ -3,9 +3,9 @@ module data_path_i2c_to_core    # ( parameter     DATA_SIZE   =   8 ,
 (
     input   [DATA_SIZE - 1 : 0]         data_i              ,   // data from fifo buffer
     input   [ADDR_SIZE - 1 : 0]         addr_i              ,   // address of slave
-    input                               count_bit_i         ,   // sda input
-    input                               i2c_core_clk_i      ,   // i2c core clock
-    input                               reset_ni            ,   // reset negetive signal from MCU
+    input   [2 : 0]                     count_bit_i         ,   // sda input
+    //input                               i2c_core_clk_i      ,   // i2c core clock
+    //input                               reset_ni            ,   // reset negetive signal from MCU
     input                               i2c_sda_i           ,   // sda line
 
     input                               sda_low_en_i        ,   // control sda signal from FSM, when 1 sda = 0
@@ -14,8 +14,8 @@ module data_path_i2c_to_core    # ( parameter     DATA_SIZE   =   8 ,
     input                               receive_data_en_i   ,   // enable receive data from sda
 
     output  [DATA_SIZE - 1 : 0]         data_from_sda_o     ,   // data from sda to write to FIFO buffer
-    output                              i2c_sda_o           ,   // i2c sda output   
-    output                              data_done_o             // finish processed data input and output                        
+    output                              i2c_sda_o              // i2c sda output   
+    //output                              data_done_o             // finish prepare 1 byte data                       
 );
     
     reg     	[DATA_SIZE - 1 : 0]         data_from_sda       ;
@@ -23,21 +23,22 @@ module data_path_i2c_to_core    # ( parameter     DATA_SIZE   =   8 ,
 	reg										data_done			;
 
 	assign		i2c_sda_o			=		i2c_sda				;
-	assign		data_done_o			=		data_done			;
+	//assign		data_done_o			=		data_done			;
     assign      data_from_sda_o	   	=   	data_from_sda       ;
 
-    // read-write data to sda
-    always @(posedge    i2c_core_clk_i,     negedge     reset_ni  ) begin
 
-        if (reset_ni) begin
-            data_from_sda   <=      0                       ;
-        end
+    // // read-write data to sda
+    // always @(posedge    i2c_core_clk_i,     negedge     reset_ni  ) begin
 
-        else begin
+    //     if (reset_ni) begin
+    //         data_from_sda   <=      0                           ;
+    //     end
 
-        end
+    //     else begin
 
-    end     
+    //     end
+
+    // end     
 
 
 
@@ -64,12 +65,13 @@ module data_path_i2c_to_core    # ( parameter     DATA_SIZE   =   8 ,
             i2c_sda	       =      1                                ;
         end
 
-        if (count_bit_i == 0) begin
-            data_done	     =       1                               ;
-        end 
-        else begin
-            data_done	     =       0                               ;
-        end
+        // ko can do xu ly ben fsm roi
+        // if (count_bit_i == 0) begin
+        //     data_done	     =       1                               ;
+        // end 
+        // else begin
+        //     data_done	     =       0                               ;
+        // end
         
     end
 
