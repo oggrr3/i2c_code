@@ -226,16 +226,16 @@ module i2c_master_fsm (
                 clk_en_o            =       1           ;
                 sda_low_en_o        =       0           ;
                 write_data_en_o     =       0           ;
-                write_addr_en_o     =       1           ;
                 receive_data_en_o   =       0           ;
 
-                //confirm = 1, scl is low, we can impact to sda
+                //when confirm = 1, scl is low, we can write address of slave on sda line
                 if (confirm)    
-                    i2c_sda_en_o    =       1           ;
+                    write_addr_en_o     =       1       ;
                 else    
-                    i2c_sda_en_o    =       0           ;
+                    write_addr_en_o     =       0       ;
 
-                i2c_scl_en_o        =       1           ;
+				i2c_sda_en_o    		=       1       ;
+                i2c_scl_en_o        	=       1       ;
             end
 
             //-------------------------------------------------------
@@ -253,17 +253,17 @@ module i2c_master_fsm (
             WRITE_DATA      :   begin
                 clk_en_o            =       1           ;
                 sda_low_en_o        =       0           ;
-                write_data_en_o     =       1           ;
                 write_addr_en_o     =       0           ;
                 receive_data_en_o   =       0           ;
 
-                //confirm = 1, scl is low, we can impact to sda
+                //confirm = 1, scl is low, we can write data on sda line
                 if (confirm)    
-                    i2c_sda_en_o    =       1           ;
+                    write_data_en_o     =       1           ;
                 else    
-                    i2c_sda_en_o    =       0           ;
+                    write_data_en_o     =       0           ;
 
-                i2c_scl_en_o        =       1           ;
+				i2c_sda_en_o    		=       1           ;
+                i2c_scl_en_o        	=       1           ;
             end
 
             //-------------------------------------------------------

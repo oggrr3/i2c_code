@@ -16,6 +16,10 @@ module i2c_top_tb ();
     wire       [7 : 0]              data_receive_o                 ;    // data recieved from FIFO
     wire       [7 : 0]              status_o                        ;   // status of FIFO: full, empty
 
+
+	// Decalar value to test
+	//assign 			i2c_sda_o	=	(i2c_sda_o == 1'bz) ? 1 : i2c_sda_o		;
+
     //uut
     i2c_top     uut (
         .data_transmit_i    (data_transmit_i)             ,   // data transmit from MCU to FIFO

@@ -15,16 +15,15 @@ module data_path_i2c_to_core    # ( parameter     DATA_SIZE   =   8 ,
 
     output  [DATA_SIZE - 1 : 0]         data_from_sda_o     ,   // data from sda to write to FIFO buffer
     output                              i2c_sda_o              // i2c sda output   
-    //output                              data_done_o             // finish prepare 1 byte data                       
+                     
 );
     
-    reg     	[DATA_SIZE - 1 : 0]         data_from_sda       ;
-	reg										i2c_sda 			;
-	reg										data_done			;
+    reg     	[DATA_SIZE - 1 : 0]         data_from_sda       			;
+	reg										i2c_sda			=	1 			;
+	reg										data_done						;
 
-	assign		i2c_sda_o			=		i2c_sda				;
-	//assign		data_done_o			=		data_done			;
-    assign      data_from_sda_o	   	=   	data_from_sda       ;
+	assign		i2c_sda_o			=		i2c_sda							;
+    assign      data_from_sda_o	   	=   	data_from_sda       			;
 
 
     // // read-write data to sda
@@ -62,7 +61,7 @@ module data_path_i2c_to_core    # ( parameter     DATA_SIZE   =   8 ,
         end
 
         else begin
-            i2c_sda	       =      1                                ;
+            i2c_sda	       =      i2c_sda                                ;
         end
 
         // ko can do xu ly ben fsm roi

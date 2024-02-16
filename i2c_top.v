@@ -36,7 +36,7 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
     wire                        write_data_en                   ;
     wire                        write_addr_en                   ;
     wire                        receive_data_en                 ;
-    wire    [2:0]                        count_bit                       ;
+    wire	[2:0]                        count_bit                       ;
 
     wire  [DATA_SIZE - 1 : 0]   data                            ;
     wire  [DATA_SIZE - 1 : 0]   data_from_sda                   ;
