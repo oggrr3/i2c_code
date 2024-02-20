@@ -3,7 +3,7 @@ module data_path_i2c_to_core    # ( parameter     DATA_SIZE   =   8 ,
 (
     input   [DATA_SIZE - 1 : 0]         data_i              ,   // data from fifo buffer
     input   [ADDR_SIZE - 1 : 0]         addr_i              ,   // address of slave
-    input   [2 : 0]                     count_bit_i         ,   // sda input
+    input   [3 : 0]                     count_bit_i         ,   // sda input
     //input                               i2c_core_clk_i      ,   // i2c core clock
     //input                               reset_ni            ,   // reset negetive signal from MCU
     input                               i2c_sda_i           ,   // sda line
