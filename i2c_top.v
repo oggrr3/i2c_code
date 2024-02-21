@@ -27,6 +27,8 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
 	reg		FIFO_empty	= 0;
 	assign	full	=	FIFO_full	;
 	assign	empty	=	FIFO_empty	;
+
+
 	//------------------------------------------------------
 
     // Decalar netlist
@@ -53,8 +55,8 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
     wire  [DATA_SIZE - 1 : 0]   data                            ;
     wire  [DATA_SIZE - 1 : 0]   data_from_sda                   ;
 
-
-
+	// Xong data_path sua dong nay di
+    assign  data_receive_o  =   (w_fifo_en) ? data_from_sda : 0 ;
 
     // get command bit
     assign      enable          =       command_i[6]            ;

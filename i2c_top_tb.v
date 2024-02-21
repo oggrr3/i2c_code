@@ -27,6 +27,7 @@ module i2c_top_tb ();
     wire sda_i_tb;
     wire sda;
     wire scl;
+    reg sda_slave_en = 0;
 
     assign  i2c_sda_i   =   sda_o_tb                            ;
     assign  sda         =   i2c_sda_en ? i2c_sda_o : 1'bz       ;
@@ -60,18 +61,53 @@ module i2c_top_tb ();
 
         sda_o_tb            =       0                               ;
         data_transmit_i     =       8'b00110001                     ;
-        slave_addr_rw_i     =       8'b11001110                     ;   // write
-        command_i           =       8'b01000000                     ;   // write
+        slave_addr_rw_i     =       8'b11001110                     ;   //bit 0th,  1-read, 0-write
+        command_i           =       8'b01000000                     ;   //bit 4th,  1-read, 0-write
         prescale_i          =       8                               ;
         i2c_core_clk_i      =       0                               ;
         APB_clk_i           =       0                               ;
         #8                                                          ;
 
-        // reset negative upto 1
+        // test write data
         command_i           =       8'b11000000                     ;   // bit 4th, 1-read, 0-write
-        @(posedge i2c_scl_o);
-        #10000;
+        repeat (9) @(negedge i2c_scl_o);
+        sda_slave_en = 1    ;
+        #10;
+        sda_slave_en = 0    ;
+        sda_o_tb    =   0   ;
+        repeat (9) @(negedge i2c_scl_o);
+        sda_slave_en = 1    ;
+        #10;
+        sda_slave_en = 0    ;
+        data_transmit_i     =       8'b00011101                     ;
 
+        repeat (9) @(negedge i2c_scl_o);
+        sda_slave_en = 1    ;
+        #10;
+        sda_slave_en = 0    ;
+        sda_o_tb        =       1               ;   // NACK
+        command_i       =       8'b10000000     ;   // bit 6th - enable, bit 4th, 1-read, 0-write
+        #500;
+
+        // test read-data
+        command_i       =       8'b01010000     ;   // reset, read mode
+        #8;
+        command_i       =       8'b11010000     ;   // not reset, enable, not repeat, read mode
+
+        repeat (9) @(negedge i2c_scl_o);
+        sda_slave_en = 1    ;
+        #10;
+        sda_o_tb    =   0   ; // Slaver ACK
+        sda_slave_en = 0    ;
+        // transfer data
+        repeat (4)  begin
+            sda_o_tb    =   1   ;
+            #80;    //wait 1 cycle scl
+            sda_o_tb    =   0   ;
+            #80;
+        end
+
+        #1000;
         $stop;
     end
 endmodule

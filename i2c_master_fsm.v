@@ -43,10 +43,10 @@ module i2c_master_fsm (
     // Declare count value
     reg     [2:0]       count_clk_core     =    0   ;
     reg                 confirm            =    0   ;   // when i2c_scl_i from 1 down to 0, confirm = 1 
-    reg                 pre_scl_clk                 ;
     reg     [3:0]       count_scl_posedge  =    0   ;
-    reg     scl_later;
-    wire     scl_positive;
+    reg     scl_later		;
+    wire    scl_positive	;
+	wire	scl_negative	;
 
     // Declare register of ouput
     reg                 w_fifo_en                       ;
@@ -101,7 +101,7 @@ module i2c_master_fsm (
 
                 //When the 8 bits data have been transmitted, 
                 //wait for the scl line is low and then move to the next state
-                if (count_scl_posedge == 8) begin
+                if (count_scl_posedge == 8 && scl_negative == 1) begin
                     next_sate   =   READ_ACK    ;
                 end
                 else begin
@@ -113,7 +113,7 @@ module i2c_master_fsm (
             READ_ACK    :   begin
 
                 // Wait for scl line is high and then read ack
-                if  (scl_positive) begin
+                if  (scl_negative) begin
                     if      (i2c_sda_i == 0 && rw_i == 1 && full_i == 0) begin
                         next_sate       =       READ_DATA                       ;
                     end 
@@ -136,7 +136,7 @@ module i2c_master_fsm (
             WRITE_DATA  :   begin
                 //When the 8 bits data have been transmitted, 
                 //wait for the scl line is high and then move to the next state
-                if (count_bit_o == 0 && i2c_scl_i == 1) begin
+                if (count_scl_posedge == 8 && scl_negative == 1) begin
                     next_sate   =   READ_LATER_ACK      ;
                 end 
                 else begin
@@ -148,7 +148,7 @@ module i2c_master_fsm (
             READ_LATER_ACK  :   begin
 
                 // Wait for scl line is high and then read ack
-                if (i2c_scl_i) begin
+                if (scl_negative) begin
                     if (repeat_start_i) begin
                         next_sate       =      REPEAT_START     ; 
                     end 
@@ -167,7 +167,7 @@ module i2c_master_fsm (
 
             READ_DATA   :   begin
 
-                if (count_bit_o == 0) begin
+                if (count_scl_posedge == 8 && scl_negative == 1) begin
                     next_sate       =       WRITE_ACK       ;
                     
                 end 
@@ -179,21 +179,28 @@ module i2c_master_fsm (
 
             WRITE_ACK   :   begin
 
-                if (repeat_start_i) begin
-                    next_sate       =      REPEAT_START     ; 
-                end 
-                else if (i2c_sda_i == 0 && full_i == 0) begin
-                    next_sate       =       READ_DATA       ;
-                end
-                else begin
-                    next_sate       =       STOP            ;
-                end
+				if (scl_negative) begin
+
+                	if (repeat_start_i) begin
+                    	next_sate       =      REPEAT_START     ; 
+                	end 
+                	else if (full_i == 0) begin
+                    	next_sate       =       READ_DATA       ;
+                	end
+                	else begin
+                    	next_sate       =       STOP            ;
+                	end
+
+				end
+				else begin
+					next_sate		=		WRITE_ACK		;
+				end
 
             end
 
             REPEAT_START    :    begin
-                if (i2c_scl_i == 0) begin
-                    next_sate           =       ADDRESS         ;
+                if (scl_positive) begin
+                    next_sate           =       START         ;
                 end
                 else begin
                     next_sate           =       REPEAT_START    ;
@@ -202,10 +209,18 @@ module i2c_master_fsm (
             end
 
             STOP    :   begin
-                next_sate           =       IDLE            ;
+
+				if (scl_positive) begin
+                	next_sate           =       IDLE            ;
+				end
+				else begin
+					next_sate			=		STOP			;
+				end
+
             end
 
-            default: next_sate      =       IDLE            ;
+
+            default: next_sate      	=       IDLE            ;
         endcase
 
     end
@@ -323,21 +338,12 @@ module i2c_master_fsm (
             //-------------------------------------------------------
             REPEAT_START    :   begin
                 clk_en_o            =       1           ;
-
-                // Frist, when scl is low, we have to set sda up to 1
-                if (i2c_scl_i == 0) begin
-                    sda_low_en_o    =       1           ;
-                end
-                else begin
-                    sda_low_en_o    =       0           ;
-                end
-
+				sda_low_en_o    	=       0           ;
                 write_data_en_o     =       0           ;
                 write_addr_en_o     =       0           ;
                 receive_data_en_o   =       0           ;
-                i2c_sda_en_o        =       1           ;
+                i2c_sda_en_o        =       0           ; // off i2c_sda_en to pull sda upto 1
                 i2c_scl_en_o        =       1           ;
-                // After, we have to set sda down to 0 when scl is hight
 
             end
 
@@ -366,58 +372,52 @@ module i2c_master_fsm (
 
     end
 
-    // Detect negative scl 
-    always @(posedge    i2c_core_clk_i) begin
-
-        pre_scl_clk         <=      i2c_scl_i          ;
-        if (pre_scl_clk == 1 && i2c_scl_i == 0) begin
-            confirm         <=       1                 ;    // scl line from 1 to 0 => confirm = 1
-        end
-
-        else begin	 
-            confirm         <=       0                  ;
-        end
-    end
-
     //--------------------------------------------------------------------
     // Detect positive scl
 
     always @(posedge    i2c_core_clk_i, negedge     reset_ni) begin
         if (~reset_ni) begin
-            scl_later   <=  0              ;
+            scl_later   <=  1              ;
         end
         else begin
             scl_later   <=  i2c_scl_i       ;
         end
     end
 
-    assign  scl_positive = i2c_scl_i & (~scl_later) ;
+    assign  scl_positive = i2c_scl_i & (~scl_later) 	;
+	assign 	scl_negative = (~i2c_scl_i) & (scl_later)	;
 
     // end detect positive scl
     //------------------------------------------------------------------------
 
 
-    // when negetive i2c_scl_i, count_bit_o --
+    // Handle count_bit_o to transfer to data_path
     always @(*) begin
 
-        if (currrent_state  ==  ADDRESS  || currrent_state == READ_DATA || currrent_state  ==  WRITE_DATA) begin
+        if (currrent_state  ==  ADDRESS  || currrent_state  ==  WRITE_DATA) begin
+            // Each postitive of scl, if count_bit != 0 , reduce count_bit by 1
+            count_bit_o     =   (count_bit_o != 0 && scl_positive) ? (count_bit_o - 1) : count_bit_o  ;
+        end
 
-            // Each postitive of scl, count_scl_posedge + 1
-            if (scl_positive == 1) begin
-                count_scl_posedge   =   count_scl_posedge + 1     ;
-                count_bit_o         =   (count_bit_o != 0) ? (count_bit_o - 1) : count_bit_o  ;
-            end
-            else begin
-                count_scl_posedge   =   count_scl_posedge         ;
-            end
-
+        else if (currrent_state == READ_DATA) begin
+            // Each negative of scl, if count_bit != 0 , reduce count_bit by 1
+            count_bit_o     =   (count_bit_o != 0 && scl_negative) ? (count_bit_o - 1) : count_bit_o   ;
         end
 
         else begin
             count_bit_o         =   7           ;
-            count_scl_posedge   =   0           ;
         end
 
+    end
+
+    // Handle count_scl_posedge
+    always @(*) begin
+        if (currrent_state  ==  ADDRESS  || currrent_state == READ_DATA  ||  currrent_state  ==  WRITE_DATA) begin
+            count_scl_posedge   =   scl_positive ? (count_scl_posedge + 1) : count_scl_posedge  ;
+        end
+        else begin
+            count_scl_posedge   =   0   ;
+        end
     end
 
     // Handle read/write-enbale signal to FIFO

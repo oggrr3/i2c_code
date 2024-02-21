@@ -18,7 +18,7 @@ module data_path_i2c_to_core    # ( parameter     DATA_SIZE   =   8 ,
                      
 );
     
-    reg     	[DATA_SIZE - 1 : 0]         data_from_sda       			;
+    reg     	[DATA_SIZE - 1 : 0]         data_from_sda   =   0    		;
 	reg										i2c_sda			=	1 			;
 	reg										data_done						;
 
