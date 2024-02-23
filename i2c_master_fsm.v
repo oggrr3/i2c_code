@@ -422,17 +422,10 @@ module i2c_master_fsm (
 
     // Handle read/write-enbale signal to FIFO
     always @ (*) begin
-
-        //when handle  1 byte data and scl is hight => enable read, write to FIFO memory
-        if (count_bit_o == 0 && i2c_scl_i == 1) begin
-            w_fifo_en     =   1           ;
-            r_fifo_en     =   1           ;
-        end 
-
-        else begin
-            w_fifo_en     =   0           ;
-            r_fifo_en     =   0           ;
-        end
+        //  
+        r_fifo_en   =  (currrent_state == WRITE_DATA  && count_scl_posedge == 0) ? 1 : 0    ;
+        // 
+        w_fifo_en   =  (currrent_state == READ_DATA   && count_scl_posedge == 8) ? 1 : 0    ;
 
     end
 
