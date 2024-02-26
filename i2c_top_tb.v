@@ -1,111 +1,106 @@
 module i2c_top_tb ();
     
-    reg       [7 : 0]               data_transmit_i                 ;    // data transmit from MCU to FIFO
-    reg       [7 : 0]               slave_addr_rw_i                 ;    // Slave's address and read/write bit
-    reg       [7 : 0]               command_i                       ;    // command from MCU include: enable, repeat_start, reset, r/w
-    reg       [7 : 0]               prescale_i                      ;    // value used to generate scl_clk from core_clk
-    reg                             i2c_core_clk_i                  ;    // clock core of i2c
-    reg                             APB_clk_i                       ;    // APB clock
+    reg                               i2c_core_clk_i      ;   // clock core of i2c
+    reg                               pclk_i              ;   //  APB clock
+    reg                               preset_ni           ;   //  reset signal is active-LOW
+    reg   [7 : 0]         paddr_i             ;   //  address of APB slave and register map
+    reg                               pwrite_i            ;   //  HIGH is write, LOW is read
+    reg                               psel_i              ;   //  select slave interface
+    reg                               penable_i           ;   //  Enable. PENABLE indicates the second and subsequent cycles of an APB transfer.
+    reg   [7 : 0]         pwdata_i            ;   //  data write
 
-    wire                             i2c_sda_i                       ;    // sda line input    
-    wire                             i2c_scl_i                       ;    // scl line input
-
-    wire                            i2c_sda_o                       ;    // sda line output
-    wire                            i2c_scl_o                       ;    // scl line output
-    wire                            interrupt_o                     ;    // interrrupt signal output
-    wire       [7 : 0]              data_receive_o                  ;    // data recieved from FIFO
-    wire       [7 : 0]              status_o                        ;   // status of FIFO: full, empty
-    wire                            i2c_sda_en                    ;
-    wire                            i2c_scl_en                    ;
+    wire  [7 : 0]         prdata_o            ;   //  data read
+    wire                              pready_o            ;   //  ready to receive data
+    wire                              sda                 ;
+    wire                              scl                 ;
 
 
-	// Decalar value to test
-	//assign 			i2c_sda_o	=	(i2c_sda_o == 1'bz) ? 1 : i2c_sda_o		;
+    //i2c_slave_tb
+    reg     sda_inout_tb    ;
+    reg     scl_inout_tb    ;
 
-    //uut
-    reg sda_o_tb;
-    wire sda_i_tb;
-    wire sda;
-    wire scl;
-    reg sda_slave_en = 0;
-
-    assign  i2c_sda_i   =   sda_o_tb                            ;
-    assign  sda         =   i2c_sda_en ? i2c_sda_o : 1'bz       ;
-    assign  scl         =   i2c_scl_en ? i2c_scl_o : 1'bz       ;
-    pullup (sda);
-    pullup (scl);
+    reg     sda_slave_tb    ;
+    reg     sda_slave_en_tb ;
+    reg     clk_slave_tb    ;
+    
+    assign  sda     =   sda_slave_en_tb ? sda_slave_tb : sda    ;
 
     i2c_top     uut (
-        .data_transmit_i    (data_transmit_i)             ,   // data transmit from MCU to FIFO
-        .slave_addr_rw_i    (slave_addr_rw_i)             ,   // Slave's address and read/write bit
-        .command_i          (command_i      )             ,   // command from MCU include: enable, repeat_start, reset, r/w
-        .prescale_i         (prescale_i     )             ,   // value used to generate scl_clk from core_clk
-        .i2c_core_clk_i     (i2c_core_clk_i )             ,   // clock core of i2c
-        .APB_clk_i          (APB_clk_i      )             ,   // APB clock
-        .i2c_sda_i          (i2c_sda_i      )             ,   // sda line input
-        .i2c_scl_i          (scl            )             ,   // scl line input
+        .i2c_core_clk_i (i2c_core_clk_i )     ,   // clock core of i2c
+        .pclk_i         (pclk_i         )     ,   //  APB clock
+        .preset_ni      (preset_ni      )     ,   //  reset signal is active-LOW
+        .paddr_i        (paddr_i        )     ,   //  address of APB slave and register map
+        .pwrite_i       (pwrite_i       )     ,   //  HIGH is write, LOW is read
+        .psel_i         (psel_i         )     ,   //  select slave interface
+        .penable_i      (penable_i      )     ,   //  Enable. PENABLE indicates the second and subsequent cycles of an APB transfer.
+        .pwdata_i       (pwdata_i       )     ,   //  data write
 
-        .i2c_sda_o          (i2c_sda_o      )             ,   // sda line output
-        .i2c_scl_o          (i2c_scl_o      )             ,   // scl line output
-        .interrupt_o        (interrupt_o    )             ,   // interrrupt signal output
-        .data_receive_o     (data_receive_o )             ,   // data recieved from FIFO
-        .status_o           (status_o       )             ,    // status of FIFO: full, empty
-        .i2c_sda_en_o       (i2c_sda_en   )             ,
-        .i2c_scl_en_o       (i2c_scl_en   )
+        .prdata_o       (prdata_o       )     ,   //  data read
+        .pready_o       (pready_o       )     ,   //  ready to receive data
+        .sda            (sda            )     ,
+        .scl            (scl            )     
     );
 
-    // initial i2c clock core
+    // initial  clock 
     always #5       i2c_core_clk_i  =   ~i2c_core_clk_i             ;
+    always #2       pclk_i          =   ~pclk_i                     ;
+    always #10      clk_slave_tb    =   ~clk_slave_tb               ;
     
     initial begin
 
-        sda_o_tb            =       0                               ;
-        data_transmit_i     =       8'b00110001                     ;
-        slave_addr_rw_i     =       8'b11001110                     ;   //bit 0th,  1-read, 0-write
-        command_i           =       8'b01000000                     ;   //bit 4th,  1-read, 0-write
-        prescale_i          =       8                               ;
-        i2c_core_clk_i      =       0                               ;
-        APB_clk_i           =       0                               ;
-        #8                                                          ;
+        sda_slave_tb        =       0                               ;
+        clk_slave_tb        =       0                               ;
 
-        // test write data
-        command_i           =       8'b11000000                     ;   // bit 4th, 1-read, 0-write
-        repeat (9) @(negedge i2c_scl_o);
-        sda_slave_en = 1    ;
-        #10;
-        sda_slave_en = 0    ;
-        sda_o_tb    =   0   ;
-        repeat (9) @(negedge i2c_scl_o);
-        sda_slave_en = 1    ;
-        #10;
-        sda_slave_en = 0    ;
-        data_transmit_i     =       8'b00011101                     ;
-
-        repeat (9) @(negedge i2c_scl_o);
-        sda_slave_en = 1    ;
-        #10;
-        sda_slave_en = 0    ;
-        sda_o_tb        =       1               ;   // NACK
-        command_i       =       8'b10000000     ;   // bit 6th - enable, bit 4th, 1-read, 0-write
-        #500;
-
-        // test read-data
-        command_i       =       8'b01010000     ;   // reset, read mode
+        i2c_core_clk_i      =       0       ;
+        pclk_i              =       0       ;
+        preset_ni           =       0       ;
+        paddr_i             =   0           ;
+        pwrite_i            =   1           ;
+        psel_i              =   0           ;
+        penable_i           =   0           ;
+        pwdata_i            =   11          ;
         #8;
-        command_i       =       8'b11010000     ;   // not reset, enable, not repeat, read mode
 
-        repeat (9) @(negedge i2c_scl_o);
-        sda_slave_en = 1    ;
-        #10;
-        sda_o_tb    =   0   ; // Slaver ACK
-        sda_slave_en = 0    ;
-        // transfer data
-        repeat (4)  begin
-            sda_o_tb    =   1   ;
-            #80;    //wait 1 cycle scl
-            sda_o_tb    =   0   ;
-            #80;
-        end
+        preset_ni           =   1           ;
+        #3;
+
+        //  write command to reset and enable to write data to FIFO
+        paddr_i             =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
+        pwdata_i            =   8'b0000_1111 ;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
+                                                // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc ; cmd[0] = RX_rinc
+        #4;
+        //  write adress slave
+        paddr_i             =   8'b11000011 ;   // addr [5:0] = 3 , slave_reg
+        psel_i              =   0           ;
+        penable_i           =   1           ;
+        #4;
+
+        penable_i           =   1           ;
+        pwdata_i            =   8'b1100_1010       ;   // slave's address 
+        #4;
+        paddr_i             =   8'b11000101 ;   // addr [5:0] = 5 , prescale_reg
+        pwdata_i            =   2'h08       ;
+        #4;
+
+        //  write data to transmit
+        paddr_i             =   8'b11000000 ;   // addr [5:0] = 0 , transmit_reg
+        pwdata_i            =   2'h21       ;
+        #4;
+        pwdata_i            =   2'h22       ;
+        #4;
+        pwdata_i            =   2'h23       ;
+        #4;
+
+        //  write command to not reset
+        paddr_i             =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
+        pwdata_i            =   8'b1000_1111 ;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
+                                                // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc ; cmd[0] = RX_rinc
+        #4;
+
+        // write command to enable write to sda
+        paddr_i             =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
+        pwdata_i            =   8'b1100_1111 ;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
+                                                // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc ; cmd[0] = RX_rinc
 
         #1000;
         $stop;
