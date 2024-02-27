@@ -14,15 +14,18 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a15t-cpg236'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t-cpg236'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 4292 
+INFO: Helper process launched with PID 9240 
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 349.727 ; gain = 80.352
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 350.008 ; gain = 80.359
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'i2c_top' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:1]
 	Parameter DATA_SIZE bound to: 8 - type: integer 
 	Parameter ADDR_SIZE bound to: 8 - type: integer 
+WARNING: [Synth 8-2898] ignoring pullup [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:54]
+WARNING: [Synth 8-2898] ignoring pullup [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:55]
 INFO: [Synth 8-638] synthesizing module 'clock_generator' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v:1]
 INFO: [Synth 8-256] done synthesizing module 'clock_generator' (1#1) [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v:1]
+WARNING: [Synth 8-689] width (1) of port connection 'prescale_i' does not match port width (8) of module 'clock_generator' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:77]
 INFO: [Synth 8-638] synthesizing module 'i2c_master_fsm' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:1]
 	Parameter IDLE bound to: 4'b0000 
 	Parameter START bound to: 4'b0001 
@@ -34,377 +37,59 @@ INFO: [Synth 8-638] synthesizing module 'i2c_master_fsm' [C:/Users/USER/Desktop/
 	Parameter WRITE_ACK bound to: 4'b0111 
 	Parameter REPEAT_START bound to: 4'b1000 
 	Parameter STOP bound to: 4'b1001 
-WARNING: [Synth 8-6014] Unused sequential element pre_scl_clk_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:371]
-WARNING: [Synth 8-6014] Unused sequential element confirm_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:373]
-WARNING: [Synth 8-6014] Unused sequential element r_fifo_en_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:53]
 INFO: [Synth 8-256] done synthesizing module 'i2c_master_fsm' (2#1) [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:1]
-WARNING: [Synth 8-689] width (3) of port connection 'count_bit_o' does not match port width (4) of module 'i2c_master_fsm' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:87]
 INFO: [Synth 8-638] synthesizing module 'data_path_i2c_to_core' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v:1]
 	Parameter DATA_SIZE bound to: 8 - type: integer 
 	Parameter ADDR_SIZE bound to: 8 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'data_path_i2c_to_core' (3#1) [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v:1]
-WARNING: [Synth 8-689] width (3) of port connection 'count_bit_i' does not match port width (4) of module 'data_path_i2c_to_core' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:96]
-WARNING: [Synth 8-3848] Net interrupt_o in module/entity i2c_top does not have driver. [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:15]
-WARNING: [Synth 8-3848] Net data_receive_o in module/entity i2c_top does not have driver. [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:16]
-WARNING: [Synth 8-3848] Net status_o in module/entity i2c_top does not have driver. [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:17]
-WARNING: [Synth 8-3848] Net data in module/entity i2c_top does not have driver. [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:41]
-WARNING: [Synth 8-3848] Net full in module/entity i2c_top does not have driver. [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:31]
-WARNING: [Synth 8-3848] Net empty in module/entity i2c_top does not have driver. [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:32]
-INFO: [Synth 8-256] done synthesizing module 'i2c_top' (4#1) [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:1]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port interrupt_o
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[7]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[6]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[5]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[4]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[3]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[2]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[1]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[0]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[7]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[6]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[5]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[4]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[3]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[2]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[1]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[0]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[7]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[6]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[5]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[4]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[3]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[2]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[1]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[0]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port command_i[3]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port command_i[2]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port command_i[1]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port command_i[0]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port APB_clk_i
----------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 389.805 ; gain = 120.430
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 389.805 ; gain = 120.430
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Loading Part and Timing Information
----------------------------------------------------------------------------------
-Loading part: xc7a15tcpg236-2
----------------------------------------------------------------------------------
-INFO: [Device 21-403] Loading part xc7a15tcpg236-2
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 389.805 ; gain = 120.430
----------------------------------------------------------------------------------
-WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v:20]
-INFO: [Synth 8-802] inferred FSM for state register 'currrent_state_reg' in module 'i2c_master_fsm'
-WARNING: [Synth 8-6014] Unused sequential element currrent_state_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:58]
-INFO: [Synth 8-5544] ROM "count_clk_core" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "i2c_scl_en_o" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "i2c_sda_en_o" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "clk_en_o" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "next_sate" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "next_sate" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "next_sate" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "next_sate" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "next_sate" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "next_sate" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "next_sate" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "next_sate" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-WARNING: [Synth 8-6014] Unused sequential element currrent_state_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:58]
-WARNING: [Synth 8-6014] Unused sequential element currrent_state_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:58]
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-                    IDLE |                       0000000001 |                             0000
-                   START |                       0000000010 |                             0001
-                 ADDRESS |                       0000000100 |                             0010
-                READ_ACK |                       0000001000 |                             0011
-               READ_DATA |                       0000010000 |                             0110
-               WRITE_ACK |                       0000100000 |                             0111
-              WRITE_DATA |                       0001000000 |                             0100
-          READ_LATER_ACK |                       0010000000 |                             0101
-            REPEAT_START |                       0100000000 |                             1000
-                    STOP |                       1000000000 |                             1001
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'currrent_state_reg' using encoding 'one-hot' in module 'i2c_master_fsm'
-WARNING: [Synth 8-6014] Unused sequential element currrent_state_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:58]
-WARNING: [Synth 8-327] inferring latch for variable 'count_bit_o_reg' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:387]
-WARNING: [Synth 8-327] inferring latch for variable 'count_clk_core_reg' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:87]
-WARNING: [Synth 8-327] inferring latch for variable 'data_from_sda_reg' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v:26]
-WARNING: [Synth 8-327] inferring latch for variable 'i2c_sda_reg' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v:25]
----------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 389.805 ; gain = 120.430
----------------------------------------------------------------------------------
-
-Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
-No constraint files found.
----------------------------------------------------------------------------------
-Start RTL Component Statistics 
----------------------------------------------------------------------------------
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     32 Bit       Adders := 1     
-	   2 Input      8 Bit       Adders := 1     
-	   2 Input      4 Bit       Adders := 1     
-	   2 Input      3 Bit       Adders := 1     
-+---Registers : 
-	                8 Bit    Registers := 1     
-	                1 Bit    Registers := 1     
-+---Muxes : 
-	  25 Input     10 Bit        Muxes := 1     
-	   2 Input      8 Bit        Muxes := 4     
-	   2 Input      3 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 4     
-	  10 Input      1 Bit        Muxes := 7     
----------------------------------------------------------------------------------
-Finished RTL Component Statistics 
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start RTL Hierarchical Component Statistics 
----------------------------------------------------------------------------------
-Hierarchical RTL Component report 
-Module clock_generator 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     32 Bit       Adders := 1     
-	   2 Input      8 Bit       Adders := 1     
-+---Registers : 
-	                8 Bit    Registers := 1     
-	                1 Bit    Registers := 1     
-+---Muxes : 
-	   2 Input      8 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 2     
-Module i2c_master_fsm 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input      4 Bit       Adders := 1     
-	   2 Input      3 Bit       Adders := 1     
-+---Muxes : 
-	  25 Input     10 Bit        Muxes := 1     
-	   2 Input      3 Bit        Muxes := 1     
-	  10 Input      1 Bit        Muxes := 7     
-Module data_path_i2c_to_core 
-Detailed RTL Component Info : 
-+---Muxes : 
-	   2 Input      8 Bit        Muxes := 3     
-	   2 Input      1 Bit        Muxes := 2     
----------------------------------------------------------------------------------
-Finished RTL Hierarchical Component Statistics
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Part Resource Summary
----------------------------------------------------------------------------------
-Part Resources:
-DSPs: 45 (col length:60)
-BRAMs: 50 (col length: RAMB18 60 RAMB36 30)
----------------------------------------------------------------------------------
-Finished Part Resource Summary
----------------------------------------------------------------------------------
-No constraint files found.
----------------------------------------------------------------------------------
-Start Cross Boundary and Area Optimization
----------------------------------------------------------------------------------
-WARNING: [Synth 8-6014] Unused sequential element clock_generator/counter_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v:20]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port interrupt_o
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[7]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[6]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[5]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[4]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[3]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[2]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[1]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_receive_o[0]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[7]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[6]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[5]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[4]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[3]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[2]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[1]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port status_o[0]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[7]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[6]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[5]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[4]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[3]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[2]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[1]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port data_transmit_i[0]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port command_i[3]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port command_i[2]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port command_i[1]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port command_i[0]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port prescale_i[0]
-WARNING: [Synth 8-3331] design i2c_top has unconnected port APB_clk_i
-WARNING: [Synth 8-3332] Sequential element (data_path_i2c_to_core/data_from_sda_reg[7]) is unused and will be removed from module i2c_top.
-WARNING: [Synth 8-3332] Sequential element (data_path_i2c_to_core/data_from_sda_reg[6]) is unused and will be removed from module i2c_top.
-WARNING: [Synth 8-3332] Sequential element (data_path_i2c_to_core/data_from_sda_reg[5]) is unused and will be removed from module i2c_top.
-WARNING: [Synth 8-3332] Sequential element (data_path_i2c_to_core/data_from_sda_reg[4]) is unused and will be removed from module i2c_top.
-WARNING: [Synth 8-3332] Sequential element (data_path_i2c_to_core/data_from_sda_reg[3]) is unused and will be removed from module i2c_top.
-WARNING: [Synth 8-3332] Sequential element (data_path_i2c_to_core/data_from_sda_reg[2]) is unused and will be removed from module i2c_top.
-WARNING: [Synth 8-3332] Sequential element (data_path_i2c_to_core/data_from_sda_reg[1]) is unused and will be removed from module i2c_top.
-WARNING: [Synth 8-3332] Sequential element (data_path_i2c_to_core/data_from_sda_reg[0]) is unused and will be removed from module i2c_top.
----------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 523.812 ; gain = 254.438
----------------------------------------------------------------------------------
-
-Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
-No constraint files found.
----------------------------------------------------------------------------------
-Start Timing Optimization
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 523.812 ; gain = 254.438
----------------------------------------------------------------------------------
-
-Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
----------------------------------------------------------------------------------
-Start Technology Mapping
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 524.750 ; gain = 255.375
----------------------------------------------------------------------------------
-
-Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
----------------------------------------------------------------------------------
-Start IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Flattening Before IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Flattening Before IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Final Netlist Cleanup
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Final Netlist Cleanup
----------------------------------------------------------------------------------
-WARNING: [Synth 8-5396] Clock pin G has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:87]
----------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 524.750 ; gain = 255.375
----------------------------------------------------------------------------------
-
-Report Check Netlist: 
-+------+------------------+-------+---------+-------+------------------+
-|      |Item              |Errors |Warnings |Status |Description       |
-+------+------------------+-------+---------+-------+------------------+
-|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
-+------+------------------+-------+---------+-------+------------------+
----------------------------------------------------------------------------------
-Start Renaming Generated Instances
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 524.750 ; gain = 255.375
----------------------------------------------------------------------------------
-
-Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
----------------------------------------------------------------------------------
-Start Rebuilding User Hierarchy
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 524.750 ; gain = 255.375
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Ports
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 524.750 ; gain = 255.375
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Handling Custom Attributes
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 524.750 ; gain = 255.375
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Nets
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 524.750 ; gain = 255.375
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Writing Synthesis Report
----------------------------------------------------------------------------------
-
-Report BlackBoxes: 
-+-+--------------+----------+
-| |BlackBox name |Instances |
-+-+--------------+----------+
-+-+--------------+----------+
-
-Report Cell Usage: 
-+------+-------+------+
-|      |Cell   |Count |
-+------+-------+------+
-|1     |BUFG   |     2|
-|2     |CARRY4 |     3|
-|3     |LUT1   |     3|
-|4     |LUT2   |    11|
-|5     |LUT3   |     8|
-|6     |LUT4   |    12|
-|7     |LUT5   |    10|
-|8     |LUT6   |    18|
-|9     |FDCE   |    17|
-|10    |FDPE   |     2|
-|11    |LD     |     3|
-|12    |LDC    |     4|
-|13    |LDP    |     1|
-|14    |IBUF   |    22|
-|15    |OBUF   |     2|
-|16    |OBUFT  |    17|
-+------+-------+------+
-
-Report Instance Areas: 
-+------+------------------------+----------------------+------+
-|      |Instance                |Module                |Cells |
-+------+------------------------+----------------------+------+
-|1     |top                     |                      |   135|
-|2     |  clock_generator       |clock_generator       |    36|
-|3     |  data_path_i2c_to_core |data_path_i2c_to_core |     1|
-|4     |  i2c_master_fsm        |i2c_master_fsm        |    55|
-+------+------------------------+----------------------+------+
----------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 524.750 ; gain = 255.375
----------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 91 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 524.750 ; gain = 255.375
-Synthesis Optimization Complete : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 524.750 ; gain = 255.375
-INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 33 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 8 instances were transformed.
-  LD => LDCE: 3 instances
-  LDC => LDCE: 4 instances
-  LDP => LDPE: 1 instances
-
-30 Infos, 91 Warnings, 0 Critical Warnings and 0 Errors encountered.
-synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 597.805 ; gain = 336.191
-INFO: [Common 17-1381] The checkpoint 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c/i2c.runs/synth_1/i2c_top.dcp' has been generated.
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 597.805 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Tue Feb 20 11:14:12 2024...
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:125]
+INFO: [Synth 8-638] synthesizing module 'fifo_toplevel' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/fifo_toplevel.v:2]
+	Parameter DATASIZE bound to: 8 - type: integer 
+	Parameter ADDRSIZE bound to: 8 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'fifo_mem' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/fifo_mem.v:1]
+	Parameter DATASIZE bound to: 8 - type: integer 
+	Parameter ADDRSIZE bound to: 8 - type: integer 
+	Parameter DEPTH bound to: 256 - type: integer 
+WARNING: [Synth 8-5788] Register mem_reg in module fifo_mem is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code 
+WARNING: [Synth 8-4767] Trying to implement RAM 'mem_reg' in registers. Block RAM or DRAM implementation is not possible; see log for reasons.
+Reason is one or more of the following :
+	1: RAM is sensitive to asynchronous reset signal. this RTL style is not supported. 
+RAM "mem_reg" dissolved into registers
+INFO: [Synth 8-256] done synthesizing module 'fifo_mem' (4#1) [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/fifo_mem.v:1]
+INFO: [Synth 8-638] synthesizing module 'rptr_empty' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/rptr_empty.v:5]
+	Parameter ADDRSIZE bound to: 8 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'rptr_empty' (5#1) [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/rptr_empty.v:5]
+INFO: [Synth 8-638] synthesizing module 'wptr_full' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/wptr_full.v:5]
+	Parameter ADDRSIZE bound to: 8 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'wptr_full' (6#1) [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/wptr_full.v:5]
+INFO: [Synth 8-638] synthesizing module 'sync_r2w' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/sync_r2w.v:5]
+	Parameter ADDRSIZE bound to: 8 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'sync_r2w' (7#1) [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/sync_r2w.v:5]
+INFO: [Synth 8-638] synthesizing module 'sync_w2r' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/sync_w2r.v:5]
+	Parameter ADDRSIZE bound to: 8 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'sync_w2r' (8#1) [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/sync_w2r.v:5]
+INFO: [Synth 8-256] done synthesizing module 'fifo_toplevel' (9#1) [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/fifo_toplevel.v:2]
+ERROR: [Synth 8-448] named port connection 'pclk_i' does not exist for instance 'fifo_toplevel' of module 'fifo_toplevel' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:126]
+ERROR: [Synth 8-448] named port connection 'i2c_core_clk_i' does not exist for instance 'fifo_toplevel' of module 'fifo_toplevel' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:127]
+ERROR: [Synth 8-448] named port connection 'command_i' does not exist for instance 'fifo_toplevel' of module 'fifo_toplevel' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:128]
+ERROR: [Synth 8-448] named port connection 'data_from_apb_i' does not exist for instance 'fifo_toplevel' of module 'fifo_toplevel' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:129]
+ERROR: [Synth 8-448] named port connection 'data_from_sda_i' does not exist for instance 'fifo_toplevel' of module 'fifo_toplevel' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:130]
+ERROR: [Synth 8-448] named port connection 'r_tx_fifo_en_i' does not exist for instance 'fifo_toplevel' of module 'fifo_toplevel' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:131]
+ERROR: [Synth 8-448] named port connection 'w_rx_fifo_en_i' does not exist for instance 'fifo_toplevel' of module 'fifo_toplevel' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:132]
+ERROR: [Synth 8-448] named port connection 'data_to_apb_o' does not exist for instance 'fifo_toplevel' of module 'fifo_toplevel' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:134]
+ERROR: [Synth 8-448] named port connection 'data_to_sda_o' does not exist for instance 'fifo_toplevel' of module 'fifo_toplevel' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:135]
+ERROR: [Synth 8-448] named port connection 'status_o' does not exist for instance 'fifo_toplevel' of module 'fifo_toplevel' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:136]
+WARNING: [Synth 8-350] instance 'fifo_toplevel' of module 'fifo_toplevel' requires 12 connections, but only 0 given [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:125]
+INFO: [Synth 8-638] synthesizing module 'apb_slave_interface' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v:1]
+	Parameter DATA_WIDTH bound to: 8 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+ERROR: [Synth 8-285] failed synthesizing module 'apb_slave_interface' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v:1]
+ERROR: [Synth 8-285] failed synthesizing module 'i2c_top' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:1]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 398.102 ; gain = 128.453
+---------------------------------------------------------------------------------
+synthesize failed
+21 Infos, 7 Warnings, 0 Critical Warnings and 13 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Vivado Synthesis failed
+INFO: [Common 17-206] Exiting Vivado at Tue Feb 27 09:14:01 2024...

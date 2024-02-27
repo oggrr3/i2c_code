@@ -14,9 +14,16 @@ set_property target_language Verilog [current_project]
 set_property ip_output_repo c:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c/i2c.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
+  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v
   C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v
   C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v
+  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/fifo_mem.v
+  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/fifo_toplevel.v
   C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v
+  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/rptr_empty.v
+  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/sync_r2w.v
+  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/sync_w2r.v
+  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/wptr_full.v
   C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being

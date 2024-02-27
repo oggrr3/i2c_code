@@ -21,18 +21,18 @@ module data_fifo_mem # (parameter	DATASIZE	=	8,
     // Decalar reg of output
     reg     [7:0]           data_to_apb         ;
     reg     [7:0]           data_to_sda         ;
-    reg     [7:0]           status              ;
+    wire     [7:0]           status              ;
 
     // Connect reg to output
-    assign      data_to_apb_o   =   data_to_apb ;
-    assign      data_to_sda_o   =   data_to_sda ;     
+    //assign      data_to_apb_o   =   data_to_apb ;
+    //assign      data_to_sda_o   =   data_to_sda ;     
     assign      status_o        =   status      ;
 
     assign      tx_rinc         =   r_tx_fifo_en_i  &   command_i[2]    ;
     assign      rx_winc         =   w_rx_fifo_en_i  &   command_i[1]    ;
 
     // Instance
-    fifo_toplevel # (DATA_SIZE, ADDR_SIZE)       TX_fifo
+    fifo_toplevel        TX_fifo
     (
 	    .wdata_i            (data_from_apb_i    )			, // data which write to FIFO buffer
 
@@ -44,7 +44,7 @@ module data_fifo_mem # (parameter	DATASIZE	=	8,
 	    .rclk_i             (i2c_core_clk_i     )			, // The clock of read-domain
 	    .rrst_ni            (command_i[7]       )			, // The negative reset signal of read-domain
 
-	    .rdata_o            (data_to_sda        )			, // Data which read from FIFO buffer
+	    .rdata_o            (data_to_sda_o      )			, // Data which read from FIFO buffer
 	    .rempty_o           (status[7]          )		    , // State of FIFO buffer is empty
 	    .wfull_o            (status[6]          )			, // State of FIFO buffer is full
 	    .r_almost_empty_o   (status[5]          )           , // almost empty
@@ -53,11 +53,11 @@ module data_fifo_mem # (parameter	DATASIZE	=	8,
 );
 
 
-    fifo_toplevel # (DATA_SIZE, ADDR_SIZE)       RX_fifo
+    fifo_toplevel        RX_fifo
     (
 	    .wdata_i            (data_from_sda_i    )			, // data which write to FIFO buffer
 
-	    .winc_i             (rx_winc           )			, // write increase how many cells
+	    .winc_i             (rx_winc            )			, // write increase how many cells
 	    .wclk_i             (i2c_core_clk_i     )			, // The clock of write-domain
 	    .wrst_ni            (command_i[7]       )			, // The negative reset signal of write-domain
 
@@ -65,7 +65,7 @@ module data_fifo_mem # (parameter	DATASIZE	=	8,
 	    .rclk_i             (pclk_i             )			, // The clock of read-domain
 	    .rrst_ni            (command_i[7]       )			, // The negative reset signal of read-domain
 
-	    .rdata_o            (data_to_apb        )			, // Data which read from FIFO buffer
+	    .rdata_o            (data_to_apb_o      )			, // Data which read from FIFO buffer
 	    .rempty_o           (status[3]          )		    , // State of FIFO buffer is empty
 	    .wfull_o            (status[2]          )			, // State of FIFO buffer is full
 	    .r_almost_empty_o   (status[1]          )           , // almost empty

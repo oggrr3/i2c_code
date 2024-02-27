@@ -1,0 +1,223 @@
+/*
+
+Vivado v2017.2 (64-bit)
+SW Build 1909853 on Thu Jun 15 18:39:09 MDT 2017
+IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+
+Process ID: 10780
+License: Customer
+
+Current time: 	2/27/24 9:11:31 AM ICT
+Time zone: 	Indochina Time (Asia/Bangkok)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 8
+
+Screen size: 1920x1080
+Screen resolution (DPI): 96
+Available screens: 2
+Available disk space: 136 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	C:/Xilinx/Vivado/2017.2/tps/win64/jre
+JVM executable location: 	C:/Xilinx/Vivado/2017.2/tps/win64/jre/bin/java.exe
+Java library paths: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o;C:/Windows/Sun/Java/bin;C:/Windows/system32;C:/Windows;C:/Xilinx/Vivado/2017.2/bin;C:/Xilinx/Vivado/2017.2/lib/win64.o;C:/Xilinx/Vivado/2017.2/tps/win64/jre/bin/server;C:/Xilinx/Vivado/2017.2/tps/win64/jre/bin;C:/Xilinx/Vivado/2017.2/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2017.2/ids_lite/ISE/lib/nt64;C:/Xilinx/Vivado_HLS/2017.2/bin;C:/Windows/system32;C:/Windows;C:/Windows/System32/Wbem;C:/Windows/System32/WindowsPowerShell/v1.0/;C:/Windows/System32/OpenSSH/;C:/Program Files/Git/cmd;C:/Users/USER/AppData/Local/Microsoft/WindowsApps;;C:/intelFPGA/18.1/modelsim_ase/win32aloem;D:/Programs/Microsoft VS Code/bin;C:/Xilinx/Vivado/2017.2/tps/mingw/6.2.0/win64.o/nt/bin;C:/Xilinx/Vivado/2017.2/tps/mingw/6.2.0/win64.o/nt/libexec/gcc/x86_64-w64-mingw32/6.2.0;.
+
+User name: 	USER
+User home directory: C:/Users/USER
+User working directory: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: C:/Xilinx/Vivado
+HDI_APPROOT: C:/Xilinx/Vivado/2017.2
+RDI_DATADIR: C:/Xilinx/Vivado/2017.2/data
+RDI_BINDIR: C:/Xilinx/Vivado/2017.2/bin
+
+User preferences location: C:/Users/USER/AppData/Roaming/Xilinx/Vivado
+Vivado preferences directory: C:/Users/USER/AppData/Roaming/Xilinx/Vivado/2017.2/vivado.xml
+Vivado layouts directory: C:/Users/USER/AppData/Roaming/Xilinx/Vivado/2017.2/layouts
+PlanAhead jar location: 	C:/Xilinx/Vivado/2017.2/lib/classes/planAhead.jar
+Vivado Look & Feel: 	[Synthetica - the extended Synth Look and Feel. - ui.g.i.H]
+Engine tmp dir: 	C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c/.Xil/Vivado-10780-DESKTOP-6HAUL8U
+
+GUI allocated memory:	184 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 535 MB
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// [GUI Memory]: 40 MB (+39932kb) [00:00:06]
+// [Engine Memory]: 474 MB (+345160kb) [00:00:06]
+// bs:g (cg:JFrame):  Open Project : addNotify
+// Opening Vivado Project: C:\Users\USER\Desktop\git_code\i2c_folder\i2c_code\i2c\i2c.xpr. Version: Vivado v2017.2 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c/i2c.xpr 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c/i2c.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// [GUI Memory]: 56 MB (+14043kb) [00:00:09]
+// [Engine Memory]: 535 MB (+39666kb) [00:00:09]
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 72 MB (+14243kb) [00:00:10]
+// [Engine Memory]: 615 MB (+56002kb) [00:00:10]
+// [GUI Memory]: 77 MB (+1443kb) [00:00:12]
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.2/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 659 MB. GUI used memory: 42 MB. Current time: 2/27/24 9:11:36 AM ICT
+// Tcl Message: open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:06 . Memory (MB): peak = 893.340 ; gain = 135.715 
+// [Engine Memory]: 667 MB (+21483kb) [00:00:13]
+// Project name: i2c; location: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c; part: xc7a15tcpg236-2
+dismissDialog("Open Project"); // bs:g (cg:JFrame)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Tcl Message: update_compile_order -fileset sources_1 
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, i2c_top (i2c_top.v)]", 1); // B:i (D:JPanel, cg:JFrame)
+// Elapsed time: 16 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 7); // B:i (D:JPanel, cg:JFrame)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources]", 9); // B:i (D:JPanel, cg:JFrame)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, i2c_top_tb (i2c_top_tb.v)]", 11); // B:i (D:JPanel, cg:JFrame)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources]", 9); // B:i (D:JPanel, cg:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, i2c_top (i2c_top.v), apb_slave_interface : xil_defaultlib.apb_slave_interface]", 6, false); // B:i (D:JPanel, cg:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, i2c_top (i2c_top.v), apb_slave_interface : xil_defaultlib.apb_slave_interface]", 6, false, false, false, false, false, true); // B:i (D:JPanel, cg:JFrame) - Double Click
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // u:M (JViewport:JComponent, cg:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// x:aN (cg:JFrame): Run Synthesis: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, x:aN)
+// bs:g (cg:JFrame):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Run Synthesis"); // x:aN (cg:JFrame)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f:p (cg:JFrame): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, f:p)
+// bs:g (cg:JFrame):  Starting Design Runs : addNotify
+dismissDialog("Launch Runs"); // f:p (cg:JFrame)
+// TclEventType: RUN_LAUNCH
+// Tcl Message: launch_runs synth_1 -jobs 4 
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Tue Feb 27 09:12:17 2024] Launched synth_1... Run output will be captured here: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c/i2c.runs/synth_1/runme.log 
+// 'k' command handler elapsed time: 3 seconds
+dismissDialog("Starting Design Runs"); // bs:g (cg:JFrame)
+// TclEventType: RUN_FAILED
+// ah:x (cg:JFrame): Synthesis Failed: addNotify
+// Elapsed time: 15 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, ah:x)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Synthesis Failed"); // ah:x (cg:JFrame)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-439] module 'fifo_toplevel' not found [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:125]. ]", 1, false); // ah:i (JViewport:JComponent, cg:JFrame)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\USER\Desktop\git_code\i2c_folder\i2c_code\i2c_top.v;-;;-;16;-;line;-;125;-;;-;16;-;"); // ah:i (JViewport:JComponent, cg:JFrame)
+// PAPropertyPanels.initPanels (i2c_top.v) elapsed time: 0.2s
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Add Sources]", 2, false); // u:M (JViewport:JComponent, cg:JFrame)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis]", 3); // u:M (JViewport:JComponent, cg:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+// c:g (cg:JFrame): Add Sources: addNotify
+selectButton("NEXT", "Next >"); // JButton:AbstractButton (ButtonPanel:JPanel, c:g)
+selectButton(PAResourceQtoS.SrcChooserPanel_ADD_HDL_AND_NETLIST_FILES_TO_YOUR_PROJECT, "Add Files"); // a:JButton (C:JPanel, c:g)
+// [GUI Memory]: 82 MB (+1136kb) [00:01:35]
+// Elapsed time: 12 seconds
+String[] filenames31467 = {"C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/fifo_mem.v", "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/fifo_toplevel.v", "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/fifo_toplevel_tb.v", "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/rptr_empty.v", "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/sync_r2w.v", "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/sync_w2r.v", "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/wptr_full.v"};
+setFileChooser(filenames31467);
+selectButton(PAResourceQtoS.SrcChooserPanel_ADD_HDL_AND_NETLIST_FILES_TO_YOUR_PROJECT, "Add Files"); // a:JButton (C:JPanel, c:g)
+// Elapsed time: 11 seconds
+setFileChooser("C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v");
+selectButton("FINISH", "Finish"); // JButton:AbstractButton (ButtonPanel:JPanel, c:g)
+// 'h' command handler elapsed time: 37 seconds
+dismissDialog("Add Sources"); // c:g (cg:JFrame)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: add_files -norecurse {C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/fifo_toplevel.v C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/sync_w2r.v C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/rptr_empty.v C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/fifo_toplevel_tb.v C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/fifo_mem.v C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/sync_r2w.v C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/Async_FIFO/wptr_full.v C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v} 
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, i2c_top (i2c_top.v)]", 1); // B:i (D:JPanel, cg:JFrame)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, fifo_toplevel_tb (fifo_toplevel_tb.v)]", 2); // B:i (D:JPanel, cg:JFrame)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, fifo_toplevel_tb (fifo_toplevel_tb.v)]", 2); // B:i (D:JPanel, cg:JFrame)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, i2c_top (i2c_top.v)]", 1); // B:i (D:JPanel, cg:JFrame)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, i2c_top (i2c_top.v)]", 1); // B:i (D:JPanel, cg:JFrame)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources]", 0); // B:i (D:JPanel, cg:JFrame)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources]", 0); // B:i (D:JPanel, cg:JFrame)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, i2c_top (i2c_top.v)]", 1); // B:i (D:JPanel, cg:JFrame)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, fifo_toplevel_tb (fifo_toplevel_tb.v)]", 7); // B:i (D:JPanel, cg:JFrame)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, fifo_toplevel_tb (fifo_toplevel_tb.v)]", 7); // B:i (D:JPanel, cg:JFrame)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // u:M (JViewport:JComponent, cg:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// bs:g (cg:JFrame):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f:p (cg:JFrame): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, f:p)
+// bs:g (cg:JFrame):  Starting Design Runs : addNotify
+dismissDialog("Launch Runs"); // f:p (cg:JFrame)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs synth_1 -jobs 4 
+// Tcl Message: [Tue Feb 27 09:13:50 2024] Launched synth_1... Run output will be captured here: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c/i2c.runs/synth_1/runme.log 
+dismissDialog("Starting Design Runs"); // bs:g (cg:JFrame)
+// TclEventType: RUN_FAILED
+// ah:x (cg:JFrame): Synthesis Failed: addNotify
+// Elapsed time: 13 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, ah:x)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Synthesis Failed"); // ah:x (cg:JFrame)
+// [GUI Memory]: 87 MB (+1133kb) [00:03:32]
+// [GUI Memory]: 92 MB (+165kb) [00:11:57]
+// [GUI Memory]: 97 MB (+534kb) [00:16:58]
+// [GUI Memory]: 102 MB (+287kb) [00:27:43]
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 49 MB. Current time: 2/27/24 9:41:39 AM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 10:11:39 AM ICT
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 10:41:40 AM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 11:11:41 AM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 11:41:41 AM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 12:11:42 PM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 12:41:42 PM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 1:11:42 PM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 1:41:43 PM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 2:11:43 PM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 2:41:43 PM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 3:11:44 PM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 3:41:44 PM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 4:11:45 PM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 4:41:45 PM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 5:11:45 PM ICT
+// HMemoryUtils.trashcanNow. Engine heap size: 667 MB. GUI used memory: 46 MB. Current time: 2/27/24 5:41:46 PM ICT
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED

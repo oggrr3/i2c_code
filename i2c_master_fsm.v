@@ -76,7 +76,7 @@ module i2c_master_fsm (
 
             IDLE    :   begin
 
-                if (enable_i) begin
+                if (enable_i && count_clk_core == 6) begin
                     next_sate   =   START      ;
                 end
                 else begin
@@ -420,12 +420,39 @@ module i2c_master_fsm (
         end
     end
 
-    // Handle read/write-enbale signal to FIFO
-    always @ (*) begin
+
+    // Handle read/write-enbale signal to FIFO and count posedge of clock core
+    always @ (posedge i2c_core_clk_i	, negedge reset_ni) begin
+        if (~reset_ni) begin
+            r_fifo_en   <=  0              	;
+			w_fifo_en	<=	0				;
+			count_clk_core	<=  0			;
+        end
+        else begin
+
+            if ((currrent_state == READ_LATER_ACK) && (scl_positive == 1)) begin
+				r_fifo_en   <=  1           ;
+			end
+			else begin
+				r_fifo_en	<=	0	;
+			end
+
+			if ((currrent_state == WRITE_ACK) && (scl_positive == 1)) begin
+				w_fifo_en   <=  1           ;
+			end
+			else begin
+				w_fifo_en	<=	0	;
+			end
+
+			if (currrent_state == IDLE)
+				count_clk_core 	<=	count_clk_core + 1	;
+			else
+				count_clk_core	<=	0					;
+        end
         //  
-        r_fifo_en   =  (currrent_state == WRITE_DATA  && count_scl_posedge == 0) ? 1 : 0    ;
+        //r_fifo_en   =  (currrent_state == WRITE_DATA  && count_scl_posedge == 0) ? 1 : 0    ;
         // 
-        w_fifo_en   =  (currrent_state == READ_DATA   && count_scl_posedge == 8) ? 1 : 0    ;
+        //w_fifo_en   =  (currrent_state == READ_DATA   && count_scl_posedge == 8) ? 1 : 0    ;
 
     end
 

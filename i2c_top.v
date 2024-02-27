@@ -46,13 +46,13 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
     wire  [7:0]                 slave_address               	;
     wire  [7:0]                 command                         ;
 	wire  [7:0]					status							;
-    wire  [7:0]                 prscale                         ;
+    wire  [7:0]                 prescale                        ;
 
     assign      sda     =   i2c_sda_en ? i2c_sda : 1'bz     ;
-    assign      scl     =   i2c_scl_en ? i2c_scl : 1'bz     ;
+    assign      scl     =   i2c_scl_en ? i2c_scl : 1        ;
 
-    pullup (sda)    ;
-    pullup (scl)    ;
+    //pullup (sda)    ;
+    //pullup (scl)    ;
 
     // get command bit
     assign      enable          =       command[6]            ;
@@ -118,11 +118,11 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
         .receive_data_en_i    (receive_data_en  )         ,   // enable receive data from sda
 
         .data_from_sda_o      (data_from_sda    )         ,   // data from sda to write to FIFO buffer
-        .i2c_sda_o            (sda              )            // i2c sda output   
+        .i2c_sda_o            (i2c_sda          )            // i2c sda output   
     );
 
 
-    fifo_toplevel # (DATA_SIZE, ADDR_SIZE)      fifo_toplevel (
+    data_fifo_mem # (DATA_SIZE, ADDR_SIZE)      data_fifo_mem (
         .pclk_i             (pclk_i         )   ,   // APB clock
         .i2c_core_clk_i     (i2c_core_clk_i )   ,   // i2c clock core
         .command_i          (command        )   ,   // command from MCU include: enable, repeat_start, reset, r/w, winc, rinc
@@ -133,7 +133,7 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
 
         .data_to_apb_o      (data_to_apb    )   ,   // data receive from sda, which transfer to apb interface
         .data_to_sda_o      (data_to_sda    )   ,   // data which receive from apb and then transfer to data_path
-        .status_o           (to_status_reg  )       // full, empty status of TX and RX memory
+        .status_o           (status		    )       // full, empty status of TX and RX memory
     );
 
 
@@ -145,7 +145,7 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
         .psel_i             (psel_i         )         ,   //  select slave interface
         .penable_i          (penable_i      )         ,   //  Enable. PENABLE indicates the second and subsequent cycles of an APB transfer.
         .pwdata_i           (pwdata_i       )         ,   //  data write
-        .to_status_reg_i    (to_status_reg  )         ,
+        .to_status_reg_i    (status         )         ,
 	    .data_fifo_i        (data_to_apb    )	      ,   //  data from FIFO memory
 
         .prdata_o           (prdata_o       )         ,   //  data read
@@ -153,6 +153,6 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
         .reg_transmit_o     (data_from_apb  )         ,
         .reg_slave_address_o(slave_address  )         ,
         .reg_command_o      (command        )         ,
-        .reg_prescale_o     (prscale        )    
+        .reg_prescale_o     (prescale       )    
     );
 endmodule
