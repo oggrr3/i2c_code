@@ -58,10 +58,10 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
     assign      enable          =       command[6]            ;
     assign      reset_n         =       command[7]            ;
     assign      repeat_start    =       command[5]            ;
-    assign      rw              =       command[4]            ;
+    assign      rw              =       slave_address[0]      ;
 
     // get tx-empty, rx-full from status reg
-    assign      tx_empty        =       status[7]   ;
+    assign      tx_empty        =       status[7]   ;	
     assign      rx_full         =       status[2]   ;
 
     // push data to i2c line

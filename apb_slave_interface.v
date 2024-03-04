@@ -28,15 +28,14 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
 
     //  Decalar reg of output
     reg     [DATA_WIDTH - 1 : 0]        prdata              ;
-    reg                                 pready              ;
 
     // Connect to Output
     assign      prdata_o                =   prdata              ;
-    assign      pready_o                =   pready              ;
     assign      reg_transmit_o          =   reg_transmit        ;
     assign      reg_slave_address_o     =   reg_slave_address   ; 
     assign      reg_command_o           =   reg_command         ;
     assign      reg_prescale_o          =   reg_prescale        ;
+	assign 		pready_o				=	psel_i ? 1 : 0		;
 
     //  Write transfer with no wait states
     always @(posedge    pclk_i,    negedge  preset_ni) begin
@@ -44,8 +43,6 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
         if (~preset_ni) begin
 
             prdata                  <=      0       ;
-            pready                  <=      0       ;
-
             reg_transmit            <=      0       ;
             reg_slave_address       <=      0       ;
             reg_command             <=      0       ;
@@ -54,8 +51,9 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
         end 
 
         else begin
-
-            pready  <=  1   ;
+			
+			// if off reset APB then off reset i2c core
+			reg_command[7]	<=	1	;
 
             // pwrite HIGH and psel HIGHT, this is write cycle
             if (penable_i == 1 && psel_i == 1 && pwrite_i == 1) begin
@@ -67,9 +65,9 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
 						reg_command[3]	<=	1			;
 					end
 
-                    3       :       reg_slave_address       <=  pwdata_i    ;
-                    4       :       reg_command             <=  pwdata_i    ;
-                    5       :       reg_prescale            <=  pwdata_i    ; 
+                    3       :       reg_slave_address       <=  pwdata_i    	;
+                    4       :       reg_command[6:0]        <=  pwdata_i[6:0]   ;
+                    5       :       reg_prescale            <=  pwdata_i    	; 
   
                     default :	begin
 						reg_transmit    <=  pwdata_i    ;
@@ -84,12 +82,17 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
 			end
             
             // pwrite Low and psel HIGHT, this is read cycle
-            if (psel_i == 1 && pwrite_i == 0)begin
+            if ( (psel_i == 1) && (pwrite_i == 0) && (penable_i == 0) )begin
                 
                 case (paddr_i[ADDR_WIDTH - 3 : 0])
 
                     0       :       prdata            <=  reg_transmit      ;
-                    1       :       prdata            <=  data_fifo_i       ;
+
+                    1       :       begin
+										prdata          <=  data_fifo_i     ;
+										reg_command[0]	<=	1				;	// READ next byte of RX-FIFO
+									end
+
                     2       :       prdata            <=  to_status_reg_i   ;
                     3       :       prdata            <=  reg_slave_address ;
                     4       :       prdata            <=  reg_command       ;
@@ -98,6 +101,11 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
 
                 endcase     
             end
+
+			// enable to read data from RX-FIFO only 1 cycle
+			if (reg_command[0]	==	1) begin
+				reg_command[0] 	<=	0	;
+			end
 
         end
 

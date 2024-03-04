@@ -28,8 +28,8 @@ module data_fifo_mem # (parameter	DATASIZE	=	8,
     //assign      data_to_sda_o   =   data_to_sda ;     
     assign      status_o        =   status      ;
 
-    assign      tx_rinc         =   r_tx_fifo_en_i  &   command_i[2]    ;
-    assign      rx_winc         =   w_rx_fifo_en_i  &   command_i[1]    ;
+    assign      tx_rinc         =   r_tx_fifo_en_i      ;
+    assign      rx_winc         =   w_rx_fifo_en_i      ;
 
     // Instance
     fifo_toplevel        TX_fifo

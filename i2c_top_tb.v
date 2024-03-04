@@ -3,13 +3,13 @@ module i2c_top_tb ();
     reg                               i2c_core_clk_i      ;   // clock core of i2c
     reg                               pclk_i              ;   //  APB clock
     reg                               preset_ni           ;   //  reset signal is active-LOW
-    reg   [7 : 0]         paddr_i             ;   //  address of APB slave and register map
+    reg   [7 : 0]         			  paddr_i             ;   //  address of APB slave and register map
     reg                               pwrite_i            ;   //  HIGH is write, LOW is read
     reg                               psel_i              ;   //  select slave interface
     reg                               penable_i           ;   //  Enable. PENABLE indicates the second and subsequent cycles of an APB transfer.
-    reg   [7 : 0]         pwdata_i            ;   //  data write
+    reg   [7 : 0]         			  pwdata_i            ;   //  data write
 
-    wire  [7 : 0]         prdata_o            ;   //  data read
+    wire  [7 : 0]         			  prdata_o            ;   //  data read
     wire                              pready_o            ;   //  ready to receive data
     wire                              sda_io                 ;
     wire                              scl_io                 ;
@@ -48,7 +48,7 @@ module i2c_top_tb ();
 
     // initial  clock 
     always #10       i2c_core_clk_i  =   ~i2c_core_clk_i             ;
-    always #5        pclk_i          =   ~pclk_i                     ;
+    always #2        pclk_i          =   ~pclk_i                     ;
     //always #10      clk_slave_tb    =   ~clk_slave_tb               ;
     
     initial begin
@@ -61,251 +61,327 @@ module i2c_top_tb ();
 		en_tb				=		0		;
 
         i2c_core_clk_i      =       0       ;
-
+			
+		// reset apb -> reset i2c core
 		//---------------------------------------------
 		pclk_i          =       1           ;
         preset_ni       =       0           ;
-        paddr_i         =       8'b11000001 ;
-        pwrite_i        =       1           ;  
+        paddr_i         =       8'b00000001 ;
+        pwrite_i        =       0           ;  
         psel_i          =       0           ;
-        penable_i       =       1           ;
-        pwdata_i        =       8'b10010011 ;
-        #8;
+        penable_i       =       0           ;
+        pwdata_i        =       8'b00000000 ;
+        #50;
         preset_ni       =       1           ;
-        #3;
+        #5;
 
-        psel_i          =       1           ;
+        // ------------------------test write data---------------------------------------
+		// Step 1 : write data to TX-FIFO
+		psel_i          =       1           ;
         penable_i       =       0           ;
 		pwrite_i		=		1			;
-		penable_i	    =		0			;
-        paddr_i         =       8'b11000000 ;	// to reg_transmit
-
-        // test write data
-		// Step 1 : write to reset 
-		paddr_i         =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
-		pwdata_i        =   8'b0000_0000 ;   // cmd[7] = rst_n   ; cmd[6] = enable  ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
-                                             // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc     ; cmd[0] = RX_rinc
-		#10;
+        paddr_i         =       8'b00000000 ;	// to reg_transmit
+		pwdata_i        =       8'b1000_1010 ;	// 8a
+		#4;
 		penable_i		=		1			;
-		#53; // time reset
+		#4;
+		psel_i			=		0			;	// done write 1 byte data
+		penable_i       =       0           ;
+		pwrite_i		=		0			;
+		#4;
 
-		// Step 1b : off reset_n and but enable = 0 FSM does not active
-		paddr_i         =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
-		pwdata_i        =   8'b1000_0000 ;   // cmd[7] = rst_n   ; cmd[6] = enable  ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
-                                             // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc     ; cmd[0] = RX_rinc
-		#10;
+		psel_i          =       1           ;
+        penable_i       =       0           ;
+		pwrite_i		=		1			;
+        paddr_i         =       8'b00000000 ;	// to reg_transmit
+		pwdata_i        =       8'b0010_1011 ;	// 2b
+		#4;
+		penable_i		=		1			;
+		#4;
+		psel_i			=		0			;	// done write 1 byte data
+		penable_i       =       0           ;
+		pwrite_i		=		0			;
+		#4;
+
+		psel_i          =       1           ;
+        penable_i       =       0           ;
+		pwrite_i		=		1			;
+        paddr_i         =       8'b00000000 ;	// to reg_transmit
+		pwdata_i        =       8'b1100_0011 ;	// c3
+		#4;
+		penable_i		=		1			;
+		#4;
+		psel_i			=		0			;	// done write 1 byte data
+		penable_i       =       0           ;
+		pwrite_i		=		0			;
+		#4;
+
 
 		// Step 2 : write slave's address
-		paddr_i         =       8'b1100_0011 ;	// to reg_slave
-		pwdata_i        =       8'b11000010  ;
-		#10;
+
+		psel_i          =       1           ;
+        penable_i       =       0           ;
+		pwrite_i		=		1			;
+        paddr_i         =       8'b0000_0011 ;	// addr [5:0] = 3 , slave's address
+		pwdata_i        =       8'b0100_1010 ;	// addr = 0100_101 and RW = 0 => WRITE
+		#4;
+		penable_i		=		1			;
+		#4;
+		psel_i			=		0			;	// done write 1 byte data
+		penable_i       =       0           ;
+		pwrite_i		=		0			;
+		#15;
 
 		// Step 3 : write prescale to generate to scl
-        paddr_i             =   8'b11000101 ;   // addr [5:0] = 5 , prescale_reg
-        pwdata_i            =   8           ;
-		#10;
-
-
-		// Step 4a : Write data
-        paddr_i             =   8'b11000000 ;   // addr [5:0] = 0 , transmit_reg
-        pwdata_i            =   11       ;
-        #20;
-		// Step 4b : Enable Write data to TX-FIFO mem
-		paddr_i         =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
-		pwdata_i        =   8'b1000_1000 ;   // cmd[7] = rst_n   ; cmd[6] = enable  ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
-                                             // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc     ; cmd[0] = RX_rinc
-		#10;
-		// Next byte
-		paddr_i             =   8'b11000000 ;   // addr [5:0] = 0 , transmit_reg
-        pwdata_i            =   12       ;
-        #10;
-        pwdata_i            =   13       ;
-        #10;
-
-		// Step 4c : done write data, cannot write to TX_FIFO
-		paddr_i         =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
-		pwdata_i        =   8'b1000_0000 ;   // cmd[7] = rst_n   ; cmd[6] = enable  ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
-                                             // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc     ; cmd[0] = RX_rinc
-		#10;
-
-
-		// Step 5 : Write command to start i2c
-        paddr_i             =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
-        pwdata_i            =   8'b1100_0111 ;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
-                                                 // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc ; cmd[0] = RX_rinc
-        #10;
-
-		// Step 5 :finsish write command and prepare data
+		psel_i          =       1           ;
         penable_i       =       0           ;
-		pwdata_i        =   8'b0000_1111;
+		pwrite_i		=		1			;
+        paddr_i         =       8'b0000_0101 ;	// addr [5:0] = 5 , prescale_reg
+		pwdata_i        =       6			 ;	// 6
+		#4;
+		penable_i		=		1			;
+		#4;
+		psel_i			=		0			;	// done write 1 byte data
+		penable_i       =       0           ;
+		pwrite_i		=		0			;
+		#15;
+
+		// Step 4 : Write command to start i2c
+
+
+		psel_i          =       1           ;
+        penable_i       =       0           ;
+		pwrite_i		=		1			;
+        paddr_i         =   8'b0000_0100 	;   // addr [5:0] = 4 , command_reg
+        pwdata_i        =   8'b110_00000 	;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = read-only
+                                                // cmd[3] = read-only ; cmd[2] = read-only ; cmd[1] = read-only ; cmd[0] = read-only
+        #10;
+		#4;
+		penable_i		=		1			;
+		#4;
+		psel_i			=		0			;	// done write 1 byte data
+		penable_i       =       0           ;
+		pwrite_i		=		0			;
+		#15;
 
 		// Step 7 : Run FSM
-		// Slave write ACK 1
-		#1417;
-		en_tb 				= 	1	;	
-		sda_slave_en_tb 	=	1	;
-		sda_slave_tb        =   0   ;
-		#163;
-		sda_slave_en_tb		= 	0	;
-		en_tb 				= 	0	;	
 
+		repeat (4) begin
 		repeat(8) begin
 			 @ (posedge scl_io) begin
 				temp[i] = 	sda_io	;
 				i 		= 	i - 1	;
 			end
 		end
-		get_value_sda_tb	=	temp;
-		i 					=	7	;
-		#100;
-
-		// Slave write later ACK 2
-		en_tb 				= 	1	;	
-		sda_slave_en_tb 	=	1	;
-		sda_slave_tb        =   0   ;
-		#160;
-		sda_slave_en_tb		= 	0	;
-		en_tb 				= 	0	;	
-
-		repeat(8) begin
-			 @ (posedge scl_io) begin
-				temp[i] = 	sda_io	;
-				i 		= 	i - 1	;
-			end
+		@ (negedge scl_io) begin
+			get_value_sda_tb	=	temp;
+			i 					=	7	;
 		end
-		get_value_sda_tb	=	temp;
-		i 					=	7	;
-		#100;
-
-		// Slave write later ACK 3
-		en_tb 				= 	1	;	
-		sda_slave_en_tb 	=	1	;
-		sda_slave_tb        =   0   ;
-		#160;
-		sda_slave_en_tb		= 	0	;
-		en_tb 				= 	0	;	
-
-		repeat(8) begin
-			 @ (posedge scl_io) begin
-				temp[i] = 	sda_io	;
-				i 		= 	i - 1	;
-			end
-		end
-		get_value_sda_tb	=	temp;
-		i 					=	7	;
-		#100;
-
-		// Slave write later ACK 4
-		en_tb 				= 	1	;	
-		sda_slave_en_tb 	=	1	;
-		sda_slave_tb        =   0   ;
-		#160;
-		sda_slave_en_tb		= 	0	;
-		en_tb 				= 	0	;	
-		#100;
-
-		// Finsh write-test, CPU write cmd to turn off enable
-		penable_i				=	1			 ; 
-        paddr_i             =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
-        pwdata_i            =   8'b1000_0111 ;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
-                                                 // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc ; cmd[0] = RX_rinc
-        #10;
-		penable_i			=	0			;
-		psel_i				=	0			;
-		#500;
-
-		//--------------------------------------------------------------------------------
-		// Test read-data
-		// Step 1 : reset apb => reset reg
-		preset_ni	=	0	;
-		#8;
-		preset_ni 	=	1	;
-		#3;
-		psel_i		=	1	;
-		pwrite_i	=	1	;
-
-		// Step 2 : CPU write slave's address
-		paddr_i         =   8'b1100_0011 ;	// to reg_slave
-		pwdata_i        =   8'b1100_0101 ;
-		penable_i		=	1			 ;
-		#10;
-		
-		// Step 3 : write prescale to generate to scl
-        paddr_i             =   8'b11000101 ;   // addr [5:0] = 5 , prescale_reg
-        pwdata_i            =   8           ;
-		#10;
-
-		// Step 4 : CPU write cmd to turn on enable, and enable write to RX-FIFO
-        paddr_i             =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
-        pwdata_i            =   8'b1101_0110 ;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
-        										 // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc ; cmd[0] = RX_rinc
-        #10;
-
-		// Step 5 : APB read
-		//pwrite_i	=	0	;
-		// Slave write ACK
-		#1509;
-		en_tb 				= 	1	;	
-		sda_slave_en_tb 	=	1	;
-		sda_slave_tb        =   0   ; // ACK
-		#165;
-
-		en_tb 				= 	0	;	
-		// Slave write data to sda
-		// write byte 0111_1111 = 7f;
-		sda_slave_tb     =   0   ;
-		#160;
-		repeat(7)  begin
-			sda_slave_tb     =   1   ;
-			#160;
-		end
-
-		en_tb 				= 	1	;
-		sda_slave_en_tb		=	0	; // master write ACK 
-		#160;
-
-		
-		// Slave write data to sda
-		// write byte 1111_1110 = fe;
-		repeat(15) begin
-			en_tb 				= 	0	;	
-			sda_slave_en_tb		=	1	;
-			repeat(7)  begin
-				sda_slave_tb     =   1   ;
-				#160;
-			end
-			sda_slave_tb     =   0   ;
-			#160;
- 
-			en_tb 				= 	1	;
-			sda_slave_en_tb		=	0	; // master write ACK 
-			#160;
-		end
-
-			en_tb 	=	0	;
-			#100;
-			
-			// CPU read data
-		// Read command enable read data from RX-FIFO
-		paddr_i             =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
-        pwdata_i            =   8'b1101_0111 ;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
-        										 // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc ; cmd[0] = RX_rinc
-        #10;
-
-		paddr_i     =   8'b1100_0001 ;   // addr [5:0] = 1 , receive data
-		pwrite_i	=	0	;
-		#10;
-		penable_i	=	1	;
-		#10;
-
-		penable_i	=	0	;
 		#20;
-		penable_i	=	1	;
-		#10;
-		penable_i	=	0	;
-
-		#50;
+		en_tb 				= 	1	;	
+		sda_slave_en_tb 	=	1	;
+		sda_slave_tb        =   0   ;
+		#120;
+		en_tb 				= 	0	;	
+		sda_slave_en_tb 	=	0	;
+		end
 		
+		#500;
+		//------------------------Done write test------------------------
+
+		//------------------------Test read------------------------------
+		//Step 1 : reset APB -> reset i2c core
+		preset_ni	=	0	;
+		#50;
+		preset_ni	=	1	;
+		#5;
+
+		// Step 2 : write slave's address
+		psel_i          =       1           ;
+        penable_i       =       0           ;
+		pwrite_i		=		1			;
+        paddr_i         =       8'b0000_0011 ;	// addr [5:0] = 3 , slave's address
+		pwdata_i        =       8'b0110_1001 ;	// addr = 0110_100 and RW = 1 => READ
+		#4;
+		penable_i		=		1			;
+		#4;
+		psel_i			=		0			;	// done write 1 byte data
+		penable_i       =       0           ;
+		pwrite_i		=		0			;
+		#15;
+
+		// Step 3 : write prescale to generate to scl
+		psel_i          =       1           ;
+        penable_i       =       0           ;
+		pwrite_i		=		1			;
+        paddr_i         =       8'b0000_0101 ;	// addr [5:0] = 5 , prescale_reg
+		pwdata_i        =       6			 ;	// 6
+		#4;
+		penable_i		=		1			;
+		#4;
+		psel_i			=		0			;	// done write 1 byte data
+		penable_i       =       0           ;
+		pwrite_i		=		0			;
+		#15;
+
+		// Step 4 : Write command to start i2c
+		psel_i          =       1           ;
+        penable_i       =       0           ;
+		pwrite_i		=		1			;
+        paddr_i         =   8'b0000_0100 	;   // addr [5:0] = 4 , command_reg
+        pwdata_i        =   8'b110_00000 	;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = read-only
+                                                // cmd[3] = read-only ; cmd[2] = read-only ; cmd[1] = read-only ; cmd[0] = read-only
+        #10;
+		#4;
+		penable_i		=		1			;
+		#4;
+		psel_i			=		0			;	// done write 1 byte data
+		penable_i       =       0           ;
+		pwrite_i		=		0			;
+		#15;
+
+		// Step 5 : Slave sent ACK 
+		repeat(8) begin
+			 @ (posedge scl_io) begin
+				temp[i] = 	sda_io	;
+				i 		= 	i - 1	;
+			end
+		end
+		@ (negedge scl_io) begin
+			get_value_sda_tb	=	temp;
+			i 					=	7	;
+		end
+		#20;
+		en_tb 				= 	1	;	
+		sda_slave_en_tb 	=	1	;
+		sda_slave_tb        =   0   ;	// Slave ACK
+		#120;
+		// Step 6 : Slave prepare data
+
+		repeat (4) begin
+		// Write byte 1001_0100 = 0x94
+		en_tb 				= 	1	;	
+		sda_slave_en_tb 	=	1	;
+
+		sda_slave_tb        =   1   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   1   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   1   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		en_tb 				= 	0	;	
+		sda_slave_en_tb 	=	0	;
+		#120;
+
+		// Write byte 1100_0101 = 0xc5
+		en_tb 				= 	1	;	
+		sda_slave_en_tb 	=	1	;
+
+		sda_slave_tb        =   1   ;
+		#120;
+		sda_slave_tb        =   1   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   1   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   1   ;
+		#120;
+		en_tb 				= 	0	;	
+		sda_slave_en_tb 	=	0	;
+		#120;
+
+
+		// Write byte 0010_0001 = 0x21
+		en_tb 				= 	1	;	
+		sda_slave_en_tb 	=	1	;
+
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   1   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   1   ;
+		#120;
+		en_tb 				= 	0	;	
+		sda_slave_en_tb 	=	0	;
+		#120;
+
+		// Write byte 1000_0100 = 0x84
+		en_tb 				= 	1	;	
+		sda_slave_en_tb 	=	1	;
+
+		sda_slave_tb        =   1   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   1   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		sda_slave_tb        =   0   ;
+		#120;
+		en_tb 				= 	0	;	
+		sda_slave_en_tb 	=	0	;
+		#120;
+		end
+
+
+		pwrite_i		=		1			;
+		#499;
+		// Step 7: Finally, CPU read data from RX-FIFO
+		repeat (18) begin
+		psel_i          =       1           ;
+        penable_i       =       0           ;
+		pwrite_i		=		0			;
+        paddr_i         =       8'b00000001 ;	// addr [5:0] = 1 , read from FIFO
+		#4;
+		penable_i		=		1			;
+		#4;
+		psel_i			=		0			;	// done read 1 byte data
+		penable_i       =       0           ;
+		pwrite_i		=		1			;
+		#10;
+		penable_i       =       1           ;
+		#10;		
+		end
+	
+
+		#200;
         $stop;
+
+
     end
+
 endmodule

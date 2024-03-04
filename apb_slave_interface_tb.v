@@ -45,7 +45,7 @@ module apb_slave_interface_tb ();
     initial begin
         pclk_i          =       1           ;
         preset_ni       =       0           ;
-        paddr_i         =       8'b11000001 ;
+        paddr_i         =       8'b00000001 ;
         pwrite_i        =       1           ;  
         psel_i          =       0           ;
         penable_i       =       1           ;
@@ -59,7 +59,7 @@ module apb_slave_interface_tb ();
         penable_i       =       0           ;
 		pwrite_i		=		1			;
 		penable_i	    =		0			;
-        paddr_i         =       8'b11000000 ;	// to reg_transmit
+        paddr_i         =       8'b00000000 ;	// to reg_transmit
 
 		// read-write data
 		pwdata_i        =       8'b10010010 ;
@@ -67,13 +67,14 @@ module apb_slave_interface_tb ();
 		penable_i		=		1			;
 		data_fifo_i		=		8'b10101010	;
 		#10;
+		penable_i		=		0			;
 		pwdata_i        =       8'b10000010 ;
 		psel_i			=		0			;
         #20;
 
 		// test read
 		#2;
-		paddr_i			=		8'b11100001	;	//	read from reg_receive
+		paddr_i			=		8'b0000_0001	;	//	read from reg_receive
 		pwrite_i		=		0			;
 		psel_i			=		1			;
 		penable_i	    =		0			;
@@ -82,6 +83,7 @@ module apb_slave_interface_tb ();
 		penable_i	    =		1			;
 		data_fifo_i		=		20			;
 		#10;
+		penable_i	    =		0			;
 		psel_i			=		0			;
 		data_fifo_i		=		25			;
 		#20;

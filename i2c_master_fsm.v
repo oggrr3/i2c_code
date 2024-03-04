@@ -45,6 +45,7 @@ module i2c_master_fsm (
     reg                 confirm            =    0   ;   // when i2c_scl_i from 1 down to 0, confirm = 1 
     reg     [3:0]       count_scl_posedge  =    0   ;
 
+	reg		wait_cpu_to_continue	;
 	reg		read_ack_to_read_done	;
 	reg		read_ack_to_write_done	;
     reg     scl_later		;
@@ -63,7 +64,8 @@ module i2c_master_fsm (
         if (~reset_ni) begin
             currrent_state       	<=      IDLE        ;
 			read_ack_to_read_done	<=		0   		;  
-			read_ack_to_write_done	<=		0			;       
+			read_ack_to_write_done	<=		0			;
+			wait_cpu_to_continue	<=		0			;       
         end
 
         else begin
@@ -81,7 +83,7 @@ module i2c_master_fsm (
 
             IDLE    :   begin
 
-                if (enable_i && count_clk_core == 6) begin
+                if (enable_i && (~wait_cpu_to_continue) ) begin
                     next_sate   =   START      ;
                 end
                 else begin
@@ -166,18 +168,30 @@ module i2c_master_fsm (
             READ_LATER_ACK  :   begin
 
                 // Wait for scl line is high and then read ack
-                if (scl_negative) begin
+			
+                if (scl_positive) begin
+
                     if (repeat_start_i) begin
                         next_sate       =      REPEAT_START     ; 
                     end 
-                    else if (i2c_sda_i == 0 && empty_i == 0) begin
-                        next_sate       =       WRITE_DATA      ;
+                 	else if (i2c_sda_i == 0 && empty_i == 0) begin
+                        read_ack_to_write_done	=	1			;
                     end
                     else begin
                         next_sate       =       STOP            ;
                     end
 
                 end
+
+				else if (scl_negative && empty_i == 1) begin
+					next_sate	=	STOP	;
+				end
+
+				else if ((scl_negative) && (read_ack_to_write_done == 1)) begin		// wait for scl low and then to next state
+					next_sate				=	WRITE_DATA		;
+					read_ack_to_write_done	=	0				;
+				end
+		
                 else begin
                     next_sate           =       READ_LATER_ACK  ;
                 end
@@ -229,10 +243,11 @@ module i2c_master_fsm (
             STOP    :   begin
 
 				if (scl_positive) begin
-                	next_sate           =       IDLE            ;
+                	next_sate           	=       IDLE            ;
+					wait_cpu_to_continue	=		1				;
 				end
 				else begin
-					next_sate			=		STOP			;
+					next_sate				=		STOP			;
 				end
 
             end
