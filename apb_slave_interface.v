@@ -47,8 +47,6 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
             pready                  <=      0       ;
 
             reg_transmit            <=      0       ;
-            //reg_receive             <=      0       ;
-            //to_reg_status           <=      0       ;
             reg_slave_address       <=      0       ;
             reg_command             <=      0       ;
             reg_prescale            <=      0       ;
@@ -64,15 +62,26 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
                 
                 case (paddr_i[ADDR_WIDTH - 3 : 0])
 
-                    0       :       reg_transmit            <=  pwdata_i    ;
+                    0       :	begin						// When data into reg_transmit, enable write data to TX-FIFO
+						reg_transmit    <=  pwdata_i    ;
+						reg_command[3]	<=	1			;
+					end
+
                     3       :       reg_slave_address       <=  pwdata_i    ;
                     4       :       reg_command             <=  pwdata_i    ;
-                    5       :       reg_prescale            <=  pwdata_i    ;   
-                    default :       reg_transmit            <=  pwdata_i    ;
+                    5       :       reg_prescale            <=  pwdata_i    ; 
+  
+                    default :	begin
+						reg_transmit    <=  pwdata_i    ;
+						reg_command[3]	<=	1			;
+					end
 
                 endcase
+            end
 
-            end 
+			if (reg_command[3] == 1) begin
+				reg_command[3]	<=	0	; 
+			end
             
             // pwrite Low and psel HIGHT, this is read cycle
             if (psel_i == 1 && pwrite_i == 0)begin

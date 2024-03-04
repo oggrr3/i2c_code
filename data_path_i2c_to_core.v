@@ -18,8 +18,8 @@ module data_path_i2c_to_core    # ( parameter     DATA_SIZE   =   8 ,
                      
 );
     
-    reg     	[DATA_SIZE - 1 : 0]         data_from_sda   =	0    		;
-	reg										i2c_sda			=	1 			;
+    reg     	[DATA_SIZE - 1 : 0]         data_from_sda       		;
+	reg										i2c_sda			 			;
 	//										data_done						;
 
 	assign		i2c_sda_o			=		i2c_sda							;
@@ -63,14 +63,6 @@ module data_path_i2c_to_core    # ( parameter     DATA_SIZE   =   8 ,
         else begin
             i2c_sda	       =      i2c_sda                                ;
         end
-
-        // ko can do xu ly ben fsm roi
-        // if (count_bit_i == 0) begin
-        //     data_done	     =       1                               ;
-        // end 
-        // else begin
-        //     data_done	     =       0                               ;
-        // end
         
     end
 

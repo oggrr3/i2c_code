@@ -51,7 +51,7 @@ module fifo_toplevel_tb # (parameter 	DATASIZE = 8,
 
 	initial begin
 		//Initial input
-		wdata_i		=	0		;
+		wdata_i		=	2		;
 		winc_i		=	1		; // write data
 		wclk_i		=	0		;
 		wrst_ni		=	0		;
@@ -68,7 +68,7 @@ module fifo_toplevel_tb # (parameter 	DATASIZE = 8,
 
 		// Data input
 			
-		for (i = 0 ; i < 20; i = i + 1) begin
+		for (i = 4 ; i < 29; i = i + 1) begin
       		wdata_i		=	i	;	
 			#10;
     	end

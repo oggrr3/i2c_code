@@ -70,7 +70,6 @@ module i2c_top_tb ();
         psel_i          =       0           ;
         penable_i       =       1           ;
         pwdata_i        =       8'b10010011 ;
-		//data_fifo_i		=		3			;
         #8;
         preset_ni       =       1           ;
         #3;
@@ -236,9 +235,9 @@ module i2c_top_tb ();
         pwdata_i            =   8           ;
 		#10;
 
-		// Step 4 : CPU write cmd to turn on enable
+		// Step 4 : CPU write cmd to turn on enable, and enable write to RX-FIFO
         paddr_i             =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
-        pwdata_i            =   8'b1100_0111 ;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
+        pwdata_i            =   8'b1101_0110 ;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
         										 // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc ; cmd[0] = RX_rinc
         #10;
 
@@ -248,14 +247,65 @@ module i2c_top_tb ();
 		#1509;
 		en_tb 				= 	1	;	
 		sda_slave_en_tb 	=	1	;
-		sda_slave_tb        =   0   ;
-		#163;
-		sda_slave_en_tb		= 	0	;
+		sda_slave_tb        =   0   ; // ACK
+		#165;
+
 		en_tb 				= 	0	;	
+		// Slave write data to sda
+		// write byte 0111_1111 = 7f;
+		sda_slave_tb     =   0   ;
+		#160;
+		repeat(7)  begin
+			sda_slave_tb     =   1   ;
+			#160;
+		end
 
+		en_tb 				= 	1	;
+		sda_slave_en_tb		=	0	; // master write ACK 
+		#160;
 
+		
+		// Slave write data to sda
+		// write byte 1111_1110 = fe;
+		repeat(15) begin
+			en_tb 				= 	0	;	
+			sda_slave_en_tb		=	1	;
+			repeat(7)  begin
+				sda_slave_tb     =   1   ;
+				#160;
+			end
+			sda_slave_tb     =   0   ;
+			#160;
+ 
+			en_tb 				= 	1	;
+			sda_slave_en_tb		=	0	; // master write ACK 
+			#160;
+		end
 
-		#2000;  
+			en_tb 	=	0	;
+			#100;
+			
+			// CPU read data
+		// Read command enable read data from RX-FIFO
+		paddr_i             =   8'b1100_0100 ;   // addr [5:0] = 4 , command_reg
+        pwdata_i            =   8'b1101_0111 ;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = 1-Read, 0-Write
+        										 // cmd[3] = TX_winc ; cmd[2] = TX_rinc ; cmd[1] = RX_winc ; cmd[0] = RX_rinc
+        #10;
+
+		paddr_i     =   8'b1100_0001 ;   // addr [5:0] = 1 , receive data
+		pwrite_i	=	0	;
+		#10;
+		penable_i	=	1	;
+		#10;
+
+		penable_i	=	0	;
+		#20;
+		penable_i	=	1	;
+		#10;
+		penable_i	=	0	;
+
+		#50;
+		
         $stop;
     end
 endmodule

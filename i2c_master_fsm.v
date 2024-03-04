@@ -44,6 +44,9 @@ module i2c_master_fsm (
     reg     [2:0]       count_clk_core     =    0   ;
     reg                 confirm            =    0   ;   // when i2c_scl_i from 1 down to 0, confirm = 1 
     reg     [3:0]       count_scl_posedge  =    0   ;
+
+	reg		read_ack_to_read_done	;
+	reg		read_ack_to_write_done	;
     reg     scl_later		;
     wire    scl_positive	;
 	wire	scl_negative	;
@@ -58,7 +61,9 @@ module i2c_master_fsm (
     // Current State register logic
     always @ (posedge i2c_core_clk_i,   negedge reset_ni) begin
         if (~reset_ni) begin
-            currrent_state       <=     IDLE        ;            
+            currrent_state       	<=      IDLE        ;
+			read_ack_to_read_done	<=		0   		;  
+			read_ack_to_write_done	<=		0			;       
         end
 
         else begin
@@ -112,14 +117,15 @@ module i2c_master_fsm (
 
             READ_ACK    :   begin
 
-                // Wait for scl line is high and then read ack
-                if  (scl_negative) begin
-                    if      (i2c_sda_i == 0 && rw_i == 1 && full_i == 0) begin
-                        next_sate       =       READ_DATA                       ;
+                // Wait for scl line is high and then read ack signal from slave
+
+                if  (scl_positive == 1) begin
+                    if		(i2c_sda_i == 0 && rw_i == 1 && full_i == 0) begin
+                        read_ack_to_read_done	=	1                       ;
                     end 
 
                     else if (i2c_sda_i == 0 && rw_i == 0 && empty_i == 0) begin
-                        next_sate       =       WRITE_DATA                      ;
+                        read_ack_to_write_done	=	1                      ;
                     end
 
                     else begin
@@ -127,8 +133,20 @@ module i2c_master_fsm (
                     end
 
                 end
+
+				// Had an ACK, wait for scl is negedge and then to next state
+				else if ((scl_negative == 1) && (read_ack_to_read_done == 1)) begin
+					next_sate       		=   READ_DATA	;
+					read_ack_to_read_done 	= 	0			;
+				end
+
+				else if ((scl_negative == 1) && (read_ack_to_write_done == 1)) begin
+					next_sate       		=    WRITE_DATA   ;
+					read_ack_to_write_done 	= 	 0			  ;
+				end				
+
                 else begin
-                    next_sate           =       READ_ACK                        ;
+                    next_sate     =       READ_ACK    ;
                 end
 
             end
@@ -430,6 +448,8 @@ module i2c_master_fsm (
         end
         else begin
 
+			// enable read/ write data from/to FIFO when READ_LATER_ACK state and WRITE_ACK state
+			// at frist READ_ACK state , data is always valid, do not enable read.
             if ((currrent_state == READ_LATER_ACK) && (scl_positive == 1)) begin
 				r_fifo_en   <=  1           ;
 			end
@@ -444,15 +464,12 @@ module i2c_master_fsm (
 				w_fifo_en	<=	0	;
 			end
 
+			// count posedge of clock core in IDLE state
 			if (currrent_state == IDLE)
 				count_clk_core 	<=	count_clk_core + 1	;
 			else
 				count_clk_core	<=	0					;
         end
-        //  
-        //r_fifo_en   =  (currrent_state == WRITE_DATA  && count_scl_posedge == 0) ? 1 : 0    ;
-        // 
-        //w_fifo_en   =  (currrent_state == READ_DATA   && count_scl_posedge == 8) ? 1 : 0    ;
 
     end
 
