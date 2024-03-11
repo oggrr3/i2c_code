@@ -48,8 +48,11 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
 	wire  [7:0]					status							;
     wire  [7:0]                 prescale                        ;
 
-    assign      sda     =   i2c_sda_en ? i2c_sda : 1'bz     ;
-    assign      scl     =   i2c_scl_en ? i2c_scl : 1        ;
+    wire                        start_done                      ;
+    wire                        reset_done                      ;
+
+    assign      sda     =   i2c_sda_en ? i2c_sda : 1'bz         ;
+    assign      scl     =   i2c_scl_en ? i2c_scl : 1         ;
 
     //pullup (sda)    ;
     //pullup (scl)    ;
@@ -101,7 +104,9 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
     	.receive_data_en_o  (receive_data_en    )      ,   // enable receive data from sda
     	.count_bit_o        (count_bit          )      ,   // count bit data from 7 down to 0
     	.i2c_sda_en_o       (i2c_sda_en         )      ,   // allow impact to sda
-    	.i2c_scl_en_o       (i2c_scl_en         )          // allow impact to scl
+    	.i2c_scl_en_o       (i2c_scl_en         )      ,   // allow impact to scl
+        .start_done_o       (start_done         )      ,
+        .reset_done_o       (reset_done         )
     );
 
 
@@ -110,6 +115,8 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
         .data_i               (data_to_sda      )         ,   // data from fifo buffer
         .addr_i               (slave_address    )         ,   // address of slave
         .count_bit_i          (count_bit        )         ,   // sda input
+        .i2c_core_clk_i       (i2c_core_clk_i   )         ,
+        .reset_ni             (reset_n          )         ,
         .i2c_sda_i            (sda              )         ,   // sda line
 
         .sda_low_en_i         (sda_low_en       )         ,   // control sda signal from FSM, when 1 sda = 0
@@ -153,6 +160,8 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
         .reg_transmit_o     (data_from_apb  )         ,
         .reg_slave_address_o(slave_address  )         ,
         .reg_command_o      (command        )         ,
-        .reg_prescale_o     (prescale       )    
+        .reg_prescale_o     (prescale       )         ,
+        .start_done_i       (start_done     )         ,
+        .reset_done_i       (reset_done     )
     );
 endmodule

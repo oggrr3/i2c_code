@@ -137,7 +137,7 @@ module i2c_top_tb ();
         penable_i       =       0           ;
 		pwrite_i		=		1			;
         paddr_i         =       8'b0000_0101 ;	// addr [5:0] = 5 , prescale_reg
-		pwdata_i        =       6			 ;	// 6
+		pwdata_i        =       8			 ;	// 6
 		#4;
 		penable_i		=		1			;
 		#4;
@@ -181,7 +181,7 @@ module i2c_top_tb ();
 		en_tb 				= 	1	;	
 		sda_slave_en_tb 	=	1	;
 		sda_slave_tb        =   0   ;
-		#120;
+		#160;
 		en_tb 				= 	0	;	
 		sda_slave_en_tb 	=	0	;
 		end

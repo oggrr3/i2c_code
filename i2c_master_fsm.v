@@ -17,9 +17,11 @@ module i2c_master_fsm (
     output	    reg             write_data_en_o     ,   // enable write data on sda
     output	    reg             write_addr_en_o     ,   // enable write address of slave on sda
     output	    reg             receive_data_en_o   ,   // enable receive data from sda
-    output      reg     [3:0]   count_bit_o         ,   // count bit data from 7 down to 0
+    output              [3:0]   count_bit_o         ,   // count bit data from 7 down to 0
     output	    reg             i2c_sda_en_o        ,   // allow impact to sda
-    output	    reg             i2c_scl_en_o            // allow impact to scl 
+    output	    reg             i2c_scl_en_o        ,   // allow impact to scl 
+    output                      start_done_o        ,   // state-start done
+    output                      reset_done_o            
 );
 
     // State
@@ -41,36 +43,43 @@ module i2c_master_fsm (
     reg     [3:0]       next_sate                   ;
 
     // Declare count value
-    reg     [2:0]       count_clk_core     =    0   ;
-    reg                 confirm            =    0   ;   // when i2c_scl_i from 1 down to 0, confirm = 1 
-    reg     [3:0]       count_scl_posedge  =    0   ;
+    //reg     [2:0]       count_clk_core              ;
+    reg                 confirm                     ;   // when i2c_scl_i from 1 down to 0, confirm = 1 
+    reg     [3:0]       count_scl_posedge           ;
+    reg     [3:0]       count_scl_posedge_temp      ;
+    reg     [3:0]       count_bit                   ;
+	reg		read_ack_to_read_done	                ;
+	reg		read_ack_to_write_done	                ;
+    reg     scl_later		                        ;
+    wire    scl_positive	                        ;
+	wire	scl_negative	                        ;
 
-	reg		wait_cpu_to_continue	;
-	reg		read_ack_to_read_done	;
-	reg		read_ack_to_write_done	;
-    reg     scl_later		;
-    wire    scl_positive	;
-	wire	scl_negative	;
 
     // Declare register of ouput
-    reg                 w_fifo_en                       ;
-    reg                 r_fifo_en                       ;
+    reg                 w_fifo_en                               ;
+    reg                 r_fifo_en                               ;
+    reg                 start_done                              ;
+    reg                 reset_done                              ;
 
-    assign              w_fifo_en_o     =   w_fifo_en   ;
-    assign              r_fifo_en_o     =   r_fifo_en   ;
+    assign              count_bit_o         =   count_bit       ;
+    assign              w_fifo_en_o         =   w_fifo_en       ;
+    assign              r_fifo_en_o         =   r_fifo_en       ;
+    assign              start_done_o        =   start_done      ;
+    assign              reset_done_o        =   reset_done      ;
 
     // Current State register logic
     always @ (posedge i2c_core_clk_i,   negedge reset_ni) begin
         if (~reset_ni) begin
-            currrent_state       	<=      IDLE        ;
-			read_ack_to_read_done	<=		0   		;  
-			read_ack_to_write_done	<=		0			;
-			wait_cpu_to_continue	<=		0			;       
+
+            currrent_state      <=  IDLE        ;
+            reset_done          <=  1           ;
+
         end
 
         else begin
 
-            currrent_state  	<=  next_sate       ;
+            currrent_state  	<=  next_sate   ;
+            reset_done          <=  0           ;
 
         end
 
@@ -82,8 +91,8 @@ module i2c_master_fsm (
         case (currrent_state)
 
             IDLE    :   begin
-
-                if (enable_i && (~wait_cpu_to_continue) ) begin
+                
+                if (enable_i ) begin
                     next_sate   =   START      ;
                 end
                 else begin
@@ -94,11 +103,17 @@ module i2c_master_fsm (
 
 
             START   :   begin
-				if (i2c_scl_i == 0) begin
+
+				if (i2c_scl_i == 0) begin                           //  Wait for scl low, and then to next sate
+
                 	next_sate           =   ADDRESS             ;
+
                 end
+
                 else begin
+
                     next_sate           =   START               ;
+
                 end
 
             end
@@ -119,32 +134,23 @@ module i2c_master_fsm (
 
             READ_ACK    :   begin
 
-                // Wait for scl line is high and then read ack signal from slave
+				// When have an ACK or NACK, wait for scl is negedge and then to next state
+                if ((scl_negative == 1) && (read_ack_to_read_done == 0 && read_ack_to_write_done == 0)) begin
 
-                if  (scl_positive == 1) begin
-                    if		(i2c_sda_i == 0 && rw_i == 1 && full_i == 0) begin
-                        read_ack_to_read_done	=	1                       ;
-                    end 
-
-                    else if (i2c_sda_i == 0 && rw_i == 0 && empty_i == 0) begin
-                        read_ack_to_write_done	=	1                      ;
-                    end
-
-                    else begin
-                        next_sate       =       STOP                            ;
-                    end
+                    next_sate   =   STOP    ;
 
                 end
 
-				// Had an ACK, wait for scl is negedge and then to next state
 				else if ((scl_negative == 1) && (read_ack_to_read_done == 1)) begin
+
 					next_sate       		=   READ_DATA	;
-					read_ack_to_read_done 	= 	0			;
+
 				end
 
 				else if ((scl_negative == 1) && (read_ack_to_write_done == 1)) begin
+
 					next_sate       		=    WRITE_DATA   ;
-					read_ack_to_write_done 	= 	 0			  ;
+
 				end				
 
                 else begin
@@ -154,47 +160,49 @@ module i2c_master_fsm (
             end
 
             WRITE_DATA  :   begin
+
                 //When the 8 bits data have been transmitted, 
                 //wait for the scl line is high and then move to the next state
                 if (count_scl_posedge == 8 && scl_negative == 1) begin
-                    next_sate   =   READ_LATER_ACK      ;
+
+                    next_sate   =   READ_LATER_ACK              ;
+
                 end 
+
                 else begin
-                    next_sate   =   WRITE_DATA          ;
+
+                    next_sate   =   WRITE_DATA                  ;
+
                 end
 
             end
 
             READ_LATER_ACK  :   begin
 
-                // Wait for scl line is high and then read ack
-			
-                if (scl_positive) begin
+                if (repeat_start_i) begin
 
-                    if (repeat_start_i) begin
-                        next_sate       =      REPEAT_START     ; 
-                    end 
-                 	else if (i2c_sda_i == 0 && empty_i == 0) begin
-                        read_ack_to_write_done	=	1			;
-                    end
-                    else begin
-                        next_sate       =       STOP            ;
-                    end
+                    next_sate   =   REPEAT_START                ;
 
                 end
 
-				else if (scl_negative && empty_i == 1) begin
-					next_sate	=	STOP	;
+				else if ((scl_negative == 1) && ((empty_i == 1) || (read_ack_to_write_done == 0))) begin
+
+					next_sate	=	STOP	                    ;
+
 				end
 
 				else if ((scl_negative) && (read_ack_to_write_done == 1)) begin		// wait for scl low and then to next state
+
 					next_sate				=	WRITE_DATA		;
-					read_ack_to_write_done	=	0				;
+
 				end
 		
                 else begin
+
                     next_sate           =       READ_LATER_ACK  ;
+
                 end
+
             end
 
             READ_DATA   :   begin
@@ -244,7 +252,6 @@ module i2c_master_fsm (
 
 				if (scl_positive) begin
                 	next_sate           	=       IDLE            ;
-					wait_cpu_to_continue	=		1				;
 				end
 				else begin
 					next_sate				=		STOP			;
@@ -258,12 +265,13 @@ module i2c_master_fsm (
 
     end
 
-    // Output combinational logic
+    // Output and internal signal combinational logic
     always @(*) begin
         
         case (currrent_state)
             
             IDLE            :   begin
+                //  Output
                 clk_en_o            =       0           ;
                 sda_low_en_o        =       0           ;
                 write_data_en_o     =       0           ;
@@ -271,6 +279,11 @@ module i2c_master_fsm (
                 receive_data_en_o   =       0           ;
                 i2c_sda_en_o        =       0           ;
                 i2c_scl_en_o        =       0           ;
+
+                //  Internal signal
+                start_done              =   0           ;
+                read_ack_to_read_done	=	0           ; 
+                read_ack_to_write_done	=	0           ;
             end
 
             //-------------------------------------------------------
@@ -282,6 +295,11 @@ module i2c_master_fsm (
                 receive_data_en_o   =       0           ;
                 i2c_sda_en_o        =       1           ;
                 i2c_scl_en_o        =       1           ;
+                
+                //  Internal signal
+                start_done              =   1           ;
+                read_ack_to_read_done	=	0           ; 
+                read_ack_to_write_done	=	0           ;
             end
 
             //-------------------------------------------------------
@@ -299,10 +317,16 @@ module i2c_master_fsm (
 
 				i2c_sda_en_o    		=       1       ;
                 i2c_scl_en_o        	=       1       ;
+                
+                //  Internal signal
+                start_done              =   1           ;
+                read_ack_to_read_done	=	0           ; 
+                read_ack_to_write_done	=	0           ;
             end
 
             //-------------------------------------------------------
             READ_ACK        :   begin
+                // Output
                 clk_en_o            =       1           ;
                 sda_low_en_o        =       0           ;
                 write_data_en_o     =       0           ;
@@ -310,6 +334,28 @@ module i2c_master_fsm (
                 receive_data_en_o   =       0           ;
                 i2c_sda_en_o        =       0           ;
                 i2c_scl_en_o        =       1           ;
+
+                //Internal signal
+                start_done              =   1           ;
+                // When scl line is high, check ack signal from slave
+                if (count_scl_posedge == 0 && i2c_sda_i == 0 && rw_i == 1 && full_i == 0) begin        
+                    read_ack_to_read_done	=	1         ; 
+                    read_ack_to_write_done	=	0         ;
+
+                end
+
+                else if (count_scl_posedge == 0 && i2c_sda_i == 0 && rw_i == 0 && empty_i == 0) begin
+
+                    read_ack_to_read_done	=	0        ;
+                    read_ack_to_write_done	=	1        ;
+
+                end
+
+                else begin
+                    read_ack_to_read_done	=	0        ;
+                    read_ack_to_write_done	=	0        ;
+                end
+
             end
 
             //-------------------------------------------------------
@@ -327,17 +373,40 @@ module i2c_master_fsm (
 
 				i2c_sda_en_o    		=       1           ;
                 i2c_scl_en_o        	=       1           ;
+                                
+                //  Internal signal
+                start_done              =   1           ;
+                read_ack_to_read_done	=	0           ; 
+                read_ack_to_write_done	=	0           ;
+                
             end
 
             //-------------------------------------------------------
             READ_LATER_ACK  :   begin
                 clk_en_o            =       1           ;
-                sda_low_en_o        =       0           ;
+                sda_low_en_o        =       1           ;
                 write_data_en_o     =       0           ;
                 write_addr_en_o     =       0           ;
                 receive_data_en_o   =       0           ;
                 i2c_sda_en_o        =       0           ;
                 i2c_scl_en_o        =       1           ;
+
+                // Internal signal
+                start_done              =   1           ;
+                // Wait for scl line is high and then check ack
+                if ((count_scl_posedge == 0) && (i2c_sda_i == 0) && (empty_i == 0) ) begin
+
+                    read_ack_to_read_done	=	0           ; 
+                    read_ack_to_write_done	=	1			;
+                end
+
+                else begin
+
+                    read_ack_to_read_done	=	0           ; 
+                    read_ack_to_write_done	=	0			;
+
+                end
+
             end
 
             //-------------------------------------------------------
@@ -355,6 +424,12 @@ module i2c_master_fsm (
 
                 i2c_sda_en_o        =       0           ;
                 i2c_scl_en_o        =       1           ;
+                                
+                //  Internal signal
+                start_done              =   1           ;
+                read_ack_to_read_done	=	0           ; 
+                read_ack_to_write_done	=	0           ;
+
             end
 
             //-------------------------------------------------------
@@ -366,6 +441,12 @@ module i2c_master_fsm (
                 receive_data_en_o   =       0           ;
                 i2c_sda_en_o        =       1           ;
                 i2c_scl_en_o        =       1           ;
+                                
+                //  Internal signal
+                start_done              =   1           ;
+                read_ack_to_read_done	=	0           ; 
+                read_ack_to_write_done	=	0           ;
+
             end
 
             //-------------------------------------------------------
@@ -377,18 +458,35 @@ module i2c_master_fsm (
                 receive_data_en_o   =       0           ;
                 i2c_sda_en_o        =       0           ; // off i2c_sda_en to pull sda upto 1
                 i2c_scl_en_o        =       1           ;
+                
+                //  Internal signal
+                start_done              =   1           ;
+                read_ack_to_read_done	=	0           ; 
+                read_ack_to_write_done	=	0           ;
 
             end
 
             //-------------------------------------------------------
             STOP            :   begin
-                clk_en_o            =       0           ;
-                sda_low_en_o        =       1           ;
+                clk_en_o            =       1           ;
+                if (i2c_sda_i == 1) begin                   //  If sda is high, we will set sda to low
+                    sda_low_en_o    =       1           ;
+                end
+                else begin
+                    sda_low_en_o    =       0           ;
+                end
+                
                 write_data_en_o     =       0           ;
                 write_addr_en_o     =       0           ;
                 receive_data_en_o   =       0           ;
                 i2c_sda_en_o        =       1           ;
                 i2c_scl_en_o        =       1           ;
+                                
+                //  Internal signal
+                start_done              =   1           ;
+                read_ack_to_read_done	=	0           ; 
+                read_ack_to_write_done	=	0           ;
+
             end
 
             //-------------------------------------------------------
@@ -400,6 +498,12 @@ module i2c_master_fsm (
                 receive_data_en_o   =       0           ;
                 i2c_sda_en_o        =       0           ;
                 i2c_scl_en_o        =       0           ;
+                                
+                //  Internal signal
+                start_done              =   0           ;
+                read_ack_to_read_done	=	0           ; 
+                read_ack_to_write_done	=	0           ;
+
             end
         endcase
 
@@ -422,31 +526,18 @@ module i2c_master_fsm (
 
     // end detect positive scl
     //------------------------------------------------------------------------
-
-
-    // Handle count_bit_o to transfer to data_path
-    always @(*) begin
-
-        if (currrent_state  ==  ADDRESS  || currrent_state  ==  WRITE_DATA) begin
-            // Each postitive of scl, if count_bit != 0 , reduce count_bit by 1
-            count_bit_o     =   (count_bit_o != 0 && scl_positive) ? (count_bit_o - 1) : count_bit_o  ;
-        end
-
-        else if (currrent_state == READ_DATA) begin
-            // Each negative of scl, if count_bit != 0 , reduce count_bit by 1
-            count_bit_o     =   (count_bit_o != 0 && scl_negative) ? (count_bit_o - 1) : count_bit_o   ;
-        end
-
-        else begin
-            count_bit_o         =   7           ;
-        end
-
-    end
-
+    
     // Handle count_scl_posedge
     always @(*) begin
         if (currrent_state  ==  ADDRESS  || currrent_state == READ_DATA  ||  currrent_state  ==  WRITE_DATA) begin
-            count_scl_posedge   =   scl_positive ? (count_scl_posedge + 1) : count_scl_posedge  ;
+            //count_scl_posedge   =   scl_positive ? (count_scl_posedge + 1) : count_scl_posedge  ;
+            if (scl_positive) begin
+                count_scl_posedge   =   count_scl_posedge   +   1   ;
+            end
+            else begin
+                count_scl_posedge   =   count_scl_posedge_temp      ;
+            end
+
         end
         else begin
             count_scl_posedge   =   0   ;
@@ -457,33 +548,49 @@ module i2c_master_fsm (
     // Handle read/write-enbale signal to FIFO and count posedge of clock core
     always @ (posedge i2c_core_clk_i	, negedge reset_ni) begin
         if (~reset_ni) begin
-            r_fifo_en   <=  0              	;
-			w_fifo_en	<=	0				;
-			count_clk_core	<=  0			;
+            r_fifo_en               <=  0              	;
+			w_fifo_en	            <=	0				;
+            count_scl_posedge_temp  <=  0               ;
+            count_bit               <=  0               ;
+            
         end
         else begin
-
+            count_scl_posedge_temp  <=  count_scl_posedge   ;
 			// enable read/ write data from/to FIFO when READ_LATER_ACK state and WRITE_ACK state
 			// at frist READ_ACK state , data is always valid, do not enable read.
             if ((currrent_state == READ_LATER_ACK) && (scl_positive == 1)) begin
 				r_fifo_en   <=  1           ;
 			end
 			else begin
-				r_fifo_en	<=	0	;
+				r_fifo_en	<=	0	        ;
 			end
 
 			if ((currrent_state == WRITE_ACK) && (scl_positive == 1)) begin
 				w_fifo_en   <=  1           ;
 			end
 			else begin
-				w_fifo_en	<=	0	;
+				w_fifo_en	<=	0	        ;
 			end
 
-			// count posedge of clock core in IDLE state
-			if (currrent_state == IDLE)
-				count_clk_core 	<=	count_clk_core + 1	;
-			else
-				count_clk_core	<=	0					;
+            // Handle count_bit to transfer to datapath
+            if (currrent_state  ==  ADDRESS  || currrent_state  ==  WRITE_DATA) begin
+
+            // Each postitive of scl, if count_bit != 0 , reduce count_bit by 1
+                count_bit     <=   (count_bit_o != 0 && scl_positive) ? (count_bit - 1) : count_bit  ;
+
+            end
+
+            else if (currrent_state == READ_DATA) begin
+
+                // Each negative of scl, if count_bit != 0 , reduce count_bit by 1
+                count_bit     <=   (count_bit_o != 0 && scl_negative) ? (count_bit - 1) : count_bit   ;
+
+            end
+
+            else begin
+                count_bit     <=   7           ;
+            end
+
         end
 
     end

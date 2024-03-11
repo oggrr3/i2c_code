@@ -5,7 +5,7 @@ module fifo_mem # ( parameter DATASIZE = 8    , // Memory data width
     input	       [ADDRSIZE - 1 : 0]   waddr_i     , // Address of FIFO memory where data written
     input	       [ADDRSIZE - 1 : 0]   raddr_i     , // Address of FIFO memory where data read
     input	                            wclk_i      , // Clock of write domain
-    input                               rst_ni      , // Reset signal is active LOW
+    //input                               rst_ni      , // Reset signal is active LOW
     input	                            wclken_i    , // Write clock enable
     input	                            wfull_i     , // Write full , memory full can not write
     output	      [DATASIZE - 1 : 0]    rdata_o       // DATA read from FIFO buffer   
@@ -27,20 +27,11 @@ module fifo_mem # ( parameter DATASIZE = 8    , // Memory data width
 	end
     
     //Write data to FIFO buffer
-    always @ (posedge wclk_i,   negedge rst_ni  )
+    always @ (posedge wclk_i )
     begin
         
-        if (~rst_ni) begin
-            //mem             <=  0           ;
-            rdata           <=  0           ;
-        end
-
-        else begin
-
             if (wclken_i && !wfull_i)
-                mem[waddr_i]    <=   wdata_i     ;
-
-        end    
+                mem[waddr_i]    <=   wdata_i     ; 
 
     end
     

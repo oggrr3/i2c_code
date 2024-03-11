@@ -36,7 +36,6 @@ module fifo_toplevel	# (	parameter	DATASIZE	=	8,
     	.waddr_i  (waddr	)	, // Address of FIFO memory where data written
     	.raddr_i  (raddr	)	, // Address of FIFO memory where data read
     	.wclk_i   (wclk_i	)	, // Clock of write domain
-		.rst_ni	  (rst_ni	)	, // 
     	.wclken_i (winc_i	)	, // Write clock enable
     	.wfull_i  (wfull_o	)	, // Write full , memory full can not write
     	.rdata_o  (rdata_o	)	  // DATA read from FIFO buffer  

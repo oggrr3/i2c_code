@@ -10,6 +10,8 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
     input   [DATA_WIDTH - 1 : 0]        pwdata_i            ,   //  data write
     input   [7:0]                       to_status_reg_i     ,   //  status of FIFO memory
     input   [7:0]                       data_fifo_i         ,   //  data from FIFO memory
+    input                               start_done_i        ,   //  i2c-core done start, let turn off enable
+    input                               reset_done_i        ,   //  i2c-core done reset, let turn off reset
 
     output  [DATA_WIDTH - 1 : 0]        prdata_o            ,   //  data read
     output                              pready_o            ,   //  ready to receive data
@@ -52,13 +54,10 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
 
         else begin
 			
-			// if off reset APB then off reset i2c core
-			reg_command[7]	<=	1	;
-
             // pwrite HIGH and psel HIGHT, this is write cycle
             if (penable_i == 1 && psel_i == 1 && pwrite_i == 1) begin
                 
-                case (paddr_i[ADDR_WIDTH - 3 : 0])
+                case (paddr_i)
 
                     0       :	begin						// When data into reg_transmit, enable write data to TX-FIFO
 						reg_transmit    <=  pwdata_i    ;
@@ -66,7 +65,7 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
 					end
 
                     3       :       reg_slave_address       <=  pwdata_i    	;
-                    4       :       reg_command[6:0]        <=  pwdata_i[6:0]   ;
+                    4       :       reg_command             <=  pwdata_i        ;
                     5       :       reg_prescale            <=  pwdata_i    	; 
   
                     default :	begin
@@ -76,6 +75,13 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
 
                 endcase
             end
+            else if (reset_done_i) begin
+                reg_command[7]  <=  1   ;
+            end
+            else if (start_done_i) begin
+                reg_command[6]  <=  0   ;
+            end
+
 
 			if (reg_command[3] == 1) begin
 				reg_command[3]	<=	0	; 
@@ -84,7 +90,7 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
             // pwrite Low and psel HIGHT, this is read cycle
             if ( (psel_i == 1) && (pwrite_i == 0) && (penable_i == 0) )begin
                 
-                case (paddr_i[ADDR_WIDTH - 3 : 0])
+                case (paddr_i)
 
                     0       :       prdata            <=  reg_transmit      ;
 
