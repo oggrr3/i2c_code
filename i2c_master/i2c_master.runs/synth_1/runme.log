@@ -14,9 +14,9 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020-clg484'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020-clg484'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 4612 
+INFO: Helper process launched with PID 12708 
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 350.465 ; gain = 80.352
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 350.410 ; gain = 80.273
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'i2c_top' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:1]
 	Parameter DATA_SIZE bound to: 8 - type: integer 
@@ -77,17 +77,17 @@ WARNING: [Synth 8-3331] design data_fifo_mem has unconnected port command_i[4]
 WARNING: [Synth 8-3331] design data_fifo_mem has unconnected port command_i[2]
 WARNING: [Synth 8-3331] design data_fifo_mem has unconnected port command_i[1]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 389.793 ; gain = 119.680
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 389.738 ; gain = 119.602
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 389.793 ; gain = 119.680
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 389.738 ; gain = 119.602
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 389.793 ; gain = 119.680
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 389.738 ; gain = 119.602
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v:20]
@@ -128,7 +128,7 @@ WARNING: [Synth 8-6014] Unused sequential element currrent_state_reg was removed
 INFO: [Synth 8-3354] encoded FSM with state register 'currrent_state_reg' using encoding 'sequential' in module 'i2c_master_fsm'
 WARNING: [Synth 8-6014] Unused sequential element currrent_state_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:74]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 423.457 ; gain = 153.344
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 428.473 ; gain = 158.336
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -163,7 +163,7 @@ Detailed RTL Component Info :
 	   5 Input      8 Bit        Muxes := 1     
 	   2 Input      4 Bit        Muxes := 5     
 	  27 Input      4 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 16    
+	   2 Input      1 Bit        Muxes := 17    
 	  10 Input      1 Bit        Muxes := 8     
 	   5 Input      1 Bit        Muxes := 3     
 	   7 Input      1 Bit        Muxes := 2     
@@ -174,6 +174,10 @@ Finished RTL Component Statistics
 Start RTL Hierarchical Component Statistics 
 ---------------------------------------------------------------------------------
 Hierarchical RTL Component report 
+Module i2c_top 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
 Module clock_generator 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -273,7 +277,7 @@ WARNING: [Synth 8-6014] Unused sequential element data_fifo_mem/RX_fifo/wptr_ful
 WARNING: [Synth 8-6014] Unused sequential element clock_generator/counter_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v:20]
 WARNING: [Synth 8-6014] Unused sequential element i2c_master_fsm/count_bit_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:64]
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 564.387 ; gain = 294.273
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 565.332 ; gain = 295.195
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -302,7 +306,7 @@ No constraint files found.
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 564.387 ; gain = 294.273
+Finished Timing Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 565.332 ; gain = 295.195
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -318,7 +322,7 @@ INFO: [Synth 8-3886] merging instance 'data_fifo_mem/RX_fifo/wptr_full1/wptr_reg
 INFO: [Synth 8-3886] merging instance 'data_fifo_mem/TX_fifo/rptr_empty1/rptr_reg[4]' (FDC) to 'data_fifo_mem/TX_fifo/rptr_empty1/rbin_reg[4]'
 INFO: [Synth 8-3886] merging instance 'data_fifo_mem/TX_fifo/wptr_full1/wptr_reg[4]' (FDC) to 'data_fifo_mem/TX_fifo/wptr_full1/wbin_reg[4]'
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 565.512 ; gain = 295.398
+Finished Technology Mapping : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 565.332 ; gain = 295.195
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -342,7 +346,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 565.512 ; gain = 295.398
+Finished IO Insertion : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 565.332 ; gain = 295.195
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -355,7 +359,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 565.512 ; gain = 295.398
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 565.332 ; gain = 295.195
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -367,25 +371,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 565.512 ; gain = 295.398
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 565.332 ; gain = 295.195
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 565.512 ; gain = 295.398
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 565.332 ; gain = 295.195
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 565.512 ; gain = 295.398
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 565.332 ; gain = 295.195
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 565.512 ; gain = 295.398
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 565.332 ; gain = 295.195
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -403,20 +407,20 @@ Report Cell Usage:
 +------+-------+------+
 |1     |BUFG   |     2|
 |2     |CARRY4 |     3|
-|3     |LUT1   |     4|
-|4     |LUT2   |    20|
+|3     |LUT1   |     3|
+|4     |LUT2   |    21|
 |5     |LUT3   |    27|
 |6     |LUT4   |    27|
-|7     |LUT5   |    55|
-|8     |LUT6   |   104|
+|7     |LUT5   |    58|
+|8     |LUT6   |   101|
 |9     |MUXF7  |     2|
 |10    |MUXF8  |     1|
 |11    |RAM32M |     4|
 |12    |FDCE   |   151|
 |13    |FDPE   |     7|
 |14    |IBUF   |    22|
-|15    |IOBUF  |     2|
-|16    |OBUF   |     9|
+|15    |IOBUF  |     1|
+|16    |OBUF   |    10|
 +------+-------+------+
 
 Report Instance Areas: 
@@ -425,11 +429,11 @@ Report Instance Areas:
 +------+------------------------+----------------------+------+
 |1     |top                     |                      |   440|
 |2     |  apb_slave_interface   |apb_slave_interface   |   105|
-|3     |  clock_generator       |clock_generator       |    23|
-|4     |  data_fifo_mem         |data_fifo_mem         |   176|
-|5     |    RX_fifo             |fifo_toplevel         |    87|
+|3     |  clock_generator       |clock_generator       |    37|
+|4     |  data_fifo_mem         |data_fifo_mem         |   175|
+|5     |    RX_fifo             |fifo_toplevel         |    86|
 |6     |      fifo_mem1         |fifo_mem_1            |     2|
-|7     |      rptr_empty1       |rptr_empty_2          |    32|
+|7     |      rptr_empty1       |rptr_empty_2          |    31|
 |8     |      sync_r2w1         |sync_r2w_3            |    10|
 |9     |      sync_w2r1         |sync_w2r_4            |    10|
 |10    |      wptr_full1        |wptr_full_5           |    33|
@@ -440,27 +444,27 @@ Report Instance Areas:
 |15    |      sync_w2r1         |sync_w2r              |    10|
 |16    |      wptr_full1        |wptr_full             |    32|
 |17    |  data_path_i2c_to_core |data_path_i2c_to_core |    17|
-|18    |  i2c_master_fsm        |i2c_master_fsm        |    84|
+|18    |  i2c_master_fsm        |i2c_master_fsm        |    71|
 +------+------------------------+----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 565.512 ; gain = 295.398
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 565.332 ; gain = 295.195
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 19 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 565.512 ; gain = 295.398
-Synthesis Optimization Complete : Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 565.512 ; gain = 295.398
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 565.332 ; gain = 295.195
+Synthesis Optimization Complete : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 565.332 ; gain = 295.195
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 31 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 30 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 6 instances were transformed.
-  IOBUF => IOBUF (IBUF, OBUFT): 2 instances
+  A total of 5 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instances
   RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 4 instances
 
 53 Infos, 19 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 628.047 ; gain = 365.699
+synth_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 628.984 ; gain = 366.605
 INFO: [Common 17-1381] The checkpoint 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.runs/synth_1/i2c_top.dcp' has been generated.
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 628.047 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Mon Mar 11 16:51:20 2024...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 628.984 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Mon Mar 11 17:46:44 2024...
