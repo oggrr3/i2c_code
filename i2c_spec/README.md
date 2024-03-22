@@ -1,27 +1,3 @@
-# i2c
- 1.
- # Quato
- >đât là vid udj
- >nằm trong khung
-
- dùng dấu \`
- đây là `vis dụ`
- ## tạo bảng
- canh lề cho bảng bằng dấu :
-
- |STT|cột 1|cootj2 |
- | :-----| :--------| :-----:|
- |1|đây là ô 1|đây là ô 2|
-
-
- ## chèn link
- có thể chèn link bằng dấu ngoặc vuông là tròn
-[Link](http://google.com)
-
-## hình ảnh
-Để chèn ảnh trong vscode cần để ảnh cùng folder với file.md này.
-Cấu trúc:
-![alt text](image.png)
 
 
 # I. I2C
@@ -41,3 +17,43 @@ Các điều kiện hoạt động:
 
 ![alt text](image-4.png)
 
+## 3. Registermap
+![register map](image-5.png)
+
+## 4. FSM
+![alt text](image-6.png)
+![alt text](image-7.png)
+![alt text](image-8.png)
+
+## 5. User guide
+`Step 1: Reset APB and config`
+
+    1.1. reset APB
+	1.2. APB write data to FIFO
+	1.3. Write slave’s address, bit 0 is 0 to write-mode
+	1.4. Write prescale
+	1.5. Write command to enable i2c core
+![alt text](image-9.png)
+
+`Step 2 : Test write data`
+
+    2.1. You can run until the FIFO is empty, then i2c will STOP.
+![alt text](image-10.png)
+
+`Step 3: After STOP condition, you have to config command to enable again `
+
+	3.1. Write slave’s address, bit 0 is 1 to read-mode
+	3.2. Write prescale if changed
+	3.3. Write command
+
+![alt text](image-11.png)
+
+`Step 4: Slave ACK and then write data to sda`
+
+    4.1. You can run until the FIFO is full, then i2c will STOP
+![alt text](image-12.png)
+
+`Step 5: CPU read data from FIFO through APB interface`
+
+    5.1. You need to config the APB at read-mode
+![alt text](image-13.png)
