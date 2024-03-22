@@ -1,0 +1,17 @@
+#-----------------------------------------------------------
+# Vivado v2017.2 (64-bit)
+# SW Build 1909853 on Thu Jun 15 18:39:09 MDT 2017
+# IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+# Start of session at: Fri Mar 22 13:39:32 2024
+# Process ID: 15800
+# Current directory: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14288 C:\Users\USER\Desktop\git_code\i2c_folder\i2c_code\i2c_master\i2c_master.xpr
+# Log file: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/vivado.log
+# Journal file: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.xpr
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1

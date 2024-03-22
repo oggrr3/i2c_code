@@ -171,3 +171,4 @@ selectCodeEditor("data_fifo_mem.v", 236, 402, false, false, false, false, true);
 selectCodeEditor("data_fifo_mem.v", 240, 419); // bI:J (JPanel:JComponent, cg:JFrame)
 selectCodeEditor("data_fifo_mem.v", 240, 419, false, false, false, false, true); // bI:J (JPanel:JComponent, cg:JFrame) - Double Click
 // [GUI Memory]: 98 MB (+332kb) [00:25:57]
+// HMemoryUtils.trashcanNow. Engine heap size: 694 MB. GUI used memory: 44 MB. Current time: 3/22/24 2:09:58 PM ICT
