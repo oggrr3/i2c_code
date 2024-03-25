@@ -1,6 +1,6 @@
 Vivado Simulator 2017.2
 Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot i2c_top_tb_behav xil_defaultlib.i2c_top_tb xil_defaultlib.glbl -log elaborate.log 
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -20,6 +20,7 @@ Compiling module xil_defaultlib.fifo_toplevel
 Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
 Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
 Compiling module xil_defaultlib.i2c_top
-Compiling module xil_defaultlib.i2c_top_tb
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot i2c_top_tb_behav
+Built simulation snapshot top_tb_behav

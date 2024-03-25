@@ -2,10 +2,10 @@
 # Vivado v2017.2 (64-bit)
 # SW Build 1909853 on Thu Jun 15 18:39:09 MDT 2017
 # IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
-# Start of session at: Fri Mar 22 13:39:32 2024
-# Process ID: 15800
+# Start of session at: Mon Mar 25 14:25:48 2024
+# Process ID: 13148
 # Current directory: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14288 C:\Users\USER\Desktop\git_code\i2c_folder\i2c_code\i2c_master\i2c_master.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5332 C:\Users\USER\Desktop\git_code\i2c_folder\i2c_code\i2c_master\i2c_master.xpr
 # Log file: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/vivado.log
 # Journal file: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master\vivado.jou
 #-----------------------------------------------------------
@@ -16,9 +16,2122 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.2/data/ip'.
-open_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:06 . Memory (MB): peak = 892.789 ; gain = 146.461
 update_compile_order -fileset sources_1
+file mkdir C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v w ]
+add_files -fileset sim_1 C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v
+update_compile_order -fileset sim_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v w ]
+add_files -fileset sim_1 C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v
+update_compile_order -fileset sim_1
+set_property used_in_synthesis false [get_files  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v]
+set_property used_in_implementation false [get_files  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v]
+set_property used_in_simulation false [get_files  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top_tb.v]
+set_property used_in_implementation false [get_files  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top_tb.v]
+set_property used_in_synthesis false [get_files  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top_tb.v]
+update_compile_order -fileset sim_1
+launch_simulation
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+
+****** Webtalk v2017.2 (64-bit)
+  **** SW Build 1909853 on Thu Jun 15 18:39:09 MDT 2017
+  **** IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/xsim.dir/top_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Mon Mar 25 14:43:54 2024...
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "top_tb_behav -key {Behavioral:sim_1:Functional:top_tb} -tclbatch {top_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+source top_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'top_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 924.578 ; gain = 0.000
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; start condition detected at               170000
+relaunch_sim: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 935.512 ; gain = 0.000
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+relaunch_sim: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 935.512 ; gain = 0.000
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run all
+DEBUG i2c_slave; stop condition detected at              1790000
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run all
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; stop condition detected at              1790000
+add_wave {{/top_tb/i2c_master_top/i2c_master_fsm/currrent_state}} 
+add_wave {{/top_tb/i2c_master_top/i2c_master_fsm/i2c_sda_i}} 
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run all
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; stop condition detected at              1790000
+add_wave {{/top_tb/i2c_master_top/i2c_master_fsm/read_ack_to_read_done}} {{/top_tb/i2c_master_top/i2c_master_fsm/read_ack_to_write_done}} 
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; stop condition detected at              1790000
+run 10 us
+add_wave {{/top_tb/i2c_master_top/i2c_master_fsm/count_scl_posedge}} 
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; stop condition detected at              1790000
+run 10 us
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; stop condition detected at              1790000
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; address received. adr=8a, ack=1
+DEBUG i2c_slave; stop condition detected at              3230000
+add_wave {{/top_tb/i2c_master_top/data_fifo_mem/TX_fifo/fifo_mem1/mem}} 
+add_wave {{/top_tb/i2c_master_top/data_fifo_mem/RX_fifo/fifo_mem1/mem}} 
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; address received. adr=8a, ack=1
+DEBUG i2c_slave; stop condition detected at              3230000
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+WARNING: [VRFC 10-986] literal value truncated to fit in 2 bits [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v:62]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; address received. adr=00, ack=1
+DEBUG i2c_slave; data block write 2b to address 00
+DEBUG i2c_slave; data block write c3 to address 01
+DEBUG i2c_slave; stop condition detected at              6110000
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+WARNING: [VRFC 10-986] literal value truncated to fit in 2 bits [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v:62]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; address received. adr=00, ack=1
+DEBUG i2c_slave; data block write 2b to address 00
+DEBUG i2c_slave; data block write c3 to address 01
+DEBUG i2c_slave; data block write 43 to address 02
+DEBUG i2c_slave; stop condition detected at              7550000
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+WARNING: [VRFC 10-986] literal value truncated to fit in 2 bits [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v:62]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+relaunch_sim: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 957.355 ; gain = 0.000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; stop condition detected at              2182000
+DEBUG i2c_slave; start condition detected at              2310000
+DEBUG i2c_slave; stop condition detected at              3530000
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+WARNING: [VRFC 10-986] literal value truncated to fit in 2 bits [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v:62]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; address received. adr=00, ack=1
+DEBUG i2c_slave; data block write 2b to address 00
+DEBUG i2c_slave; data block write c3 to address 01
+DEBUG i2c_slave; data block write 43 to address 02
+DEBUG i2c_slave; stop condition detected at              7550000
+DEBUG i2c_slave; start condition detected at             10310000
+run 10 us
+DEBUG i2c_slave; stop condition detected at             11530000
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+WARNING: [VRFC 10-986] literal value truncated to fit in 2 bits [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v:62]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run all
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; address received. adr=00, ack=1
+DEBUG i2c_slave; data block write 2b to address 00
+DEBUG i2c_slave; data block write c3 to address 01
+DEBUG i2c_slave; data block write 43 to address 02
+DEBUG i2c_slave; stop condition detected at              7550000
+DEBUG i2c_slave; start condition detected at             10310000
+DEBUG i2c_slave; command byte received (read) at             11332000
+DEBUG i2c_slave; data block read xx from address 03 (1)
+DEBUG i2c_slave; memcheck [0]=2b, [1]=c3, [2]=43
+DEBUG i2c_slave; data block read xx from address 04 (2)
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+WARNING: [VRFC 10-986] literal value truncated to fit in 2 bits [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v:62]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; address received. adr=00, ack=1
+DEBUG i2c_slave; data block write 2b to address 00
+DEBUG i2c_slave; data block write c3 to address 01
+DEBUG i2c_slave; data block write 43 to address 02
+DEBUG i2c_slave; stop condition detected at              7550000
+DEBUG i2c_slave; start condition detected at             10310000
+run 10 us
+DEBUG i2c_slave; command byte received (read) at             11332000
+DEBUG i2c_slave; data block read xx from address 03 (1)
+DEBUG i2c_slave; memcheck [0]=2b, [1]=c3, [2]=43
+DEBUG i2c_slave; data block read xx from address 04 (2)
+DEBUG i2c_slave; data block read xx from address 05 (2)
+DEBUG i2c_slave; data block read xx from address 06 (2)
+DEBUG i2c_slave; data block read xx from address 07 (2)
+DEBUG i2c_slave; data block read xx from address 08 (2)
+DEBUG i2c_slave; data block read xx from address 09 (2)
+DEBUG i2c_slave; data block read xx from address 0a (2)
+DEBUG i2c_slave; data block read xx from address 0b (2)
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+WARNING: [VRFC 10-986] literal value truncated to fit in 2 bits [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v:62]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; address received. adr=00, ack=1
+DEBUG i2c_slave; data block write 2b to address 00
+DEBUG i2c_slave; data block write c3 to address 01
+DEBUG i2c_slave; data block write 43 to address 02
+DEBUG i2c_slave; stop condition detected at              7550000
+DEBUG i2c_slave; start condition detected at             10310000
+run 10 us
+DEBUG i2c_slave; command byte received (read) at             11332000
+DEBUG i2c_slave; data block read xx from address 03 (1)
+DEBUG i2c_slave; memcheck [0]=2b, [1]=c3, [2]=43
+DEBUG i2c_slave; data block read xx from address 04 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read xx from address 03 (2)
+DEBUG i2c_slave; data block read xx from address 04 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+run 10 us
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read xx from address 03 (2)
+DEBUG i2c_slave; data block read xx from address 04 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read xx from address 03 (2)
+DEBUG i2c_slave; data block read xx from address 04 (2)
+run 10 us
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+WARNING: [VRFC 10-986] literal value truncated to fit in 2 bits [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v:62]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; address received. adr=00, ack=1
+DEBUG i2c_slave; data block write 2b to address 00
+DEBUG i2c_slave; data block write c3 to address 01
+DEBUG i2c_slave; data block write 43 to address 02
+DEBUG i2c_slave; stop condition detected at              7550000
+DEBUG i2c_slave; start condition detected at             10310000
+run 10 us
+DEBUG i2c_slave; command byte received (read) at             11332000
+DEBUG i2c_slave; data block read xx from address 03 (1)
+DEBUG i2c_slave; memcheck [0]=2b, [1]=c3, [2]=43
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read xx from address 03 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read xx from address 03 (2)
+run 10 us
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read xx from address 03 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read xx from address 03 (2)
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+WARNING: [VRFC 10-986] literal value truncated to fit in 2 bits [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v:62]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run 10 us
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; address received. adr=00, ack=1
+DEBUG i2c_slave; data block write 2b to address 00
+DEBUG i2c_slave; data block write c3 to address 01
+DEBUG i2c_slave; data block write 43 to address 02
+DEBUG i2c_slave; stop condition detected at              7550000
+DEBUG i2c_slave; start condition detected at             10310000
+run 10 us
+DEBUG i2c_slave; command byte received (read) at             11332000
+DEBUG i2c_slave; data block read 2b from address 00 (1)
+DEBUG i2c_slave; memcheck [0]=2b, [1]=c3, [2]=43
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+run 10 us
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; stop condition detected at             28810000
+add_wave {{/top_tb/i2c_slave/mem}} 
+relaunch_sim
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/apb_slave_interface.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_slave_interface
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_fifo_mem
+INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:31]
+INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_fifo_mem.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/data_path_i2c_to_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_toplevel
+INFO: [VRFC 10-2458] undeclared symbol rst_ni, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/fifo_toplevel.v:31]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_slave_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_top
+INFO: [VRFC 10-2458] undeclared symbol tx_empty, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:67]
+INFO: [VRFC 10-2458] undeclared symbol rx_full, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:68]
+INFO: [VRFC 10-2458] undeclared symbol i2c_sda_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:71]
+INFO: [VRFC 10-2458] undeclared symbol i2c_scl_o, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:72]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_en, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:98]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rptr_empty
+INFO: [VRFC 10-2458] undeclared symbol rempty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:62]
+INFO: [VRFC 10-2458] undeclared symbol r_almost_empty_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/rptr_empty.v:63]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_r2w.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_r2w
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/sync_w2r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync_w2r
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wptr_full
+INFO: [VRFC 10-2458] undeclared symbol wfull_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:71]
+INFO: [VRFC 10-2458] undeclared symbol w_almost_full_val, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/wptr_full.v:74]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+WARNING: [VRFC 10-986] literal value truncated to fit in 2 bits [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v:62]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav'
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto ef489668583044ba9cbe7ac590279de8 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_slave_model
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+run all
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; address received. adr=00, ack=1
+DEBUG i2c_slave; data block write 2b to address 00
+DEBUG i2c_slave; data block write c3 to address 01
+DEBUG i2c_slave; data block write 43 to address 02
+DEBUG i2c_slave; stop condition detected at              7550000
+DEBUG i2c_slave; start condition detected at             10310000
+DEBUG i2c_slave; command byte received (read) at             11332000
+DEBUG i2c_slave; data block read 2b from address 00 (1)
+DEBUG i2c_slave; memcheck [0]=2b, [1]=c3, [2]=43
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; stop condition detected at             28810000
 reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.runs/synth_1
+
 launch_runs synth_1 -jobs 4
-[Fri Mar 22 13:40:02 2024] Launched synth_1...
+[Mon Mar 25 16:32:31 2024] Launched synth_1...
 Run output will be captured here: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.runs/synth_1/runme.log

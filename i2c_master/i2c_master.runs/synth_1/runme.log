@@ -14,13 +14,14 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020-clg484'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020-clg484'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 12236 
+INFO: Helper process launched with PID 5648 
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 350.176 ; gain = 80.074
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 349.676 ; gain = 80.277
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'i2c_top' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:1]
 	Parameter DATA_SIZE bound to: 8 - type: integer 
 	Parameter ADDR_SIZE bound to: 8 - type: integer 
+WARNING: [Synth 8-2898] ignoring pullup [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top.v:57]
 INFO: [Synth 8-638] synthesizing module 'clock_generator' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v:1]
 INFO: [Synth 8-256] done synthesizing module 'clock_generator' (1#1) [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v:1]
 INFO: [Synth 8-638] synthesizing module 'i2c_master_fsm' [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:1]
@@ -77,17 +78,17 @@ WARNING: [Synth 8-3331] design data_fifo_mem has unconnected port command_i[4]
 WARNING: [Synth 8-3331] design data_fifo_mem has unconnected port command_i[2]
 WARNING: [Synth 8-3331] design data_fifo_mem has unconnected port command_i[1]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 389.504 ; gain = 119.402
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 389.754 ; gain = 120.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 389.504 ; gain = 119.402
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 389.754 ; gain = 120.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 389.504 ; gain = 119.402
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 389.754 ; gain = 120.355
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v:20]
@@ -128,7 +129,7 @@ WARNING: [Synth 8-6014] Unused sequential element currrent_state_reg was removed
 INFO: [Synth 8-3354] encoded FSM with state register 'currrent_state_reg' using encoding 'sequential' in module 'i2c_master_fsm'
 WARNING: [Synth 8-6014] Unused sequential element currrent_state_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:74]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 404.578 ; gain = 134.477
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 410.395 ; gain = 140.996
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -154,7 +155,7 @@ Detailed RTL Component Info :
 	                8 Bit    Registers := 7     
 	                5 Bit    Registers := 16    
 	                4 Bit    Registers := 2     
-	                1 Bit    Registers := 14    
+	                1 Bit    Registers := 16    
 +---RAMs : 
 	              128 Bit         RAMs := 2     
 +---Muxes : 
@@ -163,8 +164,8 @@ Detailed RTL Component Info :
 	   5 Input      8 Bit        Muxes := 1     
 	   2 Input      4 Bit        Muxes := 5     
 	  27 Input      4 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 17    
-	  10 Input      1 Bit        Muxes := 8     
+	   2 Input      1 Bit        Muxes := 19    
+	  10 Input      1 Bit        Muxes := 6     
 	   5 Input      1 Bit        Muxes := 3     
 	   7 Input      1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
@@ -195,12 +196,12 @@ Detailed RTL Component Info :
 	   2 Input      4 Bit       Adders := 3     
 +---Registers : 
 	                4 Bit    Registers := 2     
-	                1 Bit    Registers := 4     
+	                1 Bit    Registers := 6     
 +---Muxes : 
 	   2 Input      4 Bit        Muxes := 5     
 	  27 Input      4 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 2     
-	  10 Input      1 Bit        Muxes := 8     
+	   2 Input      1 Bit        Muxes := 4     
+	  10 Input      1 Bit        Muxes := 6     
 Module data_path_i2c_to_core 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -277,7 +278,7 @@ WARNING: [Synth 8-6014] Unused sequential element data_fifo_mem/RX_fifo/wptr_ful
 WARNING: [Synth 8-6014] Unused sequential element clock_generator/counter_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/clock_generator.v:20]
 WARNING: [Synth 8-6014] Unused sequential element i2c_master_fsm/count_bit_reg was removed.  [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master_fsm.v:64]
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 563.094 ; gain = 292.992
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 554.699 ; gain = 285.301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -306,7 +307,7 @@ No constraint files found.
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 563.094 ; gain = 292.992
+Finished Timing Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 554.699 ; gain = 285.301
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -322,7 +323,7 @@ INFO: [Synth 8-3886] merging instance 'data_fifo_mem/RX_fifo/wptr_full1/wptr_reg
 INFO: [Synth 8-3886] merging instance 'data_fifo_mem/TX_fifo/rptr_empty1/rptr_reg[4]' (FDC) to 'data_fifo_mem/TX_fifo/rptr_empty1/rbin_reg[4]'
 INFO: [Synth 8-3886] merging instance 'data_fifo_mem/TX_fifo/wptr_full1/wptr_reg[4]' (FDC) to 'data_fifo_mem/TX_fifo/wptr_full1/wbin_reg[4]'
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 563.094 ; gain = 292.992
+Finished Technology Mapping : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 554.699 ; gain = 285.301
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -346,7 +347,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 563.094 ; gain = 292.992
+Finished IO Insertion : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 554.699 ; gain = 285.301
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -359,7 +360,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 563.094 ; gain = 292.992
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 554.699 ; gain = 285.301
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -371,25 +372,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 563.094 ; gain = 292.992
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 554.699 ; gain = 285.301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 563.094 ; gain = 292.992
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 554.699 ; gain = 285.301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 563.094 ; gain = 292.992
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 554.699 ; gain = 285.301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 563.094 ; gain = 292.992
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 554.699 ; gain = 285.301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -409,34 +410,33 @@ Report Cell Usage:
 |2     |CARRY4 |     3|
 |3     |LUT1   |     3|
 |4     |LUT2   |    21|
-|5     |LUT3   |    27|
-|6     |LUT4   |    27|
-|7     |LUT5   |    58|
-|8     |LUT6   |   101|
-|9     |MUXF7  |     2|
-|10    |MUXF8  |     1|
-|11    |RAM32M |     4|
-|12    |FDCE   |   151|
-|13    |FDPE   |     7|
-|14    |IBUF   |    22|
-|15    |IOBUF  |     1|
-|16    |OBUF   |    10|
+|5     |LUT3   |    29|
+|6     |LUT4   |    29|
+|7     |LUT5   |    49|
+|8     |LUT6   |   106|
+|9     |MUXF7  |     3|
+|10    |RAM32M |     4|
+|11    |FDCE   |   153|
+|12    |FDPE   |     7|
+|13    |IBUF   |    22|
+|14    |IOBUF  |     1|
+|15    |OBUF   |    10|
 +------+-------+------+
 
 Report Instance Areas: 
 +------+------------------------+----------------------+------+
 |      |Instance                |Module                |Cells |
 +------+------------------------+----------------------+------+
-|1     |top                     |                      |   440|
+|1     |top                     |                      |   442|
 |2     |  apb_slave_interface   |apb_slave_interface   |   105|
-|3     |  clock_generator       |clock_generator       |    37|
-|4     |  data_fifo_mem         |data_fifo_mem         |   175|
-|5     |    RX_fifo             |fifo_toplevel         |    86|
+|3     |  clock_generator       |clock_generator       |    30|
+|4     |  data_fifo_mem         |data_fifo_mem         |   177|
+|5     |    RX_fifo             |fifo_toplevel         |    88|
 |6     |      fifo_mem1         |fifo_mem_1            |     2|
-|7     |      rptr_empty1       |rptr_empty_2          |    31|
+|7     |      rptr_empty1       |rptr_empty_2          |    32|
 |8     |      sync_r2w1         |sync_r2w_3            |    10|
 |9     |      sync_w2r1         |sync_w2r_4            |    10|
-|10    |      wptr_full1        |wptr_full_5           |    33|
+|10    |      wptr_full1        |wptr_full_5           |    34|
 |11    |    TX_fifo             |fifo_toplevel_0       |    89|
 |12    |      fifo_mem1         |fifo_mem              |     5|
 |13    |      rptr_empty1       |rptr_empty            |    32|
@@ -444,14 +444,14 @@ Report Instance Areas:
 |15    |      sync_w2r1         |sync_w2r              |    10|
 |16    |      wptr_full1        |wptr_full             |    32|
 |17    |  data_path_i2c_to_core |data_path_i2c_to_core |    17|
-|18    |  i2c_master_fsm        |i2c_master_fsm        |    71|
+|18    |  i2c_master_fsm        |i2c_master_fsm        |    78|
 +------+------------------------+----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 563.094 ; gain = 292.992
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 554.699 ; gain = 285.301
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 19 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 563.094 ; gain = 292.992
-Synthesis Optimization Complete : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 563.094 ; gain = 292.992
+Synthesis finished with 0 errors, 0 critical warnings and 20 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 554.699 ; gain = 285.301
+Synthesis Optimization Complete : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 554.699 ; gain = 285.301
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 30 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -462,9 +462,9 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   IOBUF => IOBUF (IBUF, OBUFT): 1 instances
   RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 4 instances
 
-53 Infos, 19 Warnings, 0 Critical Warnings and 0 Errors encountered.
+53 Infos, 20 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:15 . Memory (MB): peak = 626.750 ; gain = 364.414
+synth_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 627.254 ; gain = 365.617
 INFO: [Common 17-1381] The checkpoint 'C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.runs/synth_1/i2c_top.dcp' has been generated.
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 626.750 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Fri Mar 22 13:40:22 2024...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 627.254 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Mon Mar 25 16:32:50 2024...

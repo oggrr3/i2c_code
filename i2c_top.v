@@ -54,7 +54,7 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
     assign      sda     =   i2c_sda_en ? i2c_sda : 1'bz         ;
     assign      scl     =   i2c_scl_en ? i2c_scl : 1         ;
 
-    //pullup (sda)    ;
+    pullup (sda)    ;
     //pullup (scl)    ;
 
     // get command bit

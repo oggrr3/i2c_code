@@ -282,8 +282,6 @@ module i2c_master_fsm (
 
                 //  Internal signal
                 start_done              =   0           ;
-                read_ack_to_read_done	=	0           ; 
-                read_ack_to_write_done	=	0           ;
             end
 
             //-------------------------------------------------------
@@ -298,8 +296,6 @@ module i2c_master_fsm (
                 
                 //  Internal signal
                 start_done              =   1           ;
-                read_ack_to_read_done	=	0           ; 
-                read_ack_to_write_done	=	0           ;
             end
 
             //-------------------------------------------------------
@@ -320,8 +316,6 @@ module i2c_master_fsm (
                 
                 //  Internal signal
                 start_done              =   1           ;
-                read_ack_to_read_done	=	0           ; 
-                read_ack_to_write_done	=	0           ;
             end
 
             //-------------------------------------------------------
@@ -337,25 +331,6 @@ module i2c_master_fsm (
 
                 //Internal signal
                 start_done              =   1           ;
-                // When scl line is high, check ack signal from slave
-                if (count_scl_posedge == 0 && i2c_sda_i == 0 && rw_i == 1 && full_i == 0) begin        
-                    read_ack_to_read_done	=	1         ; 
-                    read_ack_to_write_done	=	0         ;
-
-                end
-
-                else if (count_scl_posedge == 0 && i2c_sda_i == 0 && rw_i == 0 && empty_i == 0) begin
-
-                    read_ack_to_read_done	=	0        ;
-                    read_ack_to_write_done	=	1        ;
-
-                end
-
-                else begin
-                    read_ack_to_read_done	=	0        ;
-                    read_ack_to_write_done	=	0        ;
-                end
-
             end
 
             //-------------------------------------------------------
@@ -375,10 +350,7 @@ module i2c_master_fsm (
                 i2c_scl_en_o        	=       1           ;
                                 
                 //  Internal signal
-                start_done              =   1           ;
-                read_ack_to_read_done	=	0           ; 
-                read_ack_to_write_done	=	0           ;
-                
+                start_done              =   1           ;                
             end
 
             //-------------------------------------------------------
@@ -393,20 +365,6 @@ module i2c_master_fsm (
 
                 // Internal signal
                 start_done              =   1           ;
-                // Wait for scl line is high and then check ack
-                if ((count_scl_posedge == 0) && (i2c_sda_i == 0) && (empty_i == 0) ) begin
-
-                    read_ack_to_read_done	=	0           ; 
-                    read_ack_to_write_done	=	1			;
-                end
-
-                else begin
-
-                    read_ack_to_read_done	=	0           ; 
-                    read_ack_to_write_done	=	0			;
-
-                end
-
             end
 
             //-------------------------------------------------------
@@ -427,9 +385,6 @@ module i2c_master_fsm (
                                 
                 //  Internal signal
                 start_done              =   1           ;
-                read_ack_to_read_done	=	0           ; 
-                read_ack_to_write_done	=	0           ;
-
             end
 
             //-------------------------------------------------------
@@ -444,9 +399,6 @@ module i2c_master_fsm (
                                 
                 //  Internal signal
                 start_done              =   1           ;
-                read_ack_to_read_done	=	0           ; 
-                read_ack_to_write_done	=	0           ;
-
             end
 
             //-------------------------------------------------------
@@ -461,9 +413,6 @@ module i2c_master_fsm (
                 
                 //  Internal signal
                 start_done              =   1           ;
-                read_ack_to_read_done	=	0           ; 
-                read_ack_to_write_done	=	0           ;
-
             end
 
             //-------------------------------------------------------
@@ -484,9 +433,6 @@ module i2c_master_fsm (
                                 
                 //  Internal signal
                 start_done              =   1           ;
-                read_ack_to_read_done	=	0           ; 
-                read_ack_to_write_done	=	0           ;
-
             end
 
             //-------------------------------------------------------
@@ -501,9 +447,6 @@ module i2c_master_fsm (
                                 
                 //  Internal signal
                 start_done              =   0           ;
-                read_ack_to_read_done	=	0           ; 
-                read_ack_to_write_done	=	0           ;
-
             end
         endcase
 
@@ -552,6 +495,8 @@ module i2c_master_fsm (
 			w_fifo_en	            <=	0				;
             count_scl_posedge_temp  <=  0               ;
             count_bit               <=  0               ;
+            read_ack_to_read_done	<=	0               ;
+            read_ack_to_write_done	<=	0               ;
             
         end
         else begin
@@ -589,6 +534,27 @@ module i2c_master_fsm (
 
             else begin
                 count_bit     <=   7           ;
+            end
+
+            // Handle internal signal : read_ack_to_read/write_done
+            if ((currrent_state == READ_ACK) || (currrent_state == READ_LATER_ACK)) begin
+                if (scl_positive == 1 && i2c_sda_i == 0 && rw_i == 1 && full_i == 0) begin    
+
+                    read_ack_to_read_done	<=	1         ; 
+                    read_ack_to_write_done	<=	0         ;
+
+                end
+
+                else if (scl_positive == 1 && i2c_sda_i == 0 && rw_i == 0 && empty_i == 0) begin
+
+                    read_ack_to_read_done	<=	0        ;
+                    read_ack_to_write_done	<=	1        ;
+
+                end
+            end
+            else begin
+                read_ack_to_read_done	<=	0        ;
+                read_ack_to_write_done	<=	0        ;
             end
 
         end

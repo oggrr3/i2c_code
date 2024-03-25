@@ -2,16 +2,90 @@
 # Vivado v2017.2 (64-bit)
 # SW Build 1909853 on Thu Jun 15 18:39:09 MDT 2017
 # IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
-# Start of session at: Fri Mar 22 13:39:32 2024
-# Process ID: 15800
+# Start of session at: Mon Mar 25 14:25:48 2024
+# Process ID: 13148
 # Current directory: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14288 C:\Users\USER\Desktop\git_code\i2c_folder\i2c_code\i2c_master\i2c_master.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5332 C:\Users\USER\Desktop\git_code\i2c_folder\i2c_code\i2c_master\i2c_master.xpr
 # Log file: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/vivado.log
 # Journal file: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.xpr
 update_compile_order -fileset sources_1
+file mkdir C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v w ]
+add_files -fileset sim_1 C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/i2c_slave_model.v
+update_compile_order -fileset sim_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v w ]
+add_files -fileset sim_1 C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v
+update_compile_order -fileset sim_1
+set_property used_in_synthesis false [get_files  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v]
+set_property used_in_implementation false [get_files  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.srcs/sim_1/new/top_tb.v]
+set_property used_in_simulation false [get_files  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top_tb.v]
+set_property used_in_implementation false [get_files  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top_tb.v]
+set_property used_in_synthesis false [get_files  C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_top_tb.v]
+update_compile_order -fileset sim_1
+launch_simulation
+source top_tb.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+run all
+relaunch_sim
+run all
+add_wave {{/top_tb/i2c_master_top/i2c_master_fsm/currrent_state}} 
+add_wave {{/top_tb/i2c_master_top/i2c_master_fsm/i2c_sda_i}} 
+relaunch_sim
+run all
+add_wave {{/top_tb/i2c_master_top/i2c_master_fsm/read_ack_to_read_done}} {{/top_tb/i2c_master_top/i2c_master_fsm/read_ack_to_write_done}} 
+relaunch_sim
+run 10 us
+run 10 us
+add_wave {{/top_tb/i2c_master_top/i2c_master_fsm/count_scl_posedge}} 
+relaunch_sim
+run 10 us
+run 10 us
+relaunch_sim
+run 10 us
+relaunch_sim
+run 10 us
+add_wave {{/top_tb/i2c_master_top/data_fifo_mem/TX_fifo/fifo_mem1/mem}} 
+add_wave {{/top_tb/i2c_master_top/data_fifo_mem/RX_fifo/fifo_mem1/mem}} 
+relaunch_sim
+run 10 us
+relaunch_sim
+run 10 us
+relaunch_sim
+run 10 us
+relaunch_sim
+run 10 us
+relaunch_sim
+run 10 us
+run 10 us
+relaunch_sim
+run all
+relaunch_sim
+run 10 us
+run 10 us
+relaunch_sim
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+relaunch_sim
+run 10 us
+run 10 us
+run 10 us
+relaunch_sim
+run 10 us
+run 10 us
+run 10 us
+add_wave {{/top_tb/i2c_slave/mem}} 
+relaunch_sim
+run all
 reset_run synth_1
 launch_runs synth_1 -jobs 4
 wait_on_run synth_1
