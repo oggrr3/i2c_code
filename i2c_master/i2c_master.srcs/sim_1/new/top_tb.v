@@ -106,6 +106,33 @@ module top_tb ();
                 penable_i       =       0           ;
                 pwrite_i        =        0            ;
                 #4;
+                
+                                psel_i          =       1           ;
+                penable_i       =       0           ;
+                pwrite_i        =        1            ;
+                paddr_i         =       8'b00000000 ;    // to reg_transmit
+                pwdata_i        =       8'b0100_0011 ;    // 43
+                #4;
+                penable_i        =        1            ;
+                #4;
+                psel_i            =        0            ;    // done write 1 byte data
+                penable_i       =       0           ;
+                pwrite_i        =        0            ;
+                #4;
+                
+                                psel_i          =       1           ;
+                penable_i       =       0           ;
+                pwrite_i        =        1            ;
+                paddr_i         =       8'b00000000 ;    // to reg_transmit
+                pwdata_i        =       8'b0100_0011 ;    // 43
+                #4;
+                penable_i        =        1            ;
+                #4;
+                psel_i            =        0            ;    // done write 1 byte data
+                penable_i       =       0           ;
+                pwrite_i        =        0            ;
+                #4;
+                
         
         
                 // Step 2 : write slave's address
