@@ -2135,3 +2135,7 @@ WARNING: [Vivado 12-1017] Problems encountered:
 launch_runs synth_1 -jobs 4
 [Mon Mar 25 16:32:31 2024] Launched synth_1...
 Run output will be captured here: C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_master/i2c_master.runs/synth_1/runme.log
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Mar 25 18:05:00 2024...

@@ -1,0 +1,31 @@
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+DEBUG i2c_slave; stop condition detected at                    0
+DEBUG i2c_slave; start condition detected at               170000
+DEBUG i2c_slave; command byte received (write) at              1532000
+DEBUG i2c_slave; address received. adr=00, ack=1
+DEBUG i2c_slave; data block write 2b to address 00
+DEBUG i2c_slave; data block write c3 to address 01
+DEBUG i2c_slave; data block write 43 to address 02
+DEBUG i2c_slave; stop condition detected at              7550000
+DEBUG i2c_slave; start condition detected at             10310000
+DEBUG i2c_slave; command byte received (read) at             11332000
+DEBUG i2c_slave; data block read 2b from address 00 (1)
+DEBUG i2c_slave; memcheck [0]=2b, [1]=c3, [2]=43
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; data block read 43 from address 02 (2)
+DEBUG i2c_slave; data block read 2b from address 00 (2)
+DEBUG i2c_slave; data block read c3 from address 01 (2)
+DEBUG i2c_slave; stop condition detected at             28810000
