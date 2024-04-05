@@ -1,0 +1,10 @@
+QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+Start time: 11:09:11 on Mar 25,2024
+vlog -64 -sv "+acc" -incr -f filelist_rtl.f -l vlog_rtl.log "+cover=sbceft" -assertdebug 
+-- Compiling module dff
+-- Compiling module ones_counter
+
+Top level modules:
+	ones_counter
+End time: 11:09:11 on Mar 25,2024, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
