@@ -11,8 +11,8 @@ interface intf_i2c   (input  i2c_clk, apb_clk) ;
     logic   [7 : 0]        pwdata           ;   //  data write
     logic   [7 : 0]        prdata           ;   //  data read
     logic                  pready           ;   //  ready to receive data
-    logic                  sda              ;   //  sda line
-    logic                  scl              ;   //  scl line
+    wire                   sda              ;   //  sda line
+    wire                   scl              ;   //  scl line
 
 endinterface 
 

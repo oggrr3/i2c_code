@@ -15,7 +15,7 @@ Bao gồm các khối sau:
 
 Các điều kiện hoạt động:
 
-![alt text](./image/-4.png)
+![alt text](./image/image-4.png)
 
 ## 3. Registermap
 ![register map](./image/image-5.png)
@@ -51,9 +51,14 @@ Các điều kiện hoạt động:
 `Step 4: Slave ACK and then write data to sda`
 
     4.1. You can run until the FIFO is full, then i2c will STOP
-![alt text](./image/-12.png)
+![alt text](./image/image-12.png)
 
 `Step 5: CPU read data from FIFO through APB interface`
 
     5.1. You need to config the APB at read-mode
 ![alt text](./image/image-13.png)
+
+## 6. Verification 
+`The architecture of top_tb to verification `
+
+![alt text](./image/top_verification.png)

@@ -1,4 +1,3 @@
-
 `include "fifo.v"
 `include "apb_slave.v"
 `include "8bit_to_1byte.v"
@@ -46,7 +45,7 @@ module top_level
     wire                                fifo_rx_enable;
     wire                                i2c_enable;
 
-    assign i2c_enable = command_reg[7] & !status_reg[6];
+    assign i2c_enable = (!address_reg[0]) ? (command_reg[7] & !status_reg[6]) : (command_reg[7] & !status_reg[5]);
 
     // Converter enable
     wire                                converter_enable;
@@ -146,9 +145,9 @@ module top_level
         .i2c_clk                        (i2c_clk_gen)
     );
 
-    i2c_slave_model slave
-    (
-        .scl(scl),
-        .sda(sda)
-    );
+    // i2c_slave_model slave
+    // (
+    //     .scl(scl),
+    //     .sda(sda)
+    // );
 endmodule

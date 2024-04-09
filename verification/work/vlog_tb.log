@@ -1,19 +1,8 @@
 QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-Start time: 11:09:11 on Mar 25,2024
-vlog -64 -timescale=1ns/1ns -sv "+acc" -incr -f filelist_tb.f -assertdebug "+define+TEST1" -l vlog_tb.log 
-** Warning: ** while parsing file included at ../sim/top.sv(20)
-** at ../sim/test_1.sv(10): (vlog-2275) Existing program 'testcase' at line 10 will be overwritten.
--- Skipping program testcase
--- Compiling package top_sv_unit
--- Compiling interface intf_cnt
--- Compiling module assertion_cov
--- Compiling module top
--- Scanning library directory '../sim'
-
-Referenced (but uncompiled) modules or primitives:
-	ones_counter
-
-Top level modules:
-	top
-End time: 11:09:11 on Mar 25,2024, Elapsed time: 0:00:00
-Errors: 0, Warnings: 1
+Start time: 07:57:42 on Apr 09,2024
+vlog -64 -timescale=1ns/1ns -sv "+acc" -incr -f filelist_tb.f -assertdebug "+define+TEST12" -l vlog_tb.log 
+-- Compiling interface intf_i2c
+** Error: (vlog-13069) ** while parsing file included at ../sim/top.sv(7)
+** at ../sim/assertion.sv(6): near ")": syntax error, unexpected ')'.
+End time: 07:57:42 on Apr 09,2024, Elapsed time: 0:00:00
+Errors: 1, Warnings: 0

@@ -1,0 +1,15 @@
+# vsim -64 -voptargs="+acc" -sva -assertdebug -coverage top -c -do "set WildcardFilter None;add wave -r top/*; coverage save -onexit TEST12.ucdb; run -all; quit;" 
+# Start time: 07:57:44 on Apr 09,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: ../sim/test_12.sv(5): 'environment' is an unknown type.
+# Or did you omit the '()' for an instantiation?
+# ** Error: ../sim/test_12.sv(11): 'env' is not a variable
+# ** Error: ../sim/test_12.sv(11): Illegal LHS of assignment.
+# ** Error: ../sim/test_12.sv(11): 'new' must be used to assign to a class or covergroup handle.
+# ** Error: ../sim/test_12.sv(60): Questa has encountered an unexpected internal error: ../../src/vlog/vresolve.c(656). Please contact Questa support at http://supportnet.mentor.com/
+# 
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=5, Warnings=0.
+# Error loading design
+# End time: 07:57:45 on Apr 09,2024, Elapsed time: 0:00:01
+# Errors: 5, Warnings: 0

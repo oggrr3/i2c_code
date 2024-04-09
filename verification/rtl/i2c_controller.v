@@ -298,4 +298,3 @@ module i2c_controller
         end
     end
 endmodule
-

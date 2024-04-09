@@ -18,8 +18,6 @@ program testcase(intf_i2c intf);
                 //  Step 2: Enable in commands register connect to I2C master enable
                 env.drvr.Apb_Write(6, 8'b1001_0000)         ;   //  cmd
 
-                // Step 3: W_enable connects to FIFO TX write enable
-                //env.drvr.Apb_Write(6, 8'b110_0000)         ;   //  cmd
             end
         join
 	

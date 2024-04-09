@@ -28,7 +28,7 @@ class driver;
             if(sti.randomize()) begin                             // Generate stimulus
                 //intf.pwdata =   sti.pwdata                   ;   // Drive to DUT
                 //intf.paddr  =   sti.paddr                   ;
-                $display("Randomization succefully at time = %t", $time);
+                //$display("Randomization succefully at time = %t", $time);
             end
             else 
                 $fatal("ERROR :: Randomization fail! at time = %t", $time);
@@ -84,18 +84,11 @@ class driver;
 
         bit [7:0]   data    ;
 
-        apb_reset();
-        Apb_Write(1, 8)                    ;   //  Prescale
-        Apb_Write(2, 8'b001_0000_0)        ;   //  Address of slave and R/W bit
-        Apb_Write(4, 0)                    ;
-
         for (int i = 0 ; i < quantityOfRepeat ; i = i + 1 ) begin
             drive(1);
             data = sti.pwdata  ;
             Apb_Write(4, data)  ;
         end
-
-        Apb_Write(6, 8'b1001_0000)         ;   //  cmd
 
     endtask
 

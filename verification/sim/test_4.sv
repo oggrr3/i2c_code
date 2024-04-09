@@ -10,6 +10,7 @@ program testcase(intf_i2c intf);
 		env		=	new(intf);
 
         env.drvr.Apb_Write_n_byte_random(10);
+
         env.drvr.apb_reset();
 
         for (int i = 0 ; i < 10 ; i++) begin
