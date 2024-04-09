@@ -3,8 +3,8 @@ module i2c_master_fsm (
     input           reset_ni            ,   // reset negative signal from MCU
     input           repeat_start_i      ,   // repeat start signal from MCU
     input           rw_i                ,   // bit 1 is read - 0 is write
-    input           full_i              ,   // FIFO buffer is full
-    input           empty_i             ,   // FIFO buffer is empty
+    input           full_i              ,   // RX_FIFO buffer is full
+    input           empty_i             ,   // TX_FIFO buffer is empty
     input           i2c_core_clk_i      ,   // i2c core clock
     input           i2c_sda_i           ,   // i2c sda feedback to FSM
     input           i2c_scl_i           ,   // i2c scl feedback to FSM
@@ -191,7 +191,7 @@ module i2c_master_fsm (
 
 				end
 
-                if else (scl_negative && ((read_ack_to_write_done == 0 && repeat_start_i == 1) ) ) begin    //  If slave send NACK and has repeart start -> repeat start
+                else if (scl_negative && ((read_ack_to_write_done == 0 && repeat_start_i == 1) ) ) begin    //  If slave send NACK and has repeart start -> repeat start
                     
                     next_sate   =   REPEAT_START    ;
                 end
@@ -244,7 +244,7 @@ module i2c_master_fsm (
             end
 
             REPEAT_START    :    begin
-                if (scl_negative) begin                                 //  Wait to when scl negative and then to next_state
+                if (scl_positive) begin                                 //  Wait to when scl negative and then to next_state
                     next_sate           =       START         ;
                 end
                 else begin
@@ -399,7 +399,10 @@ module i2c_master_fsm (
                 write_data_en_o     =       0           ;
                 write_addr_en_o     =       0           ;
                 receive_data_en_o   =       0           ;
-                i2c_sda_en_o        =       1           ;
+                if (full_i)
+                    i2c_sda_en_o    =       0           ;   //  if RX_FIFO full send NACK to slave
+                else
+                    i2c_sda_en_o    =       1           ;
                 i2c_scl_en_o        =       1           ;
                                 
                 //  Internal signal
@@ -515,7 +518,8 @@ module i2c_master_fsm (
 				r_fifo_en	<=	0	        ;
 			end
 
-			if ((currrent_state == WRITE_ACK) && (scl_positive == 1)) begin
+			//if ((currrent_state == WRITE_ACK) && (scl_positive == 1)) begin
+            if ((currrent_state == READ_DATA) && (next_state == WRITE_ACK)) begin   //  enable write data to rx_fifo in only 1 clk core
 				w_fifo_en   <=  1           ;
 			end
 			else begin

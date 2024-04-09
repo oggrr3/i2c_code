@@ -1,0 +1,18 @@
+0.6
+2017.2
+Jun 15 2017
+18:52:51
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/direct_testbench_for_i2c_rtl/i2c_top_tb.v,1712655909,verilog,,,,i2c_top_tb,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_async_fifo/fifo_toplevel.v,1710141666,verilog,,,,fifo_toplevel,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_async_fifo/rptr_empty.v,1709548772,verilog,,,,rptr_empty,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_async_fifo/sync_r2w.v,1709548772,verilog,,,,sync_r2w,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_async_fifo/sync_w2r.v,1709548772,verilog,,,,sync_w2r,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_async_fifo/wptr_full.v,1709548772,verilog,,,,wptr_full,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_i2c_master/apb_slave_interface.v,1710150293,verilog,,,,apb_slave_interface,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_i2c_master/clock_generator.v,1710145861,verilog,,,,clock_generator,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_i2c_master/data_fifo_mem.v,1710154068,verilog,,,,data_fifo_mem,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_i2c_master/data_path_i2c_to_core.v,1710143012,verilog,,,,data_path_i2c_to_core,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_i2c_master/fifo_mem.v,1710150595,verilog,,,,fifo_mem,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_i2c_master/i2c_master_fsm.v,1712655116,verilog,,,,i2c_master_fsm,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_i2c_master/i2c_top.v,1711352894,verilog,,,,i2c_top,,,,,,,,
+C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/vivaso_i2c_master_project/i2c_master/i2c_master.sim/sim_1/behav/glbl.v,1497407496,verilog,,,,glbl,,,,,,,,

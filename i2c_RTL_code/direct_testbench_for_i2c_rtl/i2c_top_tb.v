@@ -153,7 +153,7 @@ module i2c_top_tb ();
         penable_i       =       0           ;
 		pwrite_i		=		1			;
         paddr_i         =   8'b0000_0100 	;   // addr [5:0] = 4 , command_reg
-        pwdata_i        =   8'b110_00000 	;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = read-only
+        pwdata_i        =   8'b111_00000 	;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = read-only
                                                 // cmd[3] = read-only ; cmd[2] = read-only ; cmd[1] = read-only ; cmd[0] = read-only
         #10;
 		#4;
@@ -229,7 +229,7 @@ module i2c_top_tb ();
         penable_i       =       0           ;
 		pwrite_i		=		1			;
         paddr_i         =   8'b0000_0100 	;   // addr [5:0] = 4 , command_reg
-        pwdata_i        =   8'b110_00000 	;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = read-only
+        pwdata_i        =   8'b111_00000 	;   // cmd[7] = rst_n ; cmd[6] = enable ; cmd[5] = reapt_start ; cmd[4] = read-only
                                                 // cmd[3] = read-only ; cmd[2] = read-only ; cmd[1] = read-only ; cmd[0] = read-only
         #10;
 		#4;

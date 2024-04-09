@@ -1,0 +1,25 @@
+Vivado Simulator 2017.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o/xelab.exe -wto 69b1a244f0ed43db9a2074298c7238bc --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot i2c_top_tb_behav xil_defaultlib.i2c_top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/vivaso_i2c_master_project/i2c_master/i2c_master.sim/sim_1/behav/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_generator
+Compiling module xil_defaultlib.i2c_master_fsm
+Compiling module xil_defaultlib.data_path_i2c_to_core(DATA_SIZE=...
+Compiling module xil_defaultlib.fifo_mem(DATASIZE=8,ADDRSIZE=4)
+Compiling module xil_defaultlib.rptr_empty(ADDRSIZE=4)
+Compiling module xil_defaultlib.wptr_full(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_r2w(ADDRSIZE=4)
+Compiling module xil_defaultlib.sync_w2r(ADDRSIZE=4)
+Compiling module xil_defaultlib.fifo_toplevel
+Compiling module xil_defaultlib.data_fifo_mem(DATASIZE=8,ADDRSIZ...
+Compiling module xil_defaultlib.apb_slave_interface(DATA_WIDTH=8...
+Compiling module xil_defaultlib.i2c_top
+Compiling module xil_defaultlib.i2c_top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot i2c_top_tb_behav
