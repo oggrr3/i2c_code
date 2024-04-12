@@ -519,7 +519,7 @@ module i2c_master_fsm (
 			end
 
 			//if ((currrent_state == WRITE_ACK) && (scl_positive == 1)) begin
-            if ((currrent_state == READ_DATA) && (next_state == WRITE_ACK)) begin   //  enable write data to rx_fifo in only 1 clk core
+            if ((currrent_state == READ_DATA) && (next_sate == WRITE_ACK)) begin   //  enable write data to rx_fifo in only 1 clk core
 				w_fifo_en   <=  1           ;
 			end
 			else begin

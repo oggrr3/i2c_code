@@ -11,13 +11,24 @@ class driver;
     virtual intf_i2c    intf                             ;   // Creating virtrual interface handle                         
 
     covergroup cov;
+        coverpoint      intf.pwdata  {
+            bins address_of_slave_to_read   =   {8'b0010_000_1}     ;
+            bins address_of_slave_to_write  =   {8'b0010_000_1}     ;
+        }
 
+        coverpoint      intf.paddr   {
+            bins    apb_read    =   {3, 5}  ;
+            bins    apb_write   =   {1, 2, 4, 6} ;
+        }
+        cross           intf.pwdata, intf.paddr {
+
+        }
     endgroup
     
     function new(virtual intf_i2c intf) ;   //  Constuctor
 
-        this.intf        =   intf                        ;
-     
+        this.intf   =   intf    ;
+        cov         =   new()   ;
     endfunction 
 
     task drive(input integer iteration = 1);
@@ -26,9 +37,7 @@ class driver;
             sti = new();
             //@ (negedge intf.apb_clk);
             if(sti.randomize()) begin                             // Generate stimulus
-                //intf.pwdata =   sti.pwdata                   ;   // Drive to DUT
-                //intf.paddr  =   sti.paddr                   ;
-                //$display("Randomization succefully at time = %t", $time);
+                cov.sample();
             end
             else 
                 $fatal("ERROR :: Randomization fail! at time = %t", $time);

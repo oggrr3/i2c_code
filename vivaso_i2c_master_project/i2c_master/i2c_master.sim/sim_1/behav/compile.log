@@ -8,7 +8,7 @@ INFO: [VRFC 10-2458] undeclared symbol tx_rinc, assumed default net type wire [C
 INFO: [VRFC 10-2458] undeclared symbol rx_winc, assumed default net type wire [C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_i2c_master/data_fifo_mem.v:32]
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_i2c_master/data_path_i2c_to_core.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module data_path_i2c_to_core
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_i2c_master/fifo_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_async_fifo/fifo_mem.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module fifo_mem
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/git_code/i2c_folder/i2c_code/i2c_RTL_code/rtl/rtl_async_fifo/fifo_toplevel.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module fifo_toplevel

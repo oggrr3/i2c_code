@@ -3,7 +3,7 @@ verilog xil_defaultlib  "../../../../../i2c_RTL_code/rtl/rtl_i2c_master/apb_slav
 verilog xil_defaultlib  "../../../../../i2c_RTL_code/rtl/rtl_i2c_master/clock_generator.v"
 verilog xil_defaultlib  "../../../../../i2c_RTL_code/rtl/rtl_i2c_master/data_fifo_mem.v"
 verilog xil_defaultlib  "../../../../../i2c_RTL_code/rtl/rtl_i2c_master/data_path_i2c_to_core.v"
-verilog xil_defaultlib  "../../../../../i2c_RTL_code/rtl/rtl_i2c_master/fifo_mem.v"
+verilog xil_defaultlib  "../../../../../i2c_RTL_code/rtl/rtl_async_fifo/fifo_mem.v"
 verilog xil_defaultlib  "../../../../../i2c_RTL_code/rtl/rtl_async_fifo/fifo_toplevel.v"
 verilog xil_defaultlib  "../../../../../i2c_RTL_code/rtl/rtl_i2c_master/i2c_master_fsm.v"
 verilog xil_defaultlib  "../../../../../i2c_RTL_code/rtl/rtl_i2c_master/i2c_top.v"
