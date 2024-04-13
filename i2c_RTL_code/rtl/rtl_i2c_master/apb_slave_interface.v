@@ -68,10 +68,10 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
                     4       :       reg_command             <=  pwdata_i        ;
                     5       :       reg_prescale            <=  pwdata_i    	; 
   
-                    default :	begin
-						reg_transmit    <=  pwdata_i    ;
-						reg_command[3]	<=	1			;
-					end
+//                    default :	begin
+//						reg_transmit    <=  pwdata_i    ;
+//						reg_command[3]	<=	1			;
+//					end
 
                 endcase
             end
