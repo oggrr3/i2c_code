@@ -11,17 +11,24 @@ class driver;
     virtual intf_i2c    intf                             ;   // Creating virtrual interface handle                         
 
     covergroup cov;
-        coverpoint      intf.pwdata  {
+        cov_pwdata  :   coverpoint      intf.pwdata  {
             bins address_of_slave_to_read   =   {8'b0010_000_1}     ;
-            bins address_of_slave_to_write  =   {8'b0010_000_1}     ;
+            bins address_of_slave_to_write  =   {8'b0010_000_0}     ;
         }
 
-        coverpoint      intf.paddr   {
-            bins    apb_read    =   {3, 5}  ;
-            bins    apb_write   =   {1, 2, 4, 6} ;
-        }
-        cross           intf.pwdata, intf.paddr {
+        cov_paddr   :   coverpoint      intf.paddr   {
+            bins    apb_read_status_reg         =   {3}     ;
+            bins    apb_read_receive_reg        =   {5}     ;
 
+            bins    apb_write_prescale_reg      =   {1}     ;
+            bins    apb_write_slave_addr_reg    =   {2}     ;
+            bins    apb_write_transmit_reg      =   {4}     ;
+            bins    apb_write_cmd_reg           =   {6}     ;
+        }
+        cov_apb_rw  :   cross   cov_pwdata, cov_paddr {
+            bins    cov_apb_write_slave_addr    =   binsof(cov_paddr.apb_write_slave_addr_reg) && binsof(cov_pwdata)    ;
+            //bins    cov_apb_write               =   binsof(cov_paddr) intersect {3, 5}  ;
+            //bins    cov_apb_read                =   binsof(cov_paddr) intersect {1, 2, 4, 6}    ;
         }
     endgroup
     
@@ -31,13 +38,20 @@ class driver;
         cov         =   new()   ;
     endfunction 
 
+    task cov_sample();
+        forever begin
+            @(posedge intf.apb_clk) ;
+            cov.sample();
+        end
+    endtask 
+
     task drive(input integer iteration = 1);
         repeat(iteration)
         begin
             sti = new();
             //@ (negedge intf.apb_clk);
             if(sti.randomize()) begin                             // Generate stimulus
-                cov.sample();
+                //cov.sample();
             end
             else 
                 $fatal("ERROR :: Randomization fail! at time = %t", $time);
@@ -66,7 +80,8 @@ class driver;
         @(posedge   intf.apb_clk);
         intf.penable    <=  1                           ;
         @(posedge   intf.apb_clk)                       ;
-        $display("APB write data = %d into register = %d  at time = %t", data, addr, $time);
+        $display("APB write data = %h into register = %h  at time = %t", data, addr, $time);
+        cov.sample()                                    ;   //  sample covergroup
         intf.psel       <=  0                           ;
         intf.penable    <=  0                           ;
         @(negedge intf.apb_clk)                         ;
@@ -83,7 +98,8 @@ class driver;
         intf.penable    <=  1                           ;
         @(posedge   intf.apb_clk)                       ;
         //prdata          <=  intf.prdata                 ;
-        $display("APB read  data = %d from register = %d  at time = %t", intf.prdata, addr, $time);
+        $display("APB read  data = %h from register = %h  at time = %t", intf.prdata, addr, $time);
+        cov.sample()                                    ;   //  sample covergroup
         intf.psel       <=  0                           ;
         intf.penable    <=  0                           ;
         @(negedge intf.apb_clk)                         ;
@@ -142,7 +158,7 @@ class driver;
         end
 
         one_byte_data   =   temp            ;
-        $display("--------Deteced 1 byte data = %d from SDA at time = %0t--------", one_byte_data, $time);
+        $display("--------Deteced 1 byte data = %h from SDA at time = %0t--------", one_byte_data, $time);
     endtask 
 
     task Check_ACK();

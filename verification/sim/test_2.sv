@@ -23,12 +23,19 @@ program testcase(intf_i2c intf);
         stop_done   =   0                           ;
 
         env.drvr.Apb_Write(2, 8'b0010_000_1)        ;   //  Address of slave and R/W bit
-        repeat(18) @(posedge intf.scl)              ;
-
+        env.drvr.Check_Start_condition(start_done)  ;
         
+        env.drvr.Get1Byte_From_Sda(data);   // slave addr
+        env.drvr.Check_ACK();
+
+        env.drvr.Get1Byte_From_Sda(data);   // data
+        env.drvr.Check_ACK();
+
         #1000;
         env.drvr.Apb_Read(5)                        ;   // start read
         env.drvr.Apb_Read(3)                        ;
+
+        #1000;
         $finish;
     end
 

@@ -22,10 +22,16 @@ program testcase(intf_i2c intf);
         join
 	
         env.drvr.Check_Start_condition(start_done)  ;
-        env.drvr.Get1Byte_From_Sda(data);
+        
+        env.drvr.Get1Byte_From_Sda(data);   // slave addr
+        env.drvr.Check_ACK();
+
+        env.drvr.Get1Byte_From_Sda(data);   // data
+        env.drvr.Check_ACK();
+
         env.drvr.Check_Stop_condition(stop_done)  ;
         if(stop_done == 1) begin
-            env.drvr.Apb_Read(4);
+            //env.drvr.Apb_Read(4);
             repeat(10) @(negedge intf.i2c_clk);
             $stop   ;
         end
