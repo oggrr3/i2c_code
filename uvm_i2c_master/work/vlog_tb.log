@@ -1,0 +1,17 @@
+QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
+Start time: 10:51:15 on May 22,2024
+vlog -timescale=1ns/1ns -sv "+acc" -incr -f filelist_tb.f -assertdebug "+define+SEQ=TEST2" -l vlog_tb.log 
+** Note: (vlog-2286) ../sim/tb_top.sv(4): Using implicit +incdir+/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling package tb_top_sv_unit
+-- Compiling interface intf
+-- Compiling module tb_top
+-- Scanning library directory '../sim'
+-- Compiling module i2c_slave_model
+
+Referenced (but uncompiled) modules or primitives:
+	top_level
+
+Top level modules:
+	tb_top
+End time: 10:51:15 on May 22,2024, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
