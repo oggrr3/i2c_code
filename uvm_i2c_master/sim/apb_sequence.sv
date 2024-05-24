@@ -136,4 +136,264 @@ class TEST2 extends apb_sequence;
     
 endclass 
 
+
+class TEST3 extends apb_sequence;
+
+  `uvm_object_utils(TEST3)
+
+  function new(string name = "TEST3");
+    super.new(name);
+  endfunction 
+
+  task body();
+
+    `uvm_info(get_name(), "\n\n------------------------ TEST3 : I2C read 1 byte -------------------------------\n", UVM_MEDIUM)
+
+    //  write value
+    this.reg_model.prescale.write(status, 8'h06);
+    this.reg_model.slave_address.write(status, 8'h20);
+    this.reg_model.transmit.write(status, 8'h00);
+    this.reg_model.transmit.write(status, 8'h06);
+    this.reg_model.command.write(status, 8'h90);
+    
+    //  run i2c
+    this.Check_Stop_condition(stop_done);
+    stop_done = 0;
+
+    //  config to read
+    this.reg_model.slave_address.write(status, 8'h21);
+    this.reg_model.command.write(status, 8'h90);
+
+    this.Check_Start_condition(start_done);
+    repeat(2) begin
+      this.Get1Byte_From_Sda(data);
+      this.Check_ACK();
+    end
+
+    //  read value
+    this.reg_model.receive.read(status, value);
+
+  endtask 
+    
+endclass 
+
+
+class TEST4 extends apb_sequence;
+
+  `uvm_object_utils(TEST4)
+
+  function new(string name = "TEST4");
+    super.new(name);
+  endfunction 
+
+  task body();
+
+    `uvm_info(get_name(), "\n\n------------------------ TEST4 : I2C write 1 byte -------------------------------\n", UVM_MEDIUM)
+
+    //  write value
+    this.reg_model.prescale.write(status, 8'h06);
+    this.reg_model.slave_address.write(status, 8'h20);
+    this.reg_model.transmit.write(status, 8'h5c);
+    this.reg_model.command.write(status, 8'h90);
+    
+    //  run i2c
+    this.Check_Start_condition(start_done);
+    repeat(2) begin
+      this.Get1Byte_From_Sda(data);
+      this.Check_ACK();
+    end
+    this.Check_Stop_condition(stop_done);
+
+  endtask 
+    
+endclass 
+
+
+class TEST5 extends apb_sequence;
+
+  `uvm_object_utils(TEST5)
+
+  function new(string name = "TEST5");
+    super.new(name);
+  endfunction 
+
+  task body();
+
+    `uvm_info(get_name(), "\n\n------------------------ TEST5 : I2C read n byte > FIFO Size -------------------------------\n", UVM_MEDIUM)
+
+    //  write value
+    this.reg_model.prescale.write(status, 8'h06);
+    this.reg_model.slave_address.write(status, 8'h20);
+    this.reg_model.transmit.write(status, 8'h00);
+    repeat(8) begin
+      this.reg_model.transmit.write(status, $urandom_range(0, 255));
+    end
+    this.reg_model.command.write(status, 8'h90);
+    
+    //  run i2c
+    this.Check_Stop_condition(stop_done);
+    stop_done = 0;
+
+    //  config to read
+    this.reg_model.slave_address.write(status, 8'h21);
+    this.reg_model.command.write(status, 8'h90);
+
+    this.Check_Start_condition(start_done);
+
+    fork
+      this.Check_Stop_condition(stop_done)    ;
+      while (!stop_done) begin
+        this.Get1Byte_From_Sda(data[0]);
+        this.Check_ACK();
+      end
+    join_any
+
+    //  read value
+    repeat(15) begin
+      this.reg_model.receive.read(status, value);
+    end
+    
+    `uvm_delay(500)
+  endtask 
+    
+endclass
+
+
+class TEST6 extends apb_sequence;
+
+  `uvm_object_utils(TEST6)
+
+  function new(string name = "TEST6");
+    super.new(name);
+  endfunction 
+
+  task body();
+
+    `uvm_info(get_name(), "\n\n------------------------ TEST6 : I2C write n byte > FIFO Size -------------------------------\n", UVM_MEDIUM)
+
+    //  write value
+    this.reg_model.prescale.write(status, 8'h06);
+    this.reg_model.slave_address.write(status, 8'h20);
+    this.reg_model.transmit.write(status, 8'h00);
+    repeat(20) begin
+      this.reg_model.transmit.write(status, $urandom_range(0, 255));
+    end
+    this.reg_model.command.write(status, 8'h90);
+    
+    stop_done = 0;
+    //  run i2c
+    fork
+      this.Check_Stop_condition(stop_done)    ;
+      while (!stop_done) begin
+        this.Get1Byte_From_Sda(data[0]);
+        this.Check_ACK();
+      end
+    join_any
+
+    `uvm_delay(500)
+    $finish;
+  endtask 
+    
+endclass 
+
+
+class TEST7 extends apb_sequence;
+
+  `uvm_object_utils(TEST7)
+
+  function new(string name = "TEST7");
+    super.new(name);
+  endfunction 
+
+  task body();
+
+    `uvm_info(get_name(), "\n\n------------------------ TEST7 : I2C write address wrong -------------------------------\n", UVM_MEDIUM)
+
+    //  write value
+    this.reg_model.prescale.write(status, 8'h06);
+    this.reg_model.slave_address.write(status, 8'h30);
+    this.reg_model.transmit.write(status, 8'h00);
+    repeat(2) begin
+      this.reg_model.transmit.write(status, $urandom_range(0, 255));
+    end
+    this.reg_model.command.write(status, 8'h90);
+    
+    stop_done = 0;
+    //  run i2c
+    fork
+      this.Check_Stop_condition(stop_done)    ;
+      while (!stop_done) begin
+        this.Get1Byte_From_Sda(data[0]);
+        this.Check_ACK();
+      end
+    join_any
+
+    `uvm_delay(500)
+    $finish;
+  endtask 
+    
+endclass 
+
+
+class TEST8 extends apb_sequence;
+
+  `uvm_object_utils(TEST8)
+
+  function new(string name = "TEST8");
+    super.new(name);
+  endfunction 
+
+  task body();
+
+    `uvm_info(get_name(), "\n\n------------------------ TEST8 : I2C write address wrong -------------------------------\n", UVM_MEDIUM)
+
+    //  write value
+    this.reg_model.prescale.write(status, 8'h06);
+    this.reg_model.slave_address.write(status, 8'h20);
+    this.reg_model.transmit.write(status, 8'h00);
+    repeat(3) begin
+      this.reg_model.transmit.write(status, $urandom_range(0, 255));
+    end
+    this.reg_model.command.write(status, 8'h91);  // enable with repeat start
+
+    //  run i2c
+    this.Check_Start_condition(start_done);
+    start_done = 0;
+    fork
+      this.Check_Start_condition(start_done)    ;
+      while (!start_done) begin                             //  read data on sda until there is a repeat start
+        this.Get1Byte_From_Sda(data[0]);
+        this.Check_ACK();
+      end
+    join_any
+
+    //  config to read
+    this.reg_model.slave_address.write(status, 8'h21);
+    this.reg_model.command.write(status, 8'h91);            // enable with repeat start
+
+    //  run i2c
+    this.Check_Start_condition(start_done);
+    start_done = 0;
+    fork
+      this.Check_Start_condition(start_done)    ;
+      while (!start_done) begin                             //  read data on sda until there is a repeat start
+        this.Get1Byte_From_Sda(data[0]);
+        this.Check_ACK();
+      end
+    join_any
+
+    //  config to write
+    this.reg_model.slave_address.write(status, 8'h20);
+    this.reg_model.transmit.write(status, 8'h00);
+    repeat(3) begin
+      this.reg_model.transmit.write(status, $urandom_range(0, 255));
+    end
+    this.reg_model.command.write(status, 8'h91);  // enable with repeat start
+
+    `uvm_delay(500)
+    $finish;
+  endtask 
+    
+endclass 
+
 `endif 

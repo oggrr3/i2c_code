@@ -29,7 +29,7 @@ class reg_to_apb_adapter extends uvm_reg_adapter;
     end
     rw.kind =  (transfer.pwrite == 0) ? UVM_READ : UVM_WRITE;
     rw.addr = transfer.paddr;
-    rw.data = transfer.pwdata;
+    rw.data = transfer.prdata;
     //rw.byte_en = 'h0;   // Set this to -1 or DO NOT SET IT AT ALL - 
     rw.status = UVM_IS_OK;
   endfunction  : bus2reg
