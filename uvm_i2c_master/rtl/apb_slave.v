@@ -91,7 +91,8 @@ module apb
                 5: begin
                     if (PSELx == 0)
                         command_reg     <= 10010000;
-                    else if ((PWRITE == 0) && (PSELx == 1) && (PENABLE == 1)) begin
+                    //else if ((PWRITE == 0) && (PSELx == 1) && (PENABLE == 1)) begin
+                    else if ((PWRITE == 0) && (PENABLE == 1)) begin                 //  Modify above line to run code coverage
                         PRDATA          <= receive_reg;
                         command_reg     <= 10110000;
                     end

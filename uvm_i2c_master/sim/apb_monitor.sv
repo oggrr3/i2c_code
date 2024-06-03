@@ -8,6 +8,7 @@ class apb_monitor extends uvm_monitor;
   //Analysis port -parameterized to apb_rw transaction
   ///Monitor writes transaction objects to this port once detected on interface
   uvm_analysis_port#(apb_transaction) monitor_port;
+  //uvm_analysis_port#(logic [7:0] data) monitor_port2;
 
   `uvm_component_utils(apb_monitor)
 
@@ -16,6 +17,7 @@ class apb_monitor extends uvm_monitor;
    function new(string name, uvm_component parent);
      super.new(name, parent);
      monitor_port = new("monitor_port", this);
+     //monitor_port2 = new("monitor_port2", this);
    endfunction
 
    //Build Phase - Get handle to virtual if from agent/config_db
@@ -34,10 +36,10 @@ class apb_monitor extends uvm_monitor;
 
     task run_phase(uvm_phase phase);
       super.run_phase(phase);
+
       forever begin
-       @(posedge intf.apb_clk);
-       if (intf.psel & intf.penable & intf.preset_n)
-        begin
+        @(posedge intf.apb_clk);
+        if (intf.psel & intf.penable & intf.preset_n) begin
           item = apb_transaction::type_id::create("item");
           item.paddr = intf.paddr;
           item.pwdata = intf.pwdata;
@@ -48,10 +50,12 @@ class apb_monitor extends uvm_monitor;
           else
             `uvm_info("APB_MONITOR_CLASS", $sformatf("READ item addr %0h data %0h", item.paddr, item.prdata), UVM_MEDIUM)
 
+          // send item to scoreboard
           monitor_port.write(item);
-          // `uvm_info("MONITOR_CLASS", "write transaction!", UVM_MEDIUM)
+          $display("HI------------%h at %h", item.pwdata, item.paddr);
         end
       end
+
    endtask
 
 endclass

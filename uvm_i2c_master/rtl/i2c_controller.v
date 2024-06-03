@@ -147,7 +147,8 @@ module i2c_controller
                         if (enable == 0) begin
                                     next_state <= STOP;
                         end
-                        else if (enable == 1) begin
+                        //else if (enable == 1) begin
+                        else begin                                             //   Modify above number to run code coverage
                             if (repeated_start_cond == 0)   
                                     next_state <= WRITE_DATA;
                             else
@@ -172,7 +173,8 @@ module i2c_controller
                     if (enable == 0) begin
                                 next_state  <= STOP;
                     end
-                    else if (enable <= 1) begin
+                    //else if (enable <= 1) begin
+                    else    begin                                   //  Modify from above line to run code coverage
                         if (repeated_start_cond == 0)   
                                 next_state  <= READ_DATA;
                         else

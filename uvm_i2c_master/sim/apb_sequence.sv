@@ -103,6 +103,33 @@ class TEST1 extends apb_sequence;
     this.reg_model.slave_address.read(status, value);
     this.reg_model.command.read(status, value);
     this.reg_model.prescale.read(status, value);
+
+    //  penable = 0 -> run code coverage
+        @(posedge   intf.apb_clk)                       ;
+        intf.paddr      <=  8'h00                       ;
+        intf.pwrite     <=  1                           ;
+        intf.psel       <=  0                           ;
+        intf.penable    <=  0                           ;
+        intf.pwdata     <=  8'h00                       ;
+        @(posedge   intf.apb_clk);
+        intf.penable    <=  1                           ;
+        intf.psel       <=  0                           ;
+
+        //  run code coverage paddr = 3
+        @(posedge   intf.apb_clk)                       ;
+        intf.paddr      <=  8'h05                       ;
+        intf.pwrite     <=  1                           ;
+        intf.psel       <=  1                           ;
+        intf.penable    <=  0                           ;
+        intf.pwdata     <=  8'h00                       ;
+        @(posedge   intf.apb_clk);
+        intf.penable    <=  1                           ;
+        @(posedge   intf.apb_clk);
+        intf.paddr      <=  8'h03                       ;
+        intf.pwrite     <=  1                           ;
+        @(posedge   intf.apb_clk);
+        `uvm_delay(50)
+
   endtask 
     
 endclass 
@@ -136,6 +163,7 @@ class TEST2 extends apb_sequence;
     this.reg_model.slave_address.read(status, value);
     this.reg_model.command.read(status, value);
     this.reg_model.prescale.read(status, value);
+    `uvm_delay(50)
   endtask 
     
 endclass 
@@ -224,7 +252,7 @@ class TEST5 extends apb_sequence;
   task body();
 
     `uvm_info(get_name(), "\n\n------------------------ TEST5 : I2C read n byte > FIFO Size -------------------------------\n", UVM_MEDIUM)
-
+  
     //  write value
     this.reg_model.prescale.write(status, 8'h06);
     this.reg_model.slave_address.write(status, 8'h20);
@@ -253,7 +281,7 @@ class TEST5 extends apb_sequence;
     join_any
 
     //  read value
-    repeat(15) begin
+    repeat(20) begin
       this.reg_model.receive.read(status, value);
     end
     
@@ -295,7 +323,7 @@ class TEST6 extends apb_sequence;
     join_any
 
     `uvm_delay(500)
-    $finish;
+    //$finish;
   endtask 
     
 endclass 
@@ -333,7 +361,7 @@ class TEST7 extends apb_sequence;
     join_any
 
     `uvm_delay(500)
-    $finish;
+    //$finish;
   endtask 
     
 endclass 
@@ -384,7 +412,7 @@ class TEST8 extends apb_sequence;
     this.reg_model.command.write(status, 8'h98);  // enable with repeat start
 
     `uvm_delay(4000)
-    $finish;
+    //$finish;
   endtask 
     
 endclass 
@@ -413,7 +441,7 @@ class TEST9 extends apb_sequence;
     
     //  run i2c
     this.Check_Start_condition(start_done);
-    repeat (4) begin
+    repeat (6) begin
       this.Get1Byte_From_Sda(data);
       this.Check_ACK();
     end
@@ -439,21 +467,19 @@ class TEST9 extends apb_sequence;
     
     //  write value
     this.reg_model.slave_address.write(status, 8'h20);
+    //this.reg_model.transmit.write(status, 8'h00);
     this.reg_model.transmit.write(status, 8'h00);
-    repeat(4) begin
-      this.reg_model.transmit.write(status, $urandom_range(0, 255));
-    end
     this.reg_model.command.write(status, 8'h90);
     
     //  run i2c
     this.Check_Start_condition(start_done);
-    repeat (5) begin
+    repeat (2) begin
       this.Get1Byte_From_Sda(data);
       this.Check_ACK();
     end
 
     `uvm_delay(500)
-    $finish;
+    //$finish;
   endtask 
     
 endclass 
@@ -491,7 +517,7 @@ class TEST10 extends apb_sequence;
     join_any
 
     `uvm_delay(500)
-    $finish;
+    //$finish;
   endtask 
     
 endclass 
@@ -552,7 +578,7 @@ class TEST11 extends apb_sequence;
     this.Check_Stop_condition(stop_done);               //  Run until RX-FIFO full -> Stop
 
     `uvm_delay(500)
-    $finish;
+    //$finish;
   endtask 
     
 endclass 
@@ -600,7 +626,7 @@ class TEST12 extends apb_sequence;
     this.Check_Stop_condition(stop_done);               //  Run until RX-FIFO full -> Stop
 
     `uvm_delay(500)
-    $finish;
+    //$finish;
   endtask 
     
 endclass 

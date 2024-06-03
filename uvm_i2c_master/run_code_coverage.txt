@@ -1,0 +1,9 @@
+test9c
+Rx fifo run to full
+
+
+
+line 147 i2c_controller   -> Modify to if else
+line 175 i2c_controller   -> Modify to enable == 1
+line 94	 apb_slave	  -> Modify 
+line 21  fifo_rx -> fifomem -> wrtie_full not 1 hit also in wave find 1 -> Excule

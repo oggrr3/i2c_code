@@ -1,0 +1,2 @@
+var g_data = {"41":["address_of_slave_to_read","address_of_slave_to_write"],"42":["apb_read_status_reg","apb_read_receive_reg","apb_write_prescale_reg","apb_write_slave_addr_reg","apb_write_transmit_reg","apb_write_cmd_reg"],"47":["address_of_slave_to_read","address_of_slave_to_write"],"48":["apb_read_status_reg","apb_read_receive_reg","apb_write_prescale_reg","apb_write_slave_addr_reg","apb_write_transmit_reg","apb_write_cmd_reg"]};
+processCoverpointsMapData(g_data);

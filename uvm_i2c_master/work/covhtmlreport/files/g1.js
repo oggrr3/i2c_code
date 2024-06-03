@@ -1,0 +1,2 @@
+var g_data = {"39":{"pr":"/tb_top_sv_unit","ty":2,"dui":2,"dun":"work.tb_top_sv_unit","cvgs":[{"h":["/tb_top_sv_unit/apb_subscriber/cg",1,1,40],"sc":[125,15],"cov":[8,8,100.00],"opts":{"goal":"100","merge_instance":"auto(true)"}}]},"2":{"pr":"work.tb_top_sv_unit","ty":0,"cvgs":[{"h":["work.tb_top_sv_unit::apb_subscriber/cg",1,1,46],"sc":[125,15],"cov":[8,8,100.00],"opts":{"goal":"100","merge_instance":"auto(true)"}}]}};
+processCovergroupsData(g_data);

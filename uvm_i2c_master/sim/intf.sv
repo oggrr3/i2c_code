@@ -14,6 +14,13 @@ interface intf   (input  i2c_clk, apb_clk) ;
     wire                   sda              ;   //  sda line
     wire                   scl              ;   //  scl line
 
+
+  logic start;
+  logic stop;
+  logic reset;
+  logic [7:0] data_slave_read;
+  logic data_slave_read_valid;
+
 endinterface 
 
 `endif 

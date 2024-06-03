@@ -1,3 +1,8 @@
+`include "fifo.v"
+`include "apb_slave.v"
+`include "8bit_to_1byte.v"
+`include "clock_generator.v"
+
 module top_level
     #(parameter data_size = 8,parameter address_size = 3)  
     (
@@ -140,9 +145,9 @@ module top_level
         .i2c_clk                        (i2c_clk_gen)
     );
 
-    i2c_slave_model slave
-    (
-        .scl(scl),
-        .sda(sda)
-    );
+    // i2c_slave_model slave
+    // (
+    //     .scl(scl),
+    //     .sda(sda)
+    // );
 endmodule

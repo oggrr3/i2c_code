@@ -11,9 +11,11 @@ import uvm_pkg::*;
 `include "apb_monitor.sv"
 `include "apb_sequencer.sv"
 `include "apb_agent.sv"
+`include "apb_scoreboard.sv"
 `include "i2c_reg_block.sv"
 `include "reg_to_apb_adapter.sv"
 `include "apb_sequence.sv"
+`include "apb_subscriber.sv"
 `include "apb_env.sv"
 `include "testcase.sv"
 
@@ -52,7 +54,12 @@ module tb_top ();
 
     i2c_slave_model  i2c_slave_model (
         .sda  (intf.sda)  ,
-        .scl  (intf.scl)
+        .scl  (intf.scl)  ,
+        .start(intf.start),
+        .stop   (intf.stop) ,
+        .data_slave_read    (intf.data_slave_read)  ,
+        .data_slave_read_valid  (intf.data_slave_read_valid)    ,
+        .reset  (intf.preset_n)
     );
 
     initial begin

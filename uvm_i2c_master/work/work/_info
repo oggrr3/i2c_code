@@ -9,13 +9,13 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 d/12users/vanvi/documents/verify_projects/uvm_i2c_master_verify/work
+Z0 d/12users/vanvi/documents/verify_projects/vanvi_uvm_i2c/work
 T_opt
-!s11d tb_top_sv_unit /12users/vanvi/documents/verify_projects/uvm_i2c_master_verify/work/work 1 intf 1 /12users/vanvi/documents/verify_projects/uvm_i2c_master_verify/work/work 
-!s110 1716375079
-VDjB]Q8QDfzVG74z=W>7gj2
+!s11d tb_top_sv_unit /12users/vanvi/documents/verify_projects/vanvi_uvm_i2c/work/work 1 intf 1 /12users/vanvi/documents/verify_projects/vanvi_uvm_i2c/work/work 
+!s110 1717390548
+VZhFHl0>;dL^W8Z]IAAi`?3
 04 6 4 work tb_top fast 0
-=1-44a8424afb0e-664dce26-74719-1b7d3f
+=1-44a8424afb0e-665d4cd4-1fe01-27a3fc
 !s124 OEM100
 o-quiet -auto_acc_if_foreign -work work +acc
 Z1 tCvgOpt 0
@@ -23,29 +23,29 @@ n@_opt
 OL;O;2021.2_1;73
 vapb
 Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z3 !s110 1716375075
+Z3 !s110 1717390545
 !i10b 1
-!s100 n=oneLVMSoofSeICMZGV22
-IYhJXM:>WoeVH6^GZSTRb<3
+!s100 1C]5e7bo_M;_<TJkmb70_2
+IGbYEn[ZRQL@bA>JHjHR8Q3
 S1
 R0
-Z4 w1716350619
+w1717384680
 8../rtl/apb_slave.v
 F../rtl/apb_slave.v
 !i122 1
-L0 1 108
-Z5 VDg1SIo80bB@j0V0VzS_@n1
-Z6 OL;L;2021.2_1;73
+L0 1 109
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2021.2_1;73
 r1
 !s85 0
 31
-Z7 !s108 1716375075.000000
-Z8 !s107 ../rtl/clock_generator.v|../rtl/8bit_to_1byte.v|../rtl/apb_slave.v|../rtl/fifo.v|../rtl/top_level.v|
-Z9 !s90 -sv|+acc|-incr|-f|filelist_rtl.f|-l|vlog_rtl.log|+cover=sbceft|-assertdebug|
+Z6 !s108 1717390545.000000
+Z7 !s107 ../rtl/clock_generator.v|../rtl/8bit_to_1byte.v|../rtl/apb_slave.v|../rtl/fifo.v|../rtl/top.v|
+Z8 !s90 -sv|+acc|-incr|-f|filelist_rtl.f|-l|vlog_rtl.log|+cover=sbceft|-assertdebug|
 !i113 0
-Z10 !s102 +cover=sbceft
-Z11 o-sv +acc +libext+.svh+.vh+.v+.sv +cover=sbceft -assertdebug -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-Z12 !s92 -sv +acc +libext+.svh+.vh+.v+.sv +incdir+../rtl -y ../rtl +cover=sbceft -assertdebug -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z9 !s102 +cover=sbceft
+Z10 o-sv +acc +libext+.svh+.vh+.v+.sv +cover=sbceft -assertdebug -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z11 !s92 -sv +acc +libext+.svh+.vh+.v+.sv +incdir+../rtl -y ../rtl +cover=sbceft -assertdebug -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R1
 vBitToByteConverter
 R2
@@ -55,23 +55,23 @@ R3
 IonkM9hoPD_f8_z^5z@kj91
 S1
 R0
-R4
+Z12 w1717145740
 8../rtl/8bit_to_1byte.v
 F../rtl/8bit_to_1byte.v
 !i122 1
 L0 1 36
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
+R9
 R10
 R11
-R12
 R1
 n@bit@to@byte@converter
 vClockGenerator
@@ -82,23 +82,23 @@ R3
 IQNjBO7kUaHl4>GljhiIOc2
 S1
 R0
-R4
+R12
 8../rtl/clock_generator.v
 F../rtl/clock_generator.v
 !i122 1
 L0 1 22
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
+R9
 R10
 R11
-R12
 R1
 n@clock@generator
 vFIFO_memory
@@ -109,23 +109,23 @@ R3
 IVTaeeC[bXc69<A]E?mP@_3
 S1
 R0
-R4
+R12
 Z13 8../rtl/fifo.v
 Z14 F../rtl/fifo.v
 !i122 1
 L0 1 24
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
+R9
 R10
 R11
-R12
 R1
 n@f@i@f@o_memory
 vFIFO_top
@@ -136,103 +136,103 @@ R3
 IJfd^^UaX:g84FCe4A1M842
 S1
 R0
-R4
+R12
 R13
 R14
 !i122 1
 L0 137 73
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
+R9
 R10
 R11
-R12
 R1
 n@f@i@f@o_top
 vi2c_controller
 R2
 R3
 !i10b 1
-!s100 hbXAND0T]3e:d?0kV70S=0
-Iko`nFl[geakl8FbU[iX2[3
+!s100 9aNaZF_E;gIfI6?@D_i7i0
+I7jMDzQ6O]:OD:No<]2G1m3
 S1
 R0
-R4
+w1717386814
 8../rtl/i2c_controller.v
 F../rtl/i2c_controller.v
 !i122 1
-L0 1 300
+L0 1 302
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
+R9
 R10
 R11
-R12
 R1
 vi2c_slave_model
 R2
 R3
 !i10b 1
-!s100 [=KNORGgSVYDG6?Z?ezD92
-IXN`Hh[`aIPhlIbW4Eh8;52
+!s100 hYeU0Vn34CW:L@dKY]IET0
+IlbDJaTe<;D@Z[g7<5[9WK0
 S1
 R0
-R4
+R12
 8../sim/i2c_slave_model.v
 F../sim/i2c_slave_model.v
 !i122 0
-L0 71 288
+L0 69 302
+R4
 R5
-R6
 r1
 !s85 0
 31
-R7
-Z15 !s107 ../sim/testcase.sv|../sim/apb_env.sv|../sim/apb_sequence.sv|../sim/reg_to_apb_adapter.sv|../sim/i2c_reg_block.sv|../sim/apb_agent.sv|../sim/apb_sequencer.sv|../sim/apb_monitor.sv|../sim/apb_driver.sv|../sim/apb_transaction.sv|../sim/intf.sv|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|../sim/tb_top.sv|
-Z16 !s90 -timescale=1ns/1ns|-sv|+acc|-incr|-f|filelist_tb.f|-assertdebug|+define+SEQ=TEST2|-l|vlog_tb.log|
+Z15 !s108 1717390544.000000
+Z16 !s107 ../sim/testcase.sv|../sim/apb_env.sv|../sim/apb_subscriber.sv|../sim/apb_sequence.sv|../sim/reg_to_apb_adapter.sv|../sim/i2c_reg_block.sv|../sim/apb_scoreboard.sv|../sim/apb_agent.sv|../sim/apb_sequencer.sv|../sim/apb_monitor.sv|../sim/apb_driver.sv|../sim/apb_transaction.sv|../sim/intf.sv|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|../sim/tb_top.sv|
+Z17 !s90 -timescale=1ns/1ns|-sv|+acc|-incr|-f|filelist_tb.f|-assertdebug|+define+SEQ=TEST12|+define+NUM=6|-l|vlog_tb.log|
 !i113 0
-Z17 o-timescale=1ns/1ns -sv +acc +libext+.svh+.vh+.v+.sv -assertdebug -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-Z18 !s92 -timescale=1ns/1ns -sv +acc +libext+.svh+.vh+.v+.sv +incdir+../sim -y ../sim -assertdebug +define+SEQ=TEST2 -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z18 o-timescale=1ns/1ns -sv +acc +libext+.svh+.vh+.v+.sv -assertdebug -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z19 !s92 -timescale=1ns/1ns -sv +acc +libext+.svh+.vh+.v+.sv +incdir+../sim -y ../sim -assertdebug +define+SEQ=TEST12 +define+NUM=6 -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R1
 Yintf
 R2
-Z19 DXx6 mtiUvm 7 uvm_pkg 0 22 8V[`8]Q0W57le7Z>zYaAj1
-Z20 DXx4 work 14 tb_top_sv_unit 0 22 jBb`XcQo4X>g:T7D=]50@1
+Z20 DXx6 mtiUvm 7 uvm_pkg 0 22 8V[`8]Q0W57le7Z>zYaAj1
+Z21 DXx4 work 14 tb_top_sv_unit 0 22 ME4a`nWNDA`[BB^Z:L73`0
 R3
-R5
+R4
 r1
 !s85 0
 !i10b 1
-!s100 A;M6G8e_OaeFRBl3hDPBE1
-ImZ;PVJWQ;5Gn@4Lo3LeEi1
-Z21 !s105 tb_top_sv_unit
+!s100 nJoiNB53FhB2HgZ1j@>B<1
+I`hLScCiXoPH[ikifAmbSM0
+Z22 !s105 tb_top_sv_unit
 S1
 R0
-w1716350675
+R12
 8../sim/intf.sv
-Z22 F../sim/intf.sv
+Z23 F../sim/intf.sv
 !i122 0
 L0 4 0
-R6
+R5
 31
-R7
 R15
 R16
-!i113 0
 R17
+!i113 0
 R18
+R19
 R1
 vread_pointer_empty
 R2
@@ -242,23 +242,23 @@ R3
 IHlCTn[T:AB@jBK=PF@lAk0
 S1
 R0
-R4
+R12
 R13
 R14
 !i122 1
 L0 61 39
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
+R9
 R10
 R11
-R12
 R1
 vsync_read_to_write
 R2
@@ -268,23 +268,23 @@ R3
 IGbeZ;z[8oXE7DNZzS:6Lb3
 S1
 R0
-R4
+R12
 R13
 R14
 !i122 1
 L0 101 17
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
+R9
 R10
 R11
-R12
 R1
 vsync_write_to_read
 R2
@@ -294,69 +294,69 @@ R3
 IjgWY5zNAJ8G9P`dIFCck83
 S1
 R0
-R4
+R12
 R13
 R14
 !i122 1
 L0 119 17
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
+R9
 R10
 R11
-R12
 R1
 vtb_top
 R2
-R19
 R20
+R21
 R3
-R5
+R4
 r1
 !s85 0
 !i10b 1
-!s100 b=A2;JKRd:ONWEPb]2c>?2
-I2cVkHH?@XEl[I4ozVEez70
-R21
+!s100 4U>hFeJWR`HZNZ9bBl2==2
+I;VP1ROcY]mIM5lgJZM8ca1
+R22
 S1
 R0
-w1716363795
-Z23 8../sim/tb_top.sv
-Z24 F../sim/tb_top.sv
+R12
+Z24 8../sim/tb_top.sv
+Z25 F../sim/tb_top.sv
 !i122 0
-L0 26 38
-R6
+L0 28 43
+R5
 31
-R7
 R15
 R16
-!i113 0
 R17
+!i113 0
 R18
+R19
 R1
 Xtb_top_sv_unit
 !s115 intf
 R2
-R19
+R20
 R3
-VjBb`XcQo4X>g:T7D=]50@1
+VME4a`nWNDA`[BB^Z:L73`0
 r1
 !s85 0
 !i10b 1
-!s100 h0:M^4C`iAg3<SZ9WB8Lh2
-IjBb`XcQo4X>g:T7D=]50@1
+!s100 =[4[o5doGO`79NZjW[m>c0
+IME4a`nWNDA`[BB^Z:L73`0
 !i103 1
 S1
 R0
-w1716375073
-R23
+w1717390267
 R24
+R25
 F/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh
 F/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh
 F/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh
@@ -369,53 +369,55 @@ F/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_seque
 F/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh
 F/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh
 F/12tools/MENTOR/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh
-R22
+R23
 F../sim/apb_transaction.sv
 F../sim/apb_driver.sv
 F../sim/apb_monitor.sv
 F../sim/apb_sequencer.sv
 F../sim/apb_agent.sv
+F../sim/apb_scoreboard.sv
 F../sim/i2c_reg_block.sv
 F../sim/reg_to_apb_adapter.sv
 F../sim/apb_sequence.sv
+F../sim/apb_subscriber.sv
 F../sim/apb_env.sv
 F../sim/testcase.sv
 !i122 0
 L0 3 0
-R6
+R5
 31
-R7
 R15
 R16
-!i113 0
 R17
+!i113 0
 R18
+R19
 R1
 vtop_level
 R2
 R3
 !i10b 1
 !s100 Y5>m=Jg8oTCBlISm^]ZQo0
-ITGJ6]ZMaWRA1i_>XNW@411
+I3j8H6^m?YnZh@^D5[m;mg0
 S1
 R0
-R4
-8../rtl/top_level.v
-F../rtl/top_level.v
+R12
+8../rtl/top.v
+F../rtl/top.v
 !i122 1
 L0 6 148
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
+R9
 R10
 R11
-R12
 R1
 vwrite_pointer_full
 R2
@@ -425,21 +427,21 @@ R3
 IXTNI6f;4U0hock>o`=RX`3
 S1
 R0
-R4
+R12
 R13
 R14
 !i122 1
 L0 26 34
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
+R9
 R10
 R11
-R12
 R1

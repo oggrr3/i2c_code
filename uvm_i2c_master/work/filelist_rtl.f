@@ -4,4 +4,4 @@
 +incdir+../rtl
 -y ../rtl
 
-../rtl/top_level.v
+../rtl/top.v

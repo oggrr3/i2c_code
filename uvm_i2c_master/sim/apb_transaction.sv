@@ -8,7 +8,7 @@ class apb_transaction extends uvm_sequence_item;
   //typedef for READ/Write transaction type
   //typedef enum {READ, WRITE} kind_e;
   rand bit   [7:0] paddr;      //Address
-  rand bit  pwrite;       //command type
+  	 bit  pwrite;       //command type
          bit                  preset_n         ;   //  reset signal is active-LOW
          bit                  psel             ;   //  select slave interface
          bit                  penable          ;   //  Enable. PENABLE indicates the second and subsequent cycles of an APB transfer.
