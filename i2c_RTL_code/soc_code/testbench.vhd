@@ -49,7 +49,7 @@ end component;
   signal number_of_bits_received : std_logic_vector (31 downto 0) := x"00000000";
   signal data_received : std_logic_vector (9 downto 0) := "0000000000";
   file output_file_stdout : text; 
-  signal charbuffer : String (1 to 15);         -- this line is changed from signal charbuffer : String (1 to 80);
+  signal charbuffer : String (1 to 50);         -- this line is changed from signal charbuffer : String (1 to 80);
   signal charbuffer_index : integer := 1;
 begin
     uut : soc_i2c_mater_wrapper port map (
@@ -79,6 +79,14 @@ begin
     rst <= '0';
     wait;
   end process;
+
+--  process
+--  begin
+--      -- Apply weak pull-up
+--      if (sda_0 = 'Z') then
+--        sda_0 <= '1' after 1 ns; -- Simulate weak pull-up delay
+--      end if;
+--  end process;
 
   process
   begin

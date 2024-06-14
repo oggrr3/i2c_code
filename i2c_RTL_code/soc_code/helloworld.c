@@ -54,28 +54,41 @@
 int main()
 {
     init_platform();
+    int data;
+//    u32 transmit_reg = XPAR_I2C_TOP_0_BASEADDR;				//	0x44A00000, but s_apb_i2c get 8 LSB bits (1-byte) to paddr, and start 0x00 is
+//    u32 receive_reg	=	XPAR_I2C_TOP_0_BASEADDR + 1;
+//    u32 status_reg = XPAR_I2C_TOP_0_BASEADDR + 8;
+//    u32 slave_addr_reg = XPAR_I2C_TOP_0_BASEADDR + 12;
+//    u32 command_reg = XPAR_I2C_TOP_0_BASEADDR + 16;
+//    u32	prescale_reg = XPAR_I2C_TOP_0_BASEADDR + 20;
 
-    u32 transmit_reg = XPAR_I2C_TOP_0_BASEADDR;
-    u32 receive_reg	=	XPAR_I2C_TOP_0_BASEADDR + 4;
-    u32 status_reg = XPAR_I2C_TOP_0_BASEADDR + 8;
-    u32 slave_addr_reg = XPAR_I2C_TOP_0_BASEADDR + 12;
-    u32 command_reg = XPAR_I2C_TOP_0_BASEADDR + 16;
-    u32	prescale_reg = XPAR_I2C_TOP_0_BASEADDR + 20;
+    u32 transmit_reg 	= 0x44A00000;				//	0x44A00000, but s_apb_i2c get 8 LSB bits (1-byte) to paddr, and start 0x00 is
+    u32 receive_reg		= 0x44A00004;
+    u32 status_reg 		= 0x44A00008;
+    u32 slave_addr_reg 	= 0x44A0000c;
+    u32 command_reg 	= 0x44A00010;
+    u32	prescale_reg 	= 0x44A00014;
 
-    print("Hello World\n\r");
-    Xil_Out32(command_reg, 0x00);
-    sleep(1);											//	Sleep  seconds
-
+    xil_printf("Hello World VI nez\n\r");
     Xil_Out32(transmit_reg, 0x00);
-    Xil_Out32(transmit_reg, 0x2b);
     Xil_Out32(slave_addr_reg, 0x3a);
     Xil_Out32(prescale_reg, 0x06);
+    xil_printf("Write to reg done\n\r");
 
     Xil_Out32(command_reg, 0xc0);
-    sleep(5);											//	Sleep
+    sleep(2);											//	Sleep for micro second (us)
 
-    printf("Status = %lu", Xil_In32(status_reg));
-    printf("Status = %lu", Xil_In32(receive_reg));
+    print("Successfully write and then read\n\r");
+    Xil_Out32(slave_addr_reg, 0x31);
+    Xil_Out32(command_reg, 0xc0);
+    sleep(2);
+    while(1) {
+    	data = (int) (Xil_In32(receive_reg));
+    	xil_printf("Data Received = %d\n\r", data);
+    	sleep(1);
+    }
+
+//    xil_printf("Status = %lu", Xil_In32(status_reg));
     print("Successfully ran Hello World application\n\r");
     cleanup_platform();
     return 0;

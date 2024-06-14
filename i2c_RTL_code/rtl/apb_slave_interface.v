@@ -24,9 +24,9 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
 
     // Decalar register map
     reg     [7:0]                       reg_transmit            ;   //  0x00
-    reg     [7:0]                       reg_slave_address       ;   //  0x03
-    reg     [7:0]                       reg_command             ;   //  0x04
-    reg     [7:0]                       reg_prescale            ;   //  0x05
+    reg     [7:0]                       reg_slave_address       ;   //  0x0c
+    reg     [7:0]                       reg_command             ;   //  0x10
+    reg     [7:0]                       reg_prescale            ;   //  0x14
 
     //  Decalar reg of output
     reg     [DATA_WIDTH - 1 : 0]        prdata              ;
@@ -59,17 +59,17 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
                 
                 case (paddr_i)
 
-                    0       :	begin						// When data into reg_transmit, enable write data to TX-FIFO
+                    8'h00       :	begin						// When data into reg_transmit, enable write data to TX-FIFO
 						reg_transmit    <=  pwdata_i    ;
 						reg_command[3]	<=	1			;   // enable to write to TX-FIFO
 					end
 
-                    3       :       reg_slave_address       <=  pwdata_i    	;
-                    4       :   begin
+                    8'h0c       :       reg_slave_address       <=  pwdata_i    	;
+                    8'h10       :   begin
                         reg_command[7:5]             <=  pwdata_i[7:5]        ;
                     end
 
-                    5       :       reg_prescale            <=  pwdata_i    	; 
+                    8'h14       :       reg_prescale            <=  pwdata_i    	; 
   
 //                    default :	begin
 //						reg_transmit    <=  pwdata_i    ;
@@ -91,21 +91,21 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
 			end
             
             // pwrite Low and psel HIGHT, this is read cycle
-            if ( (psel_i == 1) && (pwrite_i == 0) && (penable_i == 0) )begin
+            if ( (psel_i == 1) && (pwrite_i == 0) && (penable_i == 1) )begin
                 
                 case (paddr_i)
 
-                    0       :       prdata            <=  reg_transmit      ;
+                    8'h00       :       prdata            <=  reg_transmit      ;
 
-                    1       :       begin
+                    8'h04       :       begin
 										prdata          <=  data_fifo_i     ;
 										reg_command[0]	<=	1				;	// enable read RX-FIFO
 									end
 
-                    2       :       prdata            <=  to_status_reg_i   ;
-                    3       :       prdata            <=  reg_slave_address ;
-                    4       :       prdata            <=  reg_command       ;
-                    5       :       prdata            <=  reg_prescale      ;   
+                    8'h08       :       prdata            <=  to_status_reg_i   ;
+                    8'h0c       :       prdata            <=  reg_slave_address ;
+                    8'h10       :       prdata            <=  reg_command       ;
+                    8'h14       :       prdata            <=  reg_prescale      ;   
                     //default :       prdata            <=  data_fifo_i       ;
 
                 endcase     
