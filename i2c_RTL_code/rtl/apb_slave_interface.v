@@ -13,6 +13,8 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
     input                               start_done_i        ,   //  i2c-core done start, let turn off enable
     input                               reset_done_i        ,   //  i2c-core done reset, let turn off reset
 
+    output                              tx_winc_o           ,   //  enable to write data to TX-FIFO
+    output                              rx_rinc_o           ,   //  enable to read data from RX-FIFO
     output  [DATA_WIDTH - 1 : 0]        prdata_o            ,   //  data read
     output                              pready_o            ,   //  ready to receive data
     output     [7:0]                    reg_transmit_o      ,   //  register
@@ -39,12 +41,14 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
     assign      reg_prescale_o          =   reg_prescale        ;
 	assign 		pready_o				=	psel_i ? 1 : 0		;
 
+    assign      tx_winc_o   =   (penable_i == 1 && psel_i == 1 && pwrite_i == 1 && paddr_i == 8'h00) ? 1 : 0    ;
+    assign      rx_rinc_o   =   (penable_i == 0 && psel_i == 1 && pwrite_i == 0 && paddr_i == 8'h04) ? 1 : 0    ;
+
     //  Write transfer with no wait states
     always @(posedge    pclk_i,    negedge  preset_ni) begin
 
         if (~preset_ni) begin
 
-            prdata                  <=      0       ;
             reg_transmit            <=      0       ;
             reg_slave_address       <=      0       ;
             reg_command             <=      0       ;
@@ -61,7 +65,6 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
 
                     8'h00       :	begin						// When data into reg_transmit, enable write data to TX-FIFO
 						reg_transmit    <=  pwdata_i    ;
-						reg_command[3]	<=	1			;   // enable to write to TX-FIFO
 					end
 
                     8'h0c       :       reg_slave_address       <=  pwdata_i    	;
@@ -70,11 +73,6 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
                     end
 
                     8'h14       :       reg_prescale            <=  pwdata_i    	; 
-  
-//                    default :	begin
-//						reg_transmit    <=  pwdata_i    ;
-//						reg_command[3]	<=	1			;
-//					end
 
                 endcase
             end
@@ -85,39 +83,27 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
                 reg_command[6]  <=  0   ;
             end
 
-
-			if (reg_command[3] == 1) begin
-				reg_command[3]	<=	0	; 
-			end
-            
-            // pwrite Low and psel HIGHT, this is read cycle
-            if ( (psel_i == 1) && (pwrite_i == 0) && (penable_i == 1) )begin
+            //  prdata to apb read
+            if ( (psel_i == 1) && (pwrite_i == 0) )begin
                 
                 case (paddr_i)
 
                     8'h00       :       prdata            <=  reg_transmit      ;
 
-                    8'h04       :       begin
-										prdata          <=  data_fifo_i     ;
-										reg_command[0]	<=	1				;	// enable read RX-FIFO
-									end
+                    8'h04       :   begin
+										prdata            <=  data_fifo_i       ;
+					end
 
                     8'h08       :       prdata            <=  to_status_reg_i   ;
                     8'h0c       :       prdata            <=  reg_slave_address ;
                     8'h10       :       prdata            <=  reg_command       ;
                     8'h14       :       prdata            <=  reg_prescale      ;   
-                    //default :       prdata            <=  data_fifo_i       ;
 
                 endcase     
-            end
-
-			// enable to read data from RX-FIFO only 1 cycle
-			if (reg_command[0]	==	1) begin
-				reg_command[0] 	<=	0	;
-			end
-
         end
-
+            
+        end
     end
+
 
 endmodule

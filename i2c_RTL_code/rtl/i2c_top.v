@@ -54,6 +54,8 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
 
     wire                        start_done                      ;
     wire                        reset_done                      ;
+    wire                        tx_winc                         ;
+    wire                        rx_rinc                         ;
 
     //  --------- for debug ----------------------
     //assign  debug_command = command;
@@ -148,12 +150,12 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
         .r_tx_fifo_en_i     (r_fifo_en      )   ,   // enable read data from TX-FIFO
         .w_rx_fifo_en_i     (w_fifo_en      )   ,   // enable write data to RX-FIFO
 
-        .tx_winc_i          (command[3]     )   ,
+        .tx_winc_i          (tx_winc        )   ,
         .tx_rrst_ni         (command[7]     )   ,
         .tx_wrst_ni         (command[7]     )   ,
 
         .rx_wrst_ni         (command[7]     )   ,
-        .rx_rinc_i          (command[0]     )   ,
+        .rx_rinc_i          (rx_rinc        )   ,
         .rx_rrst_ni         (command[7]     )   ,
 
         .data_to_apb_o      (data_to_apb    )   ,   // data receive from sda, which transfer to apb interface
@@ -173,6 +175,8 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
         .to_status_reg_i    (status         )         ,
 	    .data_fifo_i        (data_to_apb    )	      ,   //  data from FIFO memory
 
+        .tx_winc_o          (tx_winc        )         ,
+        .rx_rinc_o          (rx_rinc        )         ,
         .prdata_o           (prdata_o       )         ,   //  data read
         .pready_o           (pready_o       )         ,   //  ready to receive data
         .reg_transmit_o     (data_from_apb  )         ,
