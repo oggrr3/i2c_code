@@ -44,7 +44,7 @@ module i2c_master_fsm (
 
     // Declare count value
     //reg     [2:0]       count_clk_core              ;
-    reg                 confirm                     ;   // when i2c_scl_i from 1 down to 0, confirm = 1 
+    //reg                 confirm                     ;   // when i2c_scl_i from 1 down to 0, confirm = 1 
     reg     [3:0]       count_scl_posedge           ;
     reg     [3:0]       count_bit                   ;
 	reg		read_ack_to_read_done	                ;

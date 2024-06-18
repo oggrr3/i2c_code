@@ -28,7 +28,7 @@ module fifo_toplevel	# (	parameter	DATASIZE	=	8,
 	wire	[ADDRSIZE 	  : 0]		wptr		;
 	wire	[ADDRSIZE 	  : 0]		wq2_rptr	;
 
-	assign		rst_ni		=		rrst_ni & wrst_ni	;
+	//assign		rst_ni		=		rrst_ni & wrst_ni	;
 
 	fifo_mem	# (DATASIZE, ADDRSIZE)	fifo_mem1
 	(

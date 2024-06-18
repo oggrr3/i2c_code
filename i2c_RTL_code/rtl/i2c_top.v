@@ -165,6 +165,7 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
 
 
     apb_slave_interface # (DATA_SIZE, ADDR_SIZE)    apb_slave_interface (
+        .i2c_core_clk_i     (i2c_core_clk_i )         ,
         .pclk_i             (pclk_i         )         ,   //  clock
         .preset_ni          (preset_ni      )         ,   //  reset signal is active-LOW
         .paddr_i            (paddr_i        )         ,   //  address of APB slave and register map
