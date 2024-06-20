@@ -62,7 +62,7 @@ int main()
 //    u32 command_reg = XPAR_I2C_TOP_0_BASEADDR + 16;
 //    u32	prescale_reg = XPAR_I2C_TOP_0_BASEADDR + 20;
 
-    u32 transmit_reg 	= 0x44A00000;				//	0x44A00000, but s_apb_i2c get 8 LSB bits (1-byte) to paddr, and start 0x00 is
+    u32 transmit_reg 	= 0x44A00000;				//	XPAR_I2C_TOP_0_BASEADDR 0x44A00000, but s_apb_i2c get 8 LSB bits (1-byte) to paddr, and start 0x00 is
     u32 receive_reg		= 0x44A00004;
     u32 status_reg 		= 0x44A00008;
     u32 slave_addr_reg 	= 0x44A0000c;
@@ -71,7 +71,7 @@ int main()
 
     xil_printf("Hello World VI nez\n\r");
     Xil_Out32(transmit_reg, 0x00);
-    Xil_Out32(slave_addr_reg, 0x3a);
+    Xil_Out32(slave_addr_reg, 0xa6);
     Xil_Out32(prescale_reg, 0x06);
     xil_printf("Write to reg done\n\r");
 
@@ -79,14 +79,14 @@ int main()
     sleep(2);											//	Sleep for micro second (us)
 
     print("Successfully write and then read\n\r");
-    Xil_Out32(slave_addr_reg, 0x31);
+    Xil_Out32(slave_addr_reg, 0xa7);
     Xil_Out32(command_reg, 0xc0);
     sleep(2);
-    while(1) {
+    //while(1) {
     	data = (int) (Xil_In32(receive_reg));
     	xil_printf("Data Received = %d\n\r", data);
     	sleep(1);
-    }
+    //}
 
 //    xil_printf("Status = %lu", Xil_In32(status_reg));
     print("Successfully ran Hello World application\n\r");

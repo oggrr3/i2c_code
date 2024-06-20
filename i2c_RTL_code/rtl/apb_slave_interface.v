@@ -34,6 +34,7 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
     //  Decalar reg of output
     reg     [DATA_WIDTH - 1 : 0]        prdata                  ;
     reg                                 tx_winc                 ;
+    //reg                                 rx_rinc                 ;
     
     reg     [7:0]                       sync1_command           ;   //  two flipflops to CDC
     reg     [7:0]                       sync2_command           ;
@@ -50,11 +51,13 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
     assign      reg_slave_address_o     =   sync2_slave_address   ; 
     assign      reg_command_o           =   sync2_command         ;
     assign      reg_prescale_o          =   sync2_prescale        ;
-	assign 		pready_o				=	psel_i ? 1 : 0		;
-
-    assign      tx_winc_temp    =   (penable_i == 1 && psel_i == 1 && pwrite_i == 1 && paddr_i == 8'h00) ? 1 : 0    ;
-    assign      rx_rinc_o       =   (penable_i == 0 && psel_i == 1 && pwrite_i == 0 && paddr_i == 8'h04) ? 1 : 0    ;
+	assign 		pready_o				=	psel_i ? 1 : 0		  ;
+	
     assign      tx_winc_o       =   tx_winc;
+    assign      tx_winc_temp    =   (penable_i == 1 && psel_i == 1 && pwrite_i == 1 && paddr_i == 8'h00) ? 1 : 0    ;
+    
+    //assign      rx_rinc_o       =   rx_rinc;
+    assign      rx_rinc_o       =   ( (~penable_i) & psel_i & (~pwrite_i) & (paddr_i == 8'h04)) ? 1 : 0    ;
     //  Write transfer with no wait states
     always @(posedge    pclk_i,    negedge  preset_ni) begin
 
