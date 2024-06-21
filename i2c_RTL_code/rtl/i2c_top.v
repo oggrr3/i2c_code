@@ -16,11 +16,16 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
     output                              pready_o            ,   //  ready to receive data
     output                              pslverr_o           ,   //  When bridging: From AXI to APB An APB error is mapped back to RRESP/BRESP = SLVERR.
                                                                 //  This is achieved by mapping PSLVERR to the AXI signals RRESP[1] for reads and BRESP[1] for writes.
+    output                              sda_debug           ,
+    output                              scl_debug           ,                                                                            
     inout                               sda                 ,
     inout                               scl             
 );
 
-
+    //  ------For debug-------------------------
+    assign  sda_debug = sda ;
+    assign  scl_debug = scl ;
+    //  ------End for febug soc-----------------
  
     // Decalar netlist
     wire                        i2c_sda_en                      ;
@@ -57,14 +62,9 @@ module i2c_top      #(parameter     DATA_SIZE   =   8   ,
     wire                        tx_winc                         ;
     wire                        rx_rinc                         ;
 
-    //  --------- for debug ----------------------
-    //assign  debug_command = command;
-    //  --------- end debug ----------------------
-
     assign      pslverr_o = 0   ;
     assign      sda     =   i2c_sda_en ? i2c_sda : 1'bz         ;
-    //assign      scl     =   i2c_scl_en ? i2c_scl : 1         ;
-    assign      scl     =   i2c_scl         ;
+    assign      scl     =   i2c_scl_en ? i2c_scl : 1'bz         ;
 
     //pullup (sda)    ;
     //pullup (scl)    ;

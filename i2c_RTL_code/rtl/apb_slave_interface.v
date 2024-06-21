@@ -30,6 +30,7 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
     reg     [7:0]                       reg_slave_address       ;   //  0x0c
     reg     [7:0]                       reg_command             ;   //  0x10
     reg     [7:0]                       reg_prescale            ;   //  0x14
+    reg     [7:0]                       reg_status2             ;   //  0x18
 
     //  Decalar reg of output
     reg     [DATA_WIDTH - 1 : 0]        prdata                  ;
@@ -68,7 +69,7 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
             reg_slave_address       <=      0       ;
             reg_command             <=      0       ;
             reg_prescale            <=      0       ;
-
+            reg_status2             <=      0       ;
         end 
 
         else begin
@@ -77,7 +78,6 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
             if (penable_i == 1 && psel_i == 1 && pwrite_i == 1) begin
                 
                 case (paddr_i)
-
                     8'h00       :	begin						// When data into reg_transmit, enable write data to TX-FIFO
 						reg_transmit    <=  pwdata_i    ;
 					end
@@ -93,7 +93,6 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
                     8'h14       :   begin  
                         reg_prescale            <=  pwdata_i    	; 
                     end
-
                 endcase
             end
             else if (reset_done_i) begin
@@ -107,7 +106,6 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
             if ( (psel_i == 1) && (penable_i == 0) && (pwrite_i == 0) )begin
                 
                 case (paddr_i)
-
                     8'h00       :       prdata            <=  reg_transmit      ;
 
                     8'h04       :   begin
@@ -117,11 +115,14 @@ module apb_slave_interface  #(parameter     DATA_WIDTH  =   8,
                     8'h08       :       prdata            <=  to_status_reg_i   ;
                     8'h0c       :       prdata            <=  reg_slave_address ;
                     8'h10       :       prdata            <=  reg_command       ;
-                    8'h14       :       prdata            <=  reg_prescale      ;   
-
+                    8'h14       :       prdata            <=  reg_prescale      ; 
+                    8'h18       :       prdata            <=  reg_status2       ;  
                 endcase     
-        end
-            
+            end
+              
+            //    write to reg_status2
+            reg_status2 <= {reset_done_i, start_done_i, tx_winc_o, rx_rinc_o, 4'b0000};
+         
         end
     end
 

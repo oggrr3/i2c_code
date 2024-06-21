@@ -16,6 +16,8 @@ module i2c_top_tb ();
     wire                              sda_io                 ;
     wire                              scl_io                 ;
     wire    [7:0]   data    ;
+    wire            sda_debug   ;
+    wire            scl_debug   ;
     //integer i;
     
     //  --------------- for debug --------------
@@ -31,6 +33,7 @@ module i2c_top_tb ();
     
     assign  sda_io     =   sda_slave_en_tb ? sda_slave_tb : 1'bz    ;
 	pullup (sda_io);
+	pullup (scl_io);
 
 	// used test
 	reg [7:0] 	get_value_sda_tb	;
@@ -52,6 +55,8 @@ module i2c_top_tb ();
         
         .prdata_o       (prdata_o       )     ,   //  data read
         .pready_o       (pready_o       )     ,   //  ready to receive data
+        .sda_debug      (sda_debug      )     ,
+        .scl_debug      (scl_debug      )     ,
         .sda            (sda_io         )     ,
         .scl            (scl_io         )     
     );
@@ -233,12 +238,13 @@ module i2c_top_tb ();
         Slave_Sent_Data(8'ha3);
         Slave_Sent_Data(8'h11);
         Slave_Sent_Data(8'h09);
-        //repeat (18) Slave_Sent_Data($urandom());
+        repeat (12) Slave_Sent_Data($urandom());
 		#300;
 		Apb_Read(8'h04);
 		Apb_Read(8'h04);
 		Apb_Read(8'h04);
-		#500;
+		#5000;
+
 		$stop;
 		//------------------------Done write test------------------------
     end
