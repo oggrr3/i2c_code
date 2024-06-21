@@ -46,15 +46,18 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include "platform.h"
 #include "xil_printf.h"
 #include "sleep.h"
 #include "xil_io.h"
 
+void read_reg(u32 addr);
+void read_all_reg(u32 addr1, u32 addr2, u32 addr3, u32 addr4, u32 addr5, u32 addr6);
 int main()
 {
     init_platform();
-    int data;
+    u32 data;
 //    u32 transmit_reg = XPAR_I2C_TOP_0_BASEADDR;				//	0x44A00000, but s_apb_i2c get 8 LSB bits (1-byte) to paddr, and start 0x00 is
 //    u32 receive_reg	=	XPAR_I2C_TOP_0_BASEADDR + 1;
 //    u32 status_reg = XPAR_I2C_TOP_0_BASEADDR + 8;
@@ -68,28 +71,55 @@ int main()
     u32 slave_addr_reg 	= 0x44A0000c;
     u32 command_reg 	= 0x44A00010;
     u32	prescale_reg 	= 0x44A00014;
+    u32 status2_reg     = 0x44A00018;
 
     xil_printf("Hello World VI nez\n\r");
-    Xil_Out32(transmit_reg, 0x00);
+    Xil_Out32(transmit_reg, 0x2c);
     Xil_Out32(slave_addr_reg, 0xa6);
-    Xil_Out32(prescale_reg, 0x06);
-    xil_printf("Write to reg done\n\r");
+    Xil_Out32(prescale_reg, 0x14);          //  my i2c core run corretly at i2c clk = 20 * scl
 
-    Xil_Out32(command_reg, 0xc0);
-    sleep(2);											//	Sleep for micro second (us)
+    Xil_Out32(command_reg, 0xe0);
+    //read_reg(command_reg);
+    //xil_printf("Write to reg done\n\r");
+    //sleep(2);											//	Sleep for micro second (us)
+    //read_all_reg(transmit_reg, receive_reg, status_reg, slave_addr_reg, command_reg, prescale_reg);
+    //read_reg(status2_reg);
 
-    print("Successfully write and then read\n\r");
+    //print("Successfully write and then read\n\r");
+    usleep(10);
     Xil_Out32(slave_addr_reg, 0xa7);
     Xil_Out32(command_reg, 0xc0);
-    sleep(2);
-    //while(1) {
-    	data = (int) (Xil_In32(receive_reg));
-    	xil_printf("Data Received = %d\n\r", data);
-    	sleep(1);
-    //}
+    //read_reg(command_reg);
+    //read_reg(status2_reg);
+
+    //sleep(5);
+    //read_reg(status2_reg);
+
+    for (int i = 0; i < 10 ; i++) {
+    	data = Xil_In32(receive_reg);
+    	xil_printf("Data Received = %x\n\r", data);
+    	//sleep(1);
+    }
+
 
 //    xil_printf("Status = %lu", Xil_In32(status_reg));
+    //read_all_reg(transmit_reg, receive_reg, status_reg, slave_addr_reg, command_reg, prescale_reg);
     print("Successfully ran Hello World application\n\r");
     cleanup_platform();
     return 0;
+}
+
+void read_reg(u32 addr) {
+	u32 data;
+	data = Xil_In32(addr);
+	xil_printf("Data = %x from reg = %x\n\r", data, addr);
+}
+
+void read_all_reg(u32 addr1, u32 addr2, u32 addr3, u32 addr4, u32 addr5, u32 addr6) {
+	read_reg(addr1);
+	read_reg(addr2);
+	read_reg(addr3);
+	read_reg(addr4);
+	read_reg(addr5);
+	read_reg(addr6);
 }
